@@ -1,0 +1,8 @@
+/home/eric/perso/src/CMakeFiles/accassias.dir
+/home/eric/perso/src/console/CMakeFiles/t_console.dir
+/home/eric/perso/src/compiler/gencode/CMakeFiles/t_gencode.dir
+/home/eric/perso/src/compiler/lexical/CMakeFiles/t_lexical.dir
+/home/eric/perso/src/multi_precision/CMakeFiles/t_multi_precision.dir
+/home/eric/perso/src/static_analysis/CMakeFiles/t_static_analysis.dir
+/home/eric/perso/src/compiler/syntax/CMakeFiles/t_syntax.dir
+/home/eric/perso/src/virtual_machine/CMakeFiles/t_vm.dir

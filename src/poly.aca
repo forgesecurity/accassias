@@ -1,0 +1,31 @@
+class poly
+{
+	declr $aaa;
+	declr $degree;
+
+	function readpol(declr $string)
+	{
+		t_readpol
+	}
+
+	function getdegree()
+	{
+		$this->aaa = 3;
+		$this->degree = 3;
+
+
+		return $this->degree;
+	}
+}
+
+
+declr $a;
+declr $poly;
+$poly = new poly;
+$a = $poly->getdegree();
+
+declr $stdlib;
+
+
+$stdlib = new stdlib;
+$stdlib->print($a);

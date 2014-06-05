@@ -1,0 +1,332 @@
+
+     CONSOLE : [1;32mthree address code will be printed[0m
+     CONSOLE : [1;32mcode will be printed[0m
+     CONSOLE : [1;32mstate vm + stack will be printed[0m
+
+
+GENCODE ADDR FUNCTIONS
+29 = 37
+print => 29
+ : THREEADDRESSCODE : [1;35mthree address code here[0m
+
+jump 0
+instructions 
+subinstructions 2
+null
+null
+temp0 ; 
+null
+null
+temp0 = temp0
+null
+method stdlib
+start call 
+null
+temp3 = EEE
+temp2 = temp3
+temp1 = temp2
+param 1
+call print
+null
+null
+null
+exit 2
+class 0
+function 0
+null
+null
+temp-4 ; 
+null
+print 12
+return
+null
+function 1
+showtac 
+return
+null
+function 2
+hidetac 
+return
+null
+function 3
+showcode 
+return
+null
+function 4
+hidecode 
+return
+null
+function 5
+showstatevm 
+return
+null
+function 6
+hidestatevm 
+return
+null
+function 7
+exit 33
+return
+null
+function 8
+null
+temp2 = timer
+temp1 = temp2
+temp0 = temp1
+return 0 0
+null
+null
+null
+endclass 
+null
+null
+null
+null
+ : CODE : [1;35mcode here[0m
+
+0    JUMP 2
+2    INSTRUCTIONS 
+3    PILE 2
+5    EMPL 0
+7    DEPL 0
+9    PILE 1
+11    EMPS 3 EEE
+16    DEPL 3
+18    EMPL 3
+20    DEPL 2
+22    EMPL 2
+24    DEPL 1
+26    EMPL 1
+28    CALL 37
+30    PILE -1
+32    EXIT 
+33    CLASS 0
+35    PILE 3
+37    FUNCTION 0
+39    PILE 0
+41    PRINT -3
+43    RETURN 1
+45    FUNCTION 1
+47    PILE 0
+49    SHOWTAC 
+50    RETURN 0
+52    FUNCTION 2
+54    PILE 0
+56    HIDETAC 
+57    RETURN 0
+59    FUNCTION 3
+61    PILE 0
+63    SHOWCODE 
+64    RETURN 0
+66    FUNCTION 4
+68    PILE 0
+70    HIDECODE 
+71    RETURN 0
+73    FUNCTION 5
+75    PILE 0
+77    SHOWSTATEVM 
+78    RETURN 0
+80    FUNCTION 6
+82    PILE 0
+84    HIDESTATEVM 
+85    RETURN 0
+87    FUNCTION 7
+89    PILE 0
+91    EXIT 
+92    RETURN 0
+94    FUNCTION 8
+96    PILE 3
+98    EMPTIME 
+99    DEPL 2
+101    EMPL 2
+103    DEPL 1
+105    EMPL 1
+107    DEPL 0
+109    EMPL 0
+111    RETURN 0
+
+ : VM : [1;35mstate and stack here[0m
+
+---------------------------------------------------------------------------------------------------------------------------------
+|         co |        bel  |         sp | instruction                    |  stack                        
+---------------------------------------------------------------------------------------------------------------------------------
+|          0 |          0  |      20000 | JUMP 2                         |  0
+|          2 |          0  |      20000 | INSTRUCTIONS                   |  0
+|          3 |      20001  |      20001 | PILE 2                         |  0 0
+|          5 |      20001  |      20003 | EMPL 0                         |  0 0 0 0
+|          7 |      20001  |      20004 | DEPL 0                         |  0 0 0 0 0
+|          9 |      20001  |      20003 | PILE 1                         |  0 0 0 0
+|         11 |      20001  |      20004 | EMPS 3 EEE                     |  0 0 0 0 0
+|         16 |      20001  |      20005 | DEPL 3                         |  0 0 0 0 0 0
+|         18 |      20001  |      20004 | EMPL 3                         |  0 0 0 0 0
+|         20 |      20001  |      20005 | DEPL 2                         |  0 0 0 0 0 0
+|         22 |      20001  |      20004 | EMPL 2                         |  0 0 0 0 0
+|         24 |      20001  |      20005 | DEPL 1                         |  0 0 0 0 0 0
+|         26 |      20001  |      20004 | EMPL 1                         |  0 0 0 0 0
+|         28 |      20001  |      20005 | CALL 37                        |  0 0 0 0 0 0
+|         37 |      20001  |      20006 | FUNCTION 0                     |  0 30 0 0 0 0 0
+|         39 |      20007  |      20007 | PILE 0                         |  0 20001 30 0 0 0 0 0
+|         41 |      20007  |      20007 | PRINT -3                       |  0 20001 30 0 0 0 0 0
+EEE
+
+|         43 |      20007  |      20007 | RETURN 1                       |  0 20001 30 0 0 0 0 0
+|         30 |      20001  |      20005 | PILE -1                        |  30 0 20001 0 0 0
+|         32 |      20001  |      20004 | EXIT                           |  0 20001 0 0 0
+---------------------------------------------------------------------------------------------------------------------------------
+time = 0 ms
+[1;34maca[0m[1;36m$[0m GENCODE ADDR FUNCTIONS
+29 = 40
+print => 29
+ : THREEADDRESSCODE : [1;35mthree address code here[0m
+
+jump 0
+instructions 
+subinstructions 2
+null
+null
+temp0 ; 
+null
+null
+temp0 = temp0
+null
+method stdlib
+start call 
+null
+temp3 = EEE
+temp2 = temp3
+temp1 = temp2
+param 1
+call print
+null
+null
+subinstructions 0
+null
+null
+exit 2
+class 0
+function 37
+null
+null
+temp-4 ; 
+null
+print 12
+return
+null
+function 45
+showtac 
+return
+null
+function 52
+hidetac 
+return
+null
+function 59
+showcode 
+return
+null
+function 66
+hidecode 
+return
+null
+function 73
+showstatevm 
+return
+null
+function 80
+hidestatevm 
+return
+null
+function 87
+exit 33
+return
+null
+function 94
+null
+temp2 = timer
+temp1 = temp2
+temp0 = temp1
+return 0 0
+null
+null
+null
+endclass 
+null
+null
+null
+null
+ : CODE : [1;35mcode here[0m
+
+0    JUMP 2
+2    INSTRUCTIONS 
+3    PILE 2
+5    EMPL 0
+7    DEPL 0
+9    PILE 1
+11    EMPS 3 EEE
+16    DEPL 3
+18    EMPL 3
+20    DEPL 2
+22    EMPL 2
+24    DEPL 1
+26    EMPL 1
+28    CALL 40
+30    PILE -1
+32    INSTRUCTIONS 
+33    PILE 0
+35    EXIT 
+36    CLASS 0
+38    PILE 3
+40    FUNCTION 37
+42    PILE 0
+44    PRINT -3
+46    RETURN 1
+48    FUNCTION 45
+50    PILE 0
+52    SHOWTAC 
+53    RETURN 0
+55    FUNCTION 52
+57    PILE 0
+59    HIDETAC 
+60    RETURN 0
+62    FUNCTION 59
+64    PILE 0
+66    SHOWCODE 
+67    RETURN 0
+69    FUNCTION 66
+71    PILE 0
+73    HIDECODE 
+74    RETURN 0
+76    FUNCTION 73
+78    PILE 0
+80    SHOWSTATEVM 
+81    RETURN 0
+83    FUNCTION 80
+85    PILE 0
+87    HIDESTATEVM 
+88    RETURN 0
+90    FUNCTION 87
+92    PILE 0
+94    EXIT 
+95    RETURN 0
+97    FUNCTION 94
+99    PILE 3
+101    EMPTIME 
+102    DEPL 2
+104    EMPL 2
+106    DEPL 1
+108    EMPL 1
+110    DEPL 0
+112    EMPL 0
+114    RETURN 0
+
+ : VM : [1;35mstate and stack here[0m
+
+---------------------------------------------------------------------------------------------------------------------------------
+|         co |        bel  |         sp | instruction                    |  stack                        
+---------------------------------------------------------------------------------------------------------------------------------
+|         32 |      20001  |      20004 | INSTRUCTIONS                   |  0 20001 0 0 0
+|         33 |      20005  |      20005 | PILE 0                         |  30 20001 20001 0 0 0
+|         35 |      20005  |      20005 | EXIT                           |  30 20001 20001 0 0 0
+---------------------------------------------------------------------------------------------------------------------------------
+time = 2 ms
+[1;34maca[0m[1;36m$[0m 

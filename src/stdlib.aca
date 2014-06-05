@@ -1,0 +1,49 @@
+class stdlib
+{
+	function print(declr $string)
+	{
+		t_print
+	}
+
+	function show_threeaddresscode()
+	{
+		t_show_tac
+	}
+
+	function hide_threeaddresscode()
+	{
+		t_hide_tac
+	}
+
+	function show_code()
+	{
+		t_show_code
+	}
+
+	function hide_code()
+	{
+		t_hide_code
+	}
+
+	function show_statevm()
+	{
+		t_show_statevm
+	}
+
+	function hide_statevm()
+	{
+		t_hide_statevm
+	}
+
+	function exit()
+	{
+		t_exit
+	}
+
+	function gettime()
+	{
+		return t_timer;
+	}
+}
+
+

@@ -1,0 +1,7 @@
+declr $a;
+declr $b;
+declr $c;
+
+$a = 10;
+$c = 1000;
+$b = 90;

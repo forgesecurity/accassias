@@ -1,0 +1,6 @@
+digraph cfg {
+ordering=out;
+basic_block1 [label="basic_block_subinstructions 3\nnull\ntemp0 ; \nnull\nnull\ntemp1 ; \nnull\nnull\nnull\ntemp1 = temp0\nnull\nnull\nmethod poly\nstart call \nnull\ntemp3 = temp4\ntemp2 = temp3\nnull\ntemp0 = temp2\nnull\nnull\ntemp5 ; \nnull\nnull\nnull\ntemp5 = temp0\nnull\nmethod stdlib\nstart call \nnull\ntemp8 = temp0\ntemp7 = temp8\ntemp6 = temp7\nparam 6\ncall print\nnull\nnull\nnull\nexit 2\nclass 0\nfunction 10\nnull\ntemp-4 ; \nnull\nprint 11\nreturn\nnull\nfunction 18\nshowtac \nreturn\nnull\nfunction 25\nhidetac \nreturn\nnull\nfunction 32\nshowcode \nreturn\nnull\nfunction 39\nhidecode \nreturn\nnull\nfunction 46\nshowstatevm \nreturn\nnull\nfunction 53\nhidestatevm \nreturn\nnull\nfunction 60\nexit 32\nreturn\nnull\nfunction 67\nnull\ntemp2 = timer\ntemp1 = temp2\ntemp0 = temp1\nreturn 0 0\nnull\nnull\nnull\nendclass \nnull\nclass 1\nnull\ntemp0 ; \nnull\nnull\ntemp1 ; \nnull\nfunction 9\nnull\ntemp-4 ; \nnull\nreadpol \nreturn\nnull\nfunction 10\nnull\nnull\ntemp2 = 3\ntemp1 = temp2\ntemp0 = temp1\nnull\ntemp0 = temp0\nnull\nnull\nnull\ntemp5 = 3\ntemp4 = temp5\ntemp3 = temp4\nnull\ntemp1 = temp3\nnull\nnull\ntemp8 = temp1\ntemp7 = temp8\ntemp6 = temp7\nreturn 6 0\nnull\nnull\nnull\nendclass \nnull\nnull\nnull\nnull\n"];
+
+
+}

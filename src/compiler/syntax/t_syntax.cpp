@@ -179,8 +179,8 @@ void t_syntax::instructions(t_node<t_symbol> *syntaxnode, t_node<t_symbol> *synt
 
   // syntaxnode = L_SUBLIST_INSTRUCTIONS
 
-syntaxnode->getvertex()->setnblocalvariables(
-  	syntaxnode->getvertex()->getnblocalvariables() + this->nbexprstermsfactors_prog);
+  syntaxnode->getvertex()->setnblocalvariables(
+      syntaxnode->getvertex()->getnblocalvariables() + this->nbexprstermsfactors_prog);
 }
 
 
@@ -421,7 +421,7 @@ void t_syntax::class_declaration(t_syntaxtree *tree, t_node<t_symbol> *syntaxnod
     this->insideclass = false;
     this->global_variables = this->chained_variables[0];
 
-classe->setnblocalvariables(this->nbexprstermsfactors_class);
+    classe->setnblocalvariables(this->nbexprstermsfactors_class);
 
 
     t_symbol *symbol1 = new t_symbol(this->lexical->get_current_line(), this->lexical->get_current_column(), S_CLASS_END);
@@ -715,8 +715,8 @@ void t_syntax::variable(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode, bool p
           functions_temp = identifier_class_found->getclass()->getmethods();
         }
       }
-    else
-      return syntaxerror(DEBUG_VAR, 802, ERROR_VAR_IDENTIFIER);
+      else
+        return syntaxerror(DEBUG_VAR, 802, ERROR_VAR_IDENTIFIER);
     }
     else if(lexical->get_current_token() == T_THIS)
     {
@@ -784,27 +784,27 @@ void t_syntax::classe_instance(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode,
 
     t_class *symbol_class = new t_class(this->lexical->get_current_line(), this->lexical->get_current_column(), S_NEW_INSTANCE_CLASS, classe_found->getlexeme(), classe_found->getaddr(), 0, classe_found->getvariables()->size());
 
-	t_node<t_symbol> *node_class = syntaxnode->addchild(L_NEW_INSTANCE_CLASS, symbol_class);
+    t_node<t_symbol> *node_class = syntaxnode->addchild(L_NEW_INSTANCE_CLASS, symbol_class);
     tree->addnode(node_class);
 
 
-  t_identifier *var_class;
-  std::map<std::string, t_identifier *>::iterator it;
-std::map<std::string, t_identifier *> variables_class = *(classe_found->getvariables());
+    t_identifier *var_class;
+    std::map<std::string, t_identifier *>::iterator it;
+    std::map<std::string, t_identifier *> variables_class = *(classe_found->getvariables());
 
 
     for(it = variables_class.begin(); it != variables_class.end(); it++)
-	{
-    		var_class = it->second;
-		var_class->setaddr(var_class->getaddr() + global_variables->size());
+    {
+      var_class = it->second;
+      var_class->setaddr(var_class->getaddr() + global_variables->size());
 
-    t_identifier *identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_DECLARATION, var_class->getaddr());
-    t_node<t_symbol> *node = node_class->addchild(L_DECLARATION, identifier);
-    tree->addnode(node);
- }
+      t_identifier *identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_DECLARATION, var_class->getaddr());
+      t_node<t_symbol> *node = node_class->addchild(L_DECLARATION, identifier);
+      tree->addnode(node);
+    }
 
 
-this->nbexprstermsfactors_prog = this->nbexprstermsfactors_prog + classe_found->getnblocalvariables();
+    this->nbexprstermsfactors_prog = this->nbexprstermsfactors_prog + classe_found->getnblocalvariables();
 
     this->lexical->next_token();
   }

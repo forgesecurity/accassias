@@ -1,28 +1,28 @@
 class poly
 {
-	declr $aaa;
-	declr $degree;
+  declr $aaa;
+  declr $degree;
 
-	function readpol(declr $string)
-	{
-		t_readpol
-	}
+  function readpol(declr $string)
+  {
+    t_readpol
+  }
 
-	function getdegree()
-	{
-		$this->aaa = 3;
-		$this->degree = 3;
+  function getdegree()
+  {
+    $this->aaa = 3;
+    $this->degree = 3;
 
 
-		return $this->degree;
-	}
+    return $this->degree;
+  }
 }
 
 function gettruc()
 {
-	declr $bbb;
-	$bbb = 3;	
-	return $bbb;
+  declr $bbb;
+  $bbb = 3;	
+  return $bbb;
 }
 
 declr $a;

@@ -1,14 +1,14 @@
 class stdlib
 {
-	function print(declr $string)
-	{
-		t_print
-	}
+  function print(declr $string)
+  {
+    t_print
+  }
 
-	function system(declr $cmd)
-	{
-		t_system
-	}
+  function system(declr $cmd)
+  {
+    t_system
+  }
 }
 
 

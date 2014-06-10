@@ -53,7 +53,7 @@
 {
   this->nbargs = nbargs;
   this->nblocalvariables = nblocalvariables; 
-	this->methods = new std::map<std::string, t_function *>;
+  this->methods = new std::map<std::string, t_function *>;
   this->variables = new std::map<std::string, t_identifier *>;
 }
 

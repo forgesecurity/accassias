@@ -222,9 +222,9 @@ bool t_gencode::start()
       case TAC_ASSIGN_CALL:
         {
           //addr_functions[(*this->current_functions)[(*it).getconst1()]] = imem+1;
-	  addr_functions[imem+1] = (*this->current_functions)[(*it).getconst1()];
-          
-	  this->code.push_back(CALL);
+          addr_functions[imem+1] = (*this->current_functions)[(*it).getconst1()];
+
+          this->code.push_back(CALL);
           this->code.push_back((*this->current_functions)[(*it).getconst1()]->getaddr());   
           this->code.push_back(PILE);
           this->code.push_back(-1*((*it).getaddrarg1())); // nbargs
@@ -248,7 +248,7 @@ bool t_gencode::start()
           //this->code.push_back(PILE);
           //this->code.push_back((*it).getaddrarg1());
           //imem += 4;
-	  imem += 2;
+          imem += 2;
           break;
         }
 
@@ -379,7 +379,7 @@ bool t_gencode::start()
       case TAC_ASSIGNCA:
         {
 
-	  addr_functions[imem+1] = (*this->current_functions)[(*it).getconst1()];
+          addr_functions[imem+1] = (*this->current_functions)[(*it).getconst1()];
 
           this->code.push_back(CALL);
           this->code.push_back((*this->current_functions)[(*it).getconst1()]->getaddr());

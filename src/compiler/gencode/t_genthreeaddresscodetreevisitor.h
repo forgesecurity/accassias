@@ -66,13 +66,13 @@ class t_genthreeaddresscodetreevisitor : public t_treevisitor<N>
 
         case S_FUNCTION:
           {
-	this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_FUNCTION, node->getvertex()->getaddr(), node->getvertex()->getnblocalvariables(), node->getvertex()->getlexeme())); 
+            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_FUNCTION, node->getvertex()->getaddr(), node->getvertex()->getnblocalvariables(), node->getvertex()->getlexeme())); 
             break; 
           }
 
         case S_NEW_INSTANCE_CLASS:
           {
-	this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_INSTANCE_CLASS, node->getvertex()->getaddr(), node->getvertex()->getnblocalvariables(), node->getvertex()->getlexeme())); 
+            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_INSTANCE_CLASS, node->getvertex()->getaddr(), node->getvertex()->getnblocalvariables(), node->getvertex()->getlexeme())); 
             break; 
           }
 
@@ -250,8 +250,8 @@ class t_genthreeaddresscodetreevisitor : public t_treevisitor<N>
               case S_START_CALL:
                 {
                   this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGNCA, node->getvertex()->getaddr(), node->getchild(0)->getvertex()->getnbargs(), node->getchild(0)->getvertex()->getlexeme()));
-                        
-			break; 
+
+                  break; 
                 }
 
               case S_VARIABLE:

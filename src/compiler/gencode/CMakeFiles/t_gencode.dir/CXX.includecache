@@ -62,6 +62,14 @@ stdlib.h
 
 /home/eric/perso/accassias/src/compiler/gencode/t_tacsymbol.h
 
+/home/eric/perso/accassias/src/compiler/gencode/t_threeaddress.cpp
+t_threeaddress.h
+/home/eric/perso/accassias/src/compiler/gencode/t_threeaddress.h
+sstream
+-
+iostream
+-
+
 /home/eric/perso/accassias/src/compiler/gencode/t_threeaddress.h
 ostream
 -

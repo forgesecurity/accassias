@@ -6,19 +6,51 @@
 
 #IncludeRegexTransform: 
 
-/home/eric/perso/src/static_analysis/t_control_flow_graph.cpp
-t_control_flow_graph.h
-/home/eric/perso/src/static_analysis/t_control_flow_graph.h
+/home/eric/perso/accassias/src/static_analysis/t_basicblock.cpp
+t_basicblock.h
+/home/eric/perso/accassias/src/static_analysis/t_basicblock.h
 
-/home/eric/perso/src/static_analysis/t_control_flow_graph.h
+/home/eric/perso/accassias/src/static_analysis/t_basicblock.h
 compiler/gencode/t_threeaddresscode.h
-/home/eric/perso/src/static_analysis/compiler/gencode/t_threeaddresscode.h
+/home/eric/perso/accassias/src/static_analysis/compiler/gencode/t_threeaddresscode.h
+data_structures/graph/t_node.h
+/home/eric/perso/accassias/src/static_analysis/data_structures/graph/t_node.h
+
+/home/eric/perso/accassias/src/static_analysis/t_control_flow_graph.cpp
+t_control_flow_graph.h
+/home/eric/perso/accassias/src/static_analysis/t_control_flow_graph.h
+
+/home/eric/perso/accassias/src/static_analysis/t_control_flow_graph.h
+compiler/gencode/t_threeaddresscode.h
+/home/eric/perso/accassias/src/static_analysis/compiler/gencode/t_threeaddresscode.h
 static_analysis/t_static_analysis.h
-/home/eric/perso/src/static_analysis/static_analysis/t_static_analysis.h
+/home/eric/perso/accassias/src/static_analysis/static_analysis/t_static_analysis.h
 static_analysis/t_basicblock.h
-/home/eric/perso/src/static_analysis/static_analysis/t_basicblock.h
+/home/eric/perso/accassias/src/static_analysis/static_analysis/t_basicblock.h
 static_analysis/t_data_flow.h
-/home/eric/perso/src/static_analysis/static_analysis/t_data_flow.h
+/home/eric/perso/accassias/src/static_analysis/static_analysis/t_data_flow.h
+
+/home/eric/perso/accassias/src/static_analysis/t_data_flow.cpp
+t_data_flow.h
+/home/eric/perso/accassias/src/static_analysis/t_data_flow.h
+
+/home/eric/perso/accassias/src/static_analysis/t_data_flow.h
+compiler/gencode/t_threeaddresscode.h
+/home/eric/perso/accassias/src/static_analysis/compiler/gencode/t_threeaddresscode.h
+static_analysis/t_static_analysis.h
+/home/eric/perso/accassias/src/static_analysis/static_analysis/t_static_analysis.h
+static_analysis/t_basicblock.h
+/home/eric/perso/accassias/src/static_analysis/static_analysis/t_basicblock.h
+static_analysis/t_flow.h
+/home/eric/perso/accassias/src/static_analysis/static_analysis/t_flow.h
+
+/home/eric/perso/accassias/src/static_analysis/t_flow.cpp
+t_flow.h
+/home/eric/perso/accassias/src/static_analysis/t_flow.h
+
+/home/eric/perso/accassias/src/static_analysis/t_flow.h
+static_analysis/t_static_analysis.h
+/home/eric/perso/accassias/src/static_analysis/static_analysis/t_static_analysis.h
 
 compiler/gencode/t_tacsymbol.h
 

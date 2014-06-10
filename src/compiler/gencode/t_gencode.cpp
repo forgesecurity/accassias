@@ -1,5 +1,4 @@
 #include "t_gencode.h"
-#include "t_stdlib.h"
 #include "data_structures/graph/t_depth_first_search.h"
 #include "compiler/syntax/t_syntax.h"
 #include "compiler/t_compiler.h"
@@ -31,7 +30,8 @@ bool t_gencode::start()
   std::stack<unsigned int> stack_temp_addr_for;
   std::stack<unsigned int> stack_temp_addr_startfor;
 
-  std::map<t_function *, unsigned int> addr_functions;
+  //std::map<t_function *, unsigned int> addr_functions;
+  std::map<unsigned int, t_function *> addr_functions;
 
   this->imem = 2;
   this->code.clear();
@@ -43,8 +43,6 @@ bool t_gencode::start()
 
   if(this->syntax->getexistsyntaxerror())
     return false;
-
-  std::cout << "gencode " << std::endl;
 
   t_depth_first_search::visit<t_genthreeaddresscode, t_syntaxtree, t_symbol>(gentac, syntax->gettree(), nodes_color);  	
   syntax->gettree()->setcolorize(false);
@@ -205,62 +203,11 @@ bool t_gencode::start()
           break;
         }
 
-      case TAC_ASSIGN_SHOWTAC:
-        {
-          this->code.push_back(SHOWTAC);
-          imem += 1;
-          break;
-        }
-
-      case TAC_ASSIGN_HIDETAC:
-        {
-          this->code.push_back(HIDETAC);
-          imem += 1;
-          break;
-        }
-
-      case TAC_ASSIGN_SHOWCODE:
-        {
-          this->code.push_back(SHOWCODE);
-          imem += 1;
-          break;
-        }
-
-      case TAC_ASSIGN_HIDECODE:
-        {
-          this->code.push_back(HIDECODE);
-          imem += 1;
-          break;
-        }
-
-      case TAC_ASSIGN_SHOWSTATEVM:
-        {
-          this->code.push_back(SHOWSTATEVM);
-          imem += 1;
-          break;
-        }
-
-      case TAC_ASSIGN_HIDESTATEVM:
-        {
-          this->code.push_back(HIDESTATEVM);
-          imem += 1;
-          break;
-        }
-
       case TAC_ASSIGN_READPOL:
         {
           this->code.push_back(READPOL);
           this->code.push_back(-3);
           imem += 2;
-          break;
-        }
-
-      case TAC_ASSIGN_TIMER:
-        {
-          this->code.push_back(EMPTIME);
-          this->code.push_back(DEPL);
-          this->code.push_back((*it).getaddrresult());
-          imem += 3;
           break;
         }
 
@@ -274,9 +221,10 @@ bool t_gencode::start()
 
       case TAC_ASSIGN_CALL:
         {
-          addr_functions[(*this->current_functions)[(*it).getconst1()]] = imem+1;
-
-          this->code.push_back(CALL);
+          //addr_functions[(*this->current_functions)[(*it).getconst1()]] = imem+1;
+	  addr_functions[imem+1] = (*this->current_functions)[(*it).getconst1()];
+          
+	  this->code.push_back(CALL);
           this->code.push_back((*this->current_functions)[(*it).getconst1()]->getaddr());   
           this->code.push_back(PILE);
           this->code.push_back(-1*((*it).getaddrarg1())); // nbargs
@@ -297,9 +245,21 @@ bool t_gencode::start()
           this->current_functions = (*this->syntax->get_classes())[(*it).getconst1()]->getmethods();
           this->code.push_back(CLASS);
           this->code.push_back((*it).getaddrresult());
-          this->code.push_back(PILE);
-          this->code.push_back((*it).getaddrarg1());
-          imem += 4;
+          //this->code.push_back(PILE);
+          //this->code.push_back((*it).getaddrarg1());
+          //imem += 4;
+	  imem += 2;
+          break;
+        }
+
+      case TAC_ASSIGN_INSTANCE_CLASS:
+        {
+          //this->current_functions = (*this->syntax->get_classes())[(*it).getconst1()]->getmethods();
+          this->code.push_back(INSTANCE_CLASS);
+          this->code.push_back((*it).getaddrresult()); // addr
+          //this->code.push_back(PILE);
+          this->code.push_back((*it).getaddrarg1()); // nblocalvariables
+          imem += 3;
           break;
         }
 
@@ -348,19 +308,29 @@ bool t_gencode::start()
           break;
         }
 
+      case TAC_ASSIGN_EXIT:
+        {
+
+          this->code.push_back(EXIT);
+          imem ++;
+          break;
+        }
+
+      case TAC_ASSIGN_SYSTEM:
+        {
+
+          this->code.push_back(SYSTEM);
+          this->code.push_back(-3);
+          imem += 2;
+          break;
+        }
+
       case TAC_ASSIGN_PRINT:
         {
 
           this->code.push_back(PRINT);
           this->code.push_back(-3);
           imem += 2;
-          break;
-        }
-
-      case TAC_ASSIGN_EXIT:
-        {
-          this->code.push_back(EXIT);
-          imem ++;
           break;
         }
 
@@ -408,6 +378,9 @@ bool t_gencode::start()
 
       case TAC_ASSIGNCA:
         {
+
+	  addr_functions[imem+1] = (*this->current_functions)[(*it).getconst1()];
+
           this->code.push_back(CALL);
           this->code.push_back((*this->current_functions)[(*it).getconst1()]->getaddr());
           this->code.push_back(PILE);
@@ -583,10 +556,10 @@ bool t_gencode::start()
   /* END CFG */
 
   t_function *fd;
-  for (std::map<t_function *, unsigned int>::iterator it = addr_functions.begin(); it != addr_functions.end(); ++it)
+  for (std::map< unsigned int, t_function *>::iterator it = addr_functions.begin(); it != addr_functions.end(); ++it)
   {
-    fd = it->first;
-    this->code[it->second] = fd->getaddr();
+    fd = it->second;
+    this->code[it->first] = fd->getaddr();
   }
 
   gentac->get_tac()->print_console();  
@@ -699,6 +672,18 @@ std::string t_gencode::show_code_of_nextintruction(unsigned int &address_instruc
         break;
       }
 
+    case INSTANCE_CLASS:
+      {
+        out << "INSTANCE_CLASS ";
+        address_instruction ++;
+        out << code[address_instruction] << " ";
+        address_instruction ++;
+        out << code[address_instruction];
+        address_instruction ++;
+
+        break;
+      }
+
     case RETURN:
       {
         out << "RETURN ";
@@ -760,14 +745,6 @@ std::string t_gencode::show_code_of_nextintruction(unsigned int &address_instruc
         out << "EMPL ";
         address_instruction ++;
         out << code[address_instruction];
-        address_instruction ++;
-
-        break;
-      }
-
-    case EMPTIME: 
-      {
-        out << "EMPTIME ";
         address_instruction ++;
 
         break;
@@ -865,6 +842,24 @@ std::string t_gencode::show_code_of_nextintruction(unsigned int &address_instruc
         break;
       }
 
+    case EXIT:
+      {
+        out << "EXIT ";
+        address_instruction ++;
+
+        break;
+      }
+
+    case SYSTEM:
+      {
+        out << "SYSTEM ";
+        address_instruction ++;
+        out << code[address_instruction];
+        address_instruction ++;
+
+        break;
+      }
+
     case PRINT:
       {
         out << "PRINT ";
@@ -880,62 +875,6 @@ std::string t_gencode::show_code_of_nextintruction(unsigned int &address_instruc
         out << "READPOL ";
         address_instruction ++;
         out << code[address_instruction];
-        address_instruction ++;
-
-        break;
-      }
-
-    case EXIT:
-      {
-        out << "EXIT ";
-        address_instruction ++;
-
-        break;
-      }
-
-    case SHOWTAC:
-      {
-        out << "SHOWTAC ";
-        address_instruction ++;
-
-        break;
-      }
-
-    case HIDETAC:
-      {
-        out << "HIDETAC ";
-        address_instruction ++;
-
-        break;
-      }
-
-    case SHOWCODE:
-      {
-        out << "SHOWCODE ";
-        address_instruction ++;
-
-        break;
-      }
-
-    case HIDECODE:
-      {
-        out << "HIDECODE ";
-        address_instruction ++;
-
-        break;
-      }
-
-    case SHOWSTATEVM:
-      {
-        out << "SHOWSTATEVM ";
-        address_instruction ++;
-
-        break;
-      }
-
-    case HIDESTATEVM:
-      {
-        out << "HIDESTATEVM ";
         address_instruction ++;
 
         break;

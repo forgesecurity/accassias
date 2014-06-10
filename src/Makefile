@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eric/perso/src
+CMAKE_SOURCE_DIR = /home/eric/perso/accassias/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eric/perso/src
+CMAKE_BINARY_DIR = /home/eric/perso/accassias/src
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/src/CMakeFiles /home/eric/perso/src/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/accassias/src/CMakeFiles /home/eric/perso/accassias/src/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/src/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/accassias/src/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

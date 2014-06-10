@@ -176,35 +176,14 @@ t_token t_lexical::next_token()
 
 t_token t_lexical::read_keyword()
 {	
-  if(this->current_lexeme == "t_show_tac")
-    return T_SHOW_TAC;
-
-  if(this->current_lexeme == "t_hide_tac")
-    return T_HIDE_TAC;
-
-  if(this->current_lexeme == "t_show_code")
-    return T_SHOW_CODE;
-
-  if(this->current_lexeme == "t_hide_code")
-    return T_HIDE_CODE;
-
-  if(this->current_lexeme == "t_show_statevm")
-    return T_SHOW_STATEVM;	
-
-  if(this->current_lexeme == "t_hide_statevm")
-    return T_HIDE_STATEVM;
-
   if(this->current_lexeme == "t_print")
     return T_PRINT;
 
-  if(this->current_lexeme == "t_exit")
-    return T_EXIT;
-
-  if(this->current_lexeme == "t_timer")
-    return T_TIMER;
-
   if(this->current_lexeme == "t_readpol")
     return T_READPOL;
+
+  if(this->current_lexeme == "t_system")
+    return T_SYSTEM;
 
   if(this->current_lexeme == "declr")
     return T_DECLR;

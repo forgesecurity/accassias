@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/perso/src/data_structures
+# Install script for directory: /home/eric/perso/accassias/src/data_structures
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

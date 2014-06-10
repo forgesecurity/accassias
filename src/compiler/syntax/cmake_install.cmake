@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/perso/src/compiler/syntax
+# Install script for directory: /home/eric/perso/accassias/src/compiler/syntax
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

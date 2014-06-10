@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/perso/src/multi_precision
+# Install script for directory: /home/eric/perso/accassias/src/multi_precision
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

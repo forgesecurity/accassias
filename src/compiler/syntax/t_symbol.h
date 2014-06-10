@@ -25,6 +25,7 @@ enum s_symbol
   S_RETURN,
   S_RETURN_WITHOUT_VALUE,
   S_VARIABLE,
+  S_VARIABLE_CLASS,
   S_NUMBER,
   S_COMMA,
   S_DOTCOMMA,
@@ -73,7 +74,8 @@ enum s_symbol
   S_INFEQUAL,
   S_SUP,
   S_SUPEQUAL,
-  S_ARRAY
+  S_ARRAY,
+  S_SYSTEM
 };
 
 #define L_READPOL "readpol"
@@ -94,6 +96,7 @@ enum s_symbol
 #define L_RETURN "return"
 #define L_RETURN_WITHOUT_VALUE "return_without_value"
 #define L_VARIABLE "variable_symbol"
+#define L_VARIABLE_CLASS "variable_symbol_class"
 #define L_NUMBER "number"
 #define L_COMMA "comma"
 #define L_DOTCOMMA "dotcomma"
@@ -143,6 +146,7 @@ enum s_symbol
 #define L_SUP "sup"
 #define L_SUPEQUAL "sup equal"
 #define L_ARRAY "array"
+#define L_SYSTEM "system"
 
 class t_symbol
 {

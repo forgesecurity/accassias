@@ -4,7 +4,6 @@
 #include "t_variable.h"
 #include "compiler/lexical/t_token.h"
 #include "t_symbol.h"
-#include "compiler/gencode/t_stdlib.h"
 #include "data_structures/tree/t_dottreevisitor.h"
 #include "data_structures/tree/t_dotcfgvisitor.h"
 #include "data_structures/graph/t_breadth_first_search.h"
@@ -18,6 +17,7 @@ t_syntax::t_syntax()
   this->nb_global_functions = 0;
   this->nb_global_class = 0;
   this->nbexprstermsfactors_prog = 0;
+  this->nbexprstermsfactors_class = 0;
   this->backnode_id = 0;
   this->backnode_functions_id = 0;
   this->backnode_classes_id = 0;
@@ -26,6 +26,7 @@ t_syntax::t_syntax()
   this->global_variables = new std::map<std::string, t_identifier *>;
   this->global_functions = new std::map<std::string, t_function *>;
   this->global_class = new std::map<std::string, t_class *>;
+  this->global_instances_class = new std::map<std::string, t_class *>;
 
   this->chained_variables.push_back(this->global_variables);
   this->syntaxtree_prog = new t_tree<t_symbol>;
@@ -162,16 +163,10 @@ void t_syntax::instructions(t_node<t_symbol> *syntaxnode, t_node<t_symbol> *synt
     this->for_instruction(this->gettree(), syntaxnode);
     this->if_instruction(this->gettree(), syntaxnode);
 
-    this->show_tac_instruction(this->gettree(), syntaxnode);  
-    this->hide_tac_instruction(this->gettree(), syntaxnode);    
-    this->show_code_instruction(this->gettree(), syntaxnode);  
-    this->hide_code_instruction(this->gettree(), syntaxnode);
-    this->show_statevm_instruction(this->gettree(), syntaxnode);
-    this->hide_statevm_instruction(this->gettree(), syntaxnode);
+    this->system_instruction(this->gettree(), syntaxnode);
     this->readpol_instruction(this->gettree(), syntaxnode);
 
     this->print_instruction(this->gettree(), syntaxnode);
-    this->exit_instruction(this->gettree(), syntaxnode);
     this->return_instruction(this->gettree(), syntaxnode);
     this->call_instruction(this->gettree(), syntaxnode, false, this->global_functions);
     this->variable(this->gettree(), syntaxnode, false, false);
@@ -183,7 +178,9 @@ void t_syntax::instructions(t_node<t_symbol> *syntaxnode, t_node<t_symbol> *synt
   }
 
   // syntaxnode = L_SUBLIST_INSTRUCTIONS
-  syntaxnode->getvertex()->setnblocalvariables(this->nbexprstermsfactors_prog);
+
+syntaxnode->getvertex()->setnblocalvariables(
+  	syntaxnode->getvertex()->getnblocalvariables() + this->nbexprstermsfactors_prog);
 }
 
 
@@ -193,7 +190,7 @@ void t_syntax::bloc_classe(t_node<t_symbol> *syntaxnode, t_node<t_symbol> *synta
   if(this->lexical->get_current_token() != T_LEFTBRACE)
     return syntaxerror(DEBUG_BLOC, 194, ERROR_BLOC_LEFT_BRACE);
 
-  this->nbexprstermsfactors = 0;
+  this->nbexprstermsfactors_class = 0;
 
   while(this->lexical->get_current_token() != T_END && this->lexical->get_current_token() != T_RIGHTBRACE)
   {
@@ -203,7 +200,7 @@ void t_syntax::bloc_classe(t_node<t_symbol> *syntaxnode, t_node<t_symbol> *synta
     this->lexical->next_token();
   }
 
-  this->nbexprstermsfactors_prog = this->nbexprstermsfactors_prog - this->nbexprstermsfactors;   
+  this->nbexprstermsfactors_prog = this->nbexprstermsfactors_prog - this->nbexprstermsfactors_class;   
 
   if(this->lexical->get_current_token() != T_RIGHTBRACE)
     return syntaxerror(DEBUG_BLOC, 208, ERROR_BLOC_RIGHT_BRACE); 
@@ -220,20 +217,13 @@ void t_syntax::bloc_instructions(t_node<t_symbol> *syntaxnode)
 
   while(this->lexical->get_current_token() != T_END && this->lexical->get_current_token() != T_RIGHTBRACE)
   {
-    //this->timer_start_instruction(this->gettree(), syntaxnode);
     this->for_instruction(this->gettree(), syntaxnode);
     this->if_instruction(this->gettree(), syntaxnode);
 
-    this->show_tac_instruction(this->gettree(), syntaxnode);  
-    this->hide_tac_instruction(this->gettree(), syntaxnode);    
-    this->show_code_instruction(this->gettree(), syntaxnode);  
-    this->hide_code_instruction(this->gettree(), syntaxnode);
-    this->show_statevm_instruction(this->gettree(), syntaxnode);
-    this->hide_statevm_instruction(this->gettree(), syntaxnode);
+    this->system_instruction(this->gettree(), syntaxnode); 
     this->readpol_instruction(this->gettree(), syntaxnode);
 
     this->print_instruction(this->gettree(), syntaxnode);
-    this->exit_instruction(this->gettree(), syntaxnode);
     this->return_instruction(this->gettree(), syntaxnode);
     this->call_instruction(this->gettree(), syntaxnode, false, this->global_functions);
     this->variable(this->gettree(), syntaxnode, false, false);
@@ -372,82 +362,22 @@ void t_syntax::if_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
   }
 }
 
+void t_syntax::system_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
+{
+  if(this->lexical->get_current_token() == T_SYSTEM)
+  {  
+    t_symbol *symbol = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_SYSTEM);
+    t_node<t_symbol> *node_id = syntaxnode->addchild(L_SYSTEM, symbol);
+    tree->addnode(node_id);
+  }
+}
+
 void t_syntax::readpol_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
 {
   if(this->lexical->get_current_token() == T_READPOL)
   {   
     t_symbol *symbol = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_READPOL);
     t_node<t_symbol> *node_id = syntaxnode->addchild(L_READPOL, symbol);
-    tree->addnode(node_id);
-  }
-}
-
-void t_syntax::timer_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
-{
-  if(this->lexical->get_current_token() == T_TIMER)
-  {   
-    t_symbol *symbol = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_TIMER);
-    t_node<t_symbol> *node_id = syntaxnode->addchild(L_TIMER, symbol);
-    tree->addnode(node_id);
-  }
-}
-
-void t_syntax::show_tac_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
-{
-  if(this->lexical->get_current_token() == T_SHOW_TAC)
-  {   
-    t_symbol *symbol = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_SHOW_TAC);
-    t_node<t_symbol> *node_id = syntaxnode->addchild(L_SHOW_TAC, symbol);
-    tree->addnode(node_id);
-  }
-}
-
-void t_syntax::hide_tac_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
-{
-  if(this->lexical->get_current_token() == T_HIDE_TAC)
-  {   
-    t_symbol *symbol = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_HIDE_TAC);
-    t_node<t_symbol> *node_id = syntaxnode->addchild(L_HIDE_TAC, symbol);
-    tree->addnode(node_id);
-  }
-}
-
-void t_syntax::show_code_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
-{
-  if(this->lexical->get_current_token() == T_SHOW_CODE)
-  {   
-    t_symbol *symbol = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_SHOW_CODE);
-    t_node<t_symbol> *node_id = syntaxnode->addchild(L_SHOW_CODE, symbol);
-    tree->addnode(node_id);
-  }
-}
-
-void t_syntax::hide_code_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
-{
-  if(this->lexical->get_current_token() == T_HIDE_CODE)
-  {   
-    t_symbol *symbol = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_HIDE_CODE);
-    t_node<t_symbol> *node_id = syntaxnode->addchild(L_HIDE_CODE, symbol);
-    tree->addnode(node_id);
-  }
-}
-
-void t_syntax::show_statevm_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
-{
-  if(this->lexical->get_current_token() == T_SHOW_STATEVM)
-  {   
-    t_symbol *symbol = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_SHOW_STATEVM);
-    t_node<t_symbol> *node_id = syntaxnode->addchild(L_SHOW_STATEVM, symbol);
-    tree->addnode(node_id);
-  }
-}
-
-void t_syntax::hide_statevm_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
-{
-  if(this->lexical->get_current_token() == T_HIDE_STATEVM)
-  {   
-    t_symbol *symbol = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_HIDE_STATEVM);
-    t_node<t_symbol> *node_id = syntaxnode->addchild(L_HIDE_STATEVM, symbol);
     tree->addnode(node_id);
   }
 }
@@ -462,21 +392,11 @@ void t_syntax::print_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnod
   }
 }
 
-void t_syntax::exit_instruction(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
-{
-  if(this->lexical->get_current_token() == T_EXIT)
-  {
-    t_symbol *symbol = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_EXIT);
-    t_node<t_symbol> *node_id = syntaxnode->addchild(L_EXIT, symbol);
-    tree->addnode(node_id);
-  }
-}
-
 void t_syntax::class_declaration(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
 {	
   if(this->lexical->get_current_token() == T_CLASS)
   {
-    this->isclass = true;
+    this->insideclass = true;
 
     if(lexical->next_token() != T_IDENTIFIER)
       return syntaxerror(DEBUG_CLASS, 482, ERROR_CLASS_IDENTIFIER);
@@ -498,10 +418,10 @@ void t_syntax::class_declaration(t_syntaxtree *tree, t_node<t_symbol> *syntaxnod
 
     this->bloc_classe(node, node);
 
-    this->isclass = false;
+    this->insideclass = false;
     this->global_variables = this->chained_variables[0];
 
-    classe->setnblocalvariables(this->nbexprstermsfactors);
+classe->setnblocalvariables(this->nbexprstermsfactors_class);
 
 
     t_symbol *symbol1 = new t_symbol(this->lexical->get_current_line(), this->lexical->get_current_column(), S_CLASS_END);
@@ -527,7 +447,7 @@ void t_syntax::function_declaration(t_syntaxtree *tree, t_node<t_symbol> *syntax
       return syntaxerror(DEBUG_FUNCTION, 527, ERROR_FUNCTION_IDENTIFIER_EXIST);
 
     t_function *function = new t_function(lexical->get_current_line(), lexical->get_current_column(), S_FUNCTION, lexical->get_current_lexeme(), this->nb_global_functions);
-    if(this->isclass)
+    if(this->insideclass)
     {
       if(this->current_classe->getmethods()->find(lexical->get_current_lexeme()) != this->current_classe->getmethods()->end())
         return syntaxerror(DEBUG_FUNCTION, 533, ERROR_FUNCTION_IDENTIFIER_EXIST);
@@ -665,6 +585,7 @@ void t_syntax::variable_declaration(t_syntaxtree *tree, t_node<t_symbol> *syntax
   {
     this->nbexprstermsfactors ++;
     this->nbexprstermsfactors_prog ++;
+    this->nbexprstermsfactors_class ++;
 
     if(lexical->next_token() != T_VARIABLE)
       return syntaxerror(DEBUG_VARDEC, 672, ERROR_VARDEC_DOLLAR);
@@ -675,7 +596,7 @@ void t_syntax::variable_declaration(t_syntaxtree *tree, t_node<t_symbol> *syntax
 
     t_identifier *identifier;
 
-    if(this->isclass && !this->isfunction)
+    if(this->insideclass && !this->isfunction)
     {
       identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_DECLARATION, this->current_classe->getvariables()->size());
 
@@ -777,7 +698,6 @@ void t_syntax::variable(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode, bool p
 {
   if(lexical->get_current_token() == T_VARIABLE)
   {
-    std::cout << "variable " << std::endl;
     bool isclass = false;
     std::map<std::string, t_identifier *> *variables_temp = this->global_variables;
     std::map<std::string, t_function *> *functions_temp;
@@ -795,16 +715,19 @@ void t_syntax::variable(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode, bool p
           functions_temp = identifier_class_found->getclass()->getmethods();
         }
       }
+    else
+      return syntaxerror(DEBUG_VAR, 802, ERROR_VAR_IDENTIFIER);
     }
     else if(lexical->get_current_token() == T_THIS)
     {
+      isclass = true;
       variables_temp = this->current_classe->getvariables();
       functions_temp = this->current_classe->getmethods();
     }
     else
-      return syntaxerror(DEBUG_VAR, 762, ERROR_VAR_IDENTIFIER);
+      return syntaxerror(DEBUG_VAR, 812, ERROR_VAR_IDENTIFIER);
 
-    if(lexical->get_current_token() == T_THIS || isclass)
+    if(isclass)
     {
       if(this->lexical->next_token() != T_SUB)
         return syntaxerror(DEBUG_CALL, 767, ERROR_CALL_LEFT_PARENTHESIS);
@@ -818,7 +741,6 @@ void t_syntax::variable(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode, bool p
     if(variables_temp->find(lexical->get_current_lexeme()) != variables_temp->end())
     {
       identifier_class_found = (*variables_temp)[lexical->get_current_lexeme()];
-
       t_identifier *identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_VARIABLE, identifier_class_found->getaddr());
       syntaxnode->addchild(L_VARIABLE, identifier);
 
@@ -860,12 +782,31 @@ void t_syntax::classe_instance(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode,
 
     identifier->setclass(classe_found);
 
-    t_symbol *symbol_class = new t_identifier(this->lexical->get_current_line(), this->lexical->get_current_column(), S_NEW_INSTANCE_CLASS);
-    t_node<t_symbol> *node_class = syntaxnode->addchild(L_NEW_INSTANCE_CLASS, symbol_class);
+    t_class *symbol_class = new t_class(this->lexical->get_current_line(), this->lexical->get_current_column(), S_NEW_INSTANCE_CLASS, classe_found->getlexeme(), classe_found->getaddr(), 0, classe_found->getvariables()->size());
+
+	t_node<t_symbol> *node_class = syntaxnode->addchild(L_NEW_INSTANCE_CLASS, symbol_class);
     tree->addnode(node_class);
 
-    this->lexical->next_token();
 
+  t_identifier *var_class;
+  std::map<std::string, t_identifier *>::iterator it;
+std::map<std::string, t_identifier *> variables_class = *(classe_found->getvariables());
+
+
+    for(it = variables_class.begin(); it != variables_class.end(); it++)
+	{
+    		var_class = it->second;
+		var_class->setaddr(var_class->getaddr() + global_variables->size());
+
+    t_identifier *identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_DECLARATION, var_class->getaddr());
+    t_node<t_symbol> *node = node_class->addchild(L_DECLARATION, identifier);
+    tree->addnode(node);
+ }
+
+
+this->nbexprstermsfactors_prog = this->nbexprstermsfactors_prog + classe_found->getnblocalvariables();
+
+    this->lexical->next_token();
   }
 }
 
@@ -873,6 +814,7 @@ unsigned int t_syntax::expression(t_syntaxtree *tree, t_node<t_symbol> *syntaxno
 {
   this->nbexprstermsfactors ++;
   this->nbexprstermsfactors_prog ++;
+  this->nbexprstermsfactors_class ++;
 
   unsigned int id_variable = this->global_variables->size();
 
@@ -943,6 +885,7 @@ void t_syntax::term(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
 {
   this->nbexprstermsfactors ++;
   this->nbexprstermsfactors_prog ++;
+  this->nbexprstermsfactors_class ++;
 
   t_identifier *identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_TERM, lexical->get_current_lexeme(), this->global_variables->size());
   std::ostringstream out;
@@ -977,6 +920,7 @@ void t_syntax::factor(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
 {
   this->nbexprstermsfactors ++;
   this->nbexprstermsfactors_prog ++;
+  this->nbexprstermsfactors_class ++;
 
   t_identifier *identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_FACTOR, lexical->get_current_lexeme(), this->global_variables->size());
   std::ostringstream out;
@@ -993,11 +937,6 @@ void t_syntax::factor(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode)
     t_symbol *symbol = new t_symbol(lexical->get_current_line(), lexical->get_current_column(), S_NUMBER, lexical->get_current_lexeme());
     t_node<t_symbol> *node = node_factor->addchild(L_NUMBER, symbol);
     tree->addnode(node);
-    lexical->next_token();
-  }
-  else if(this->lexical->get_current_token() == T_TIMER)
-  {   
-    timer_instruction(tree, node_factor);
     lexical->next_token();
   }
   else if(token == T_STRING)

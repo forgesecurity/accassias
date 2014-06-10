@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eric/perso/src
+CMAKE_SOURCE_DIR = /home/eric/perso/accassias/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eric/perso/src
+CMAKE_BINARY_DIR = /home/eric/perso/accassias/src
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/eric/perso/src && $(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/src/CMakeFiles /home/eric/perso/src/compiler/CMakeFiles/progress.marks
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/src/CMakeFiles 0
+	cd /home/eric/perso/accassias/src && $(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/accassias/src/CMakeFiles /home/eric/perso/accassias/src/compiler/CMakeFiles/progress.marks
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/accassias/src/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/clean
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,17 +88,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/preinstall
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/preinstall
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/eric/perso/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/eric/perso/accassias/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -120,6 +120,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/eric/perso/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/eric/perso/accassias/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

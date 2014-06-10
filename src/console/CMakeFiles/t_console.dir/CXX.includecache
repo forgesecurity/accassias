@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/eric/perso/src/console/t_console.cpp
+/home/eric/perso/accassias/src/console/t_console.cpp
 t_console.h
-/home/eric/perso/src/console/t_console.h
+/home/eric/perso/accassias/src/console/t_console.h
 
-/home/eric/perso/src/console/t_console.h
+/home/eric/perso/accassias/src/console/t_console.h
 string
 -
 fstream
 -
 virtual_machine/t_vm.h
-/home/eric/perso/src/console/virtual_machine/t_vm.h
+/home/eric/perso/accassias/src/console/virtual_machine/t_vm.h
 console/t_time.h
-/home/eric/perso/src/console/console/t_time.h
+/home/eric/perso/accassias/src/console/console/t_time.h
 
 compiler/gencode/t_gencode.h
 compiler/syntax/t_syntax.h

@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/perso/src/compiler
+# Install script for directory: /home/eric/perso/accassias/src/compiler
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,9 +34,9 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/eric/perso/src/compiler/lexical/cmake_install.cmake")
-  INCLUDE("/home/eric/perso/src/compiler/syntax/cmake_install.cmake")
-  INCLUDE("/home/eric/perso/src/compiler/gencode/cmake_install.cmake")
+  INCLUDE("/home/eric/perso/accassias/src/compiler/lexical/cmake_install.cmake")
+  INCLUDE("/home/eric/perso/accassias/src/compiler/syntax/cmake_install.cmake")
+  INCLUDE("/home/eric/perso/accassias/src/compiler/gencode/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

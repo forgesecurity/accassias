@@ -33,14 +33,12 @@ compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/syntax/t_syntax
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/syntax/t_syntax.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/syntax/t_variable.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/gencode/t_genthreeaddresscodetreevisitor.h
-compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/gencode/t_stdlib.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/gencode/t_tacsymbol.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/gencode/t_threeaddress.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/gencode/t_threeaddresscode.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/lexical/t_lexical.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/lexical/t_token.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/syntax/t_function.h
-compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/syntax/t_identifiervertex.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/syntax/t_symbol.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: compiler/t_compiler.h
 compiler/syntax/CMakeFiles/t_syntax.dir/t_syntax.cpp.o: data_structures/graph/t_breadth_first_search.h

@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eric/perso/src
+CMAKE_SOURCE_DIR = /home/eric/perso/accassias/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eric/perso/src
+CMAKE_BINARY_DIR = /home/eric/perso/accassias/src
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/eric/perso/src && $(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/src/CMakeFiles /home/eric/perso/src/compiler/lexical/CMakeFiles/progress.marks
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/lexical/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/src/CMakeFiles 0
+	cd /home/eric/perso/accassias/src && $(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/accassias/src/CMakeFiles /home/eric/perso/accassias/src/compiler/lexical/CMakeFiles/progress.marks
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/lexical/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/accassias/src/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/lexical/clean
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/lexical/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/lexical/preinstall
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/lexical/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/lexical/preinstall
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/lexical/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/eric/perso/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/eric/perso/accassias/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 compiler/lexical/CMakeFiles/t_lexical.dir/rule:
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/lexical/CMakeFiles/t_lexical.dir/rule
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 compiler/lexical/CMakeFiles/t_lexical.dir/rule
 .PHONY : compiler/lexical/CMakeFiles/t_lexical.dir/rule
 
 # Convenience name for target.
@@ -112,7 +112,7 @@ t_lexical: compiler/lexical/CMakeFiles/t_lexical.dir/rule
 
 # fast build rule for target.
 t_lexical/fast:
-	cd /home/eric/perso/src && $(MAKE) -f compiler/lexical/CMakeFiles/t_lexical.dir/build.make compiler/lexical/CMakeFiles/t_lexical.dir/build
+	cd /home/eric/perso/accassias/src && $(MAKE) -f compiler/lexical/CMakeFiles/t_lexical.dir/build.make compiler/lexical/CMakeFiles/t_lexical.dir/build
 .PHONY : t_lexical/fast
 
 t_lexical.o: t_lexical.cpp.o
@@ -120,7 +120,7 @@ t_lexical.o: t_lexical.cpp.o
 
 # target to build an object file
 t_lexical.cpp.o:
-	cd /home/eric/perso/src && $(MAKE) -f compiler/lexical/CMakeFiles/t_lexical.dir/build.make compiler/lexical/CMakeFiles/t_lexical.dir/t_lexical.cpp.o
+	cd /home/eric/perso/accassias/src && $(MAKE) -f compiler/lexical/CMakeFiles/t_lexical.dir/build.make compiler/lexical/CMakeFiles/t_lexical.dir/t_lexical.cpp.o
 .PHONY : t_lexical.cpp.o
 
 t_lexical.i: t_lexical.cpp.i
@@ -128,7 +128,7 @@ t_lexical.i: t_lexical.cpp.i
 
 # target to preprocess a source file
 t_lexical.cpp.i:
-	cd /home/eric/perso/src && $(MAKE) -f compiler/lexical/CMakeFiles/t_lexical.dir/build.make compiler/lexical/CMakeFiles/t_lexical.dir/t_lexical.cpp.i
+	cd /home/eric/perso/accassias/src && $(MAKE) -f compiler/lexical/CMakeFiles/t_lexical.dir/build.make compiler/lexical/CMakeFiles/t_lexical.dir/t_lexical.cpp.i
 .PHONY : t_lexical.cpp.i
 
 t_lexical.s: t_lexical.cpp.s
@@ -136,7 +136,7 @@ t_lexical.s: t_lexical.cpp.s
 
 # target to generate assembly for a file
 t_lexical.cpp.s:
-	cd /home/eric/perso/src && $(MAKE) -f compiler/lexical/CMakeFiles/t_lexical.dir/build.make compiler/lexical/CMakeFiles/t_lexical.dir/t_lexical.cpp.s
+	cd /home/eric/perso/accassias/src && $(MAKE) -f compiler/lexical/CMakeFiles/t_lexical.dir/build.make compiler/lexical/CMakeFiles/t_lexical.dir/t_lexical.cpp.s
 .PHONY : t_lexical.cpp.s
 
 # Help Target
@@ -162,6 +162,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/eric/perso/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/eric/perso/accassias/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -6,31 +6,31 @@
 
 #IncludeRegexTransform: 
 
-/home/eric/perso/src/virtual_machine/t_vm.cpp
+/home/eric/perso/accassias/src/virtual_machine/t_vm.cpp
 t_vm.h
-/home/eric/perso/src/virtual_machine/t_vm.h
+/home/eric/perso/accassias/src/virtual_machine/t_vm.h
 multi_precision/t_mparray.h
-/home/eric/perso/src/virtual_machine/multi_precision/t_mparray.h
+/home/eric/perso/accassias/src/virtual_machine/multi_precision/t_mparray.h
 multi_precision/t_mpinteger.h
-/home/eric/perso/src/virtual_machine/multi_precision/t_mpinteger.h
+/home/eric/perso/accassias/src/virtual_machine/multi_precision/t_mpinteger.h
 multi_precision/t_string.h
-/home/eric/perso/src/virtual_machine/multi_precision/t_string.h
+/home/eric/perso/accassias/src/virtual_machine/multi_precision/t_string.h
 multi_precision/t_mppolynomial.h
-/home/eric/perso/src/virtual_machine/multi_precision/t_mppolynomial.h
+/home/eric/perso/accassias/src/virtual_machine/multi_precision/t_mppolynomial.h
 console/t_time.h
-/home/eric/perso/src/virtual_machine/console/t_time.h
+/home/eric/perso/accassias/src/virtual_machine/console/t_time.h
 iostream
 -
 sstream
 -
 
-/home/eric/perso/src/virtual_machine/t_vm.h
+/home/eric/perso/accassias/src/virtual_machine/t_vm.h
 compiler/gencode/t_gencode.h
-/home/eric/perso/src/virtual_machine/compiler/gencode/t_gencode.h
+/home/eric/perso/accassias/src/virtual_machine/compiler/gencode/t_gencode.h
 compiler/gencode/t_opcode.h
-/home/eric/perso/src/virtual_machine/compiler/gencode/t_opcode.h
+/home/eric/perso/accassias/src/virtual_machine/compiler/gencode/t_opcode.h
 multi_precision/t_mpgeneric.h
-/home/eric/perso/src/virtual_machine/multi_precision/t_mpgeneric.h
+/home/eric/perso/accassias/src/virtual_machine/multi_precision/t_mpgeneric.h
 
 compiler/gencode/t_gencode.h
 compiler/syntax/t_syntax.h

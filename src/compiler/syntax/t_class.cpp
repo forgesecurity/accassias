@@ -1,4 +1,6 @@
 #include "t_class.h"
+#include <iostream>
+#include <sstream>
 
   t_class::t_class() 
 : t_identifier()
@@ -50,14 +52,9 @@
 : t_identifier(line, column, symbol, lexeme, addr)
 {
   this->nbargs = nbargs;
-  this->nblocalvariables = nblocalvariables;
-  this->methods = new std::map<std::string, t_function *>;
+  this->nblocalvariables = nblocalvariables; 
+	this->methods = new std::map<std::string, t_function *>;
   this->variables = new std::map<std::string, t_identifier *>;
-}
-
-void t_class::addarg()
-{
-
 }
 
 std::map<std::string, t_function *> *t_class::getmethods()
@@ -78,16 +75,6 @@ std::map<std::string, t_identifier *> *t_class::getvariables()
 void t_class::setvariables(std::map<std::string, t_identifier *> *variables)
 {
   this->variables = variables;
-}
-
-unsigned int t_class::getnbargs()
-{
-  return this->nbargs;
-}
-
-void t_class::setnbargs(unsigned int nbargs)
-{
-  this->nbargs = nbargs;
 }
 
 unsigned int t_class::getnblocalvariables()

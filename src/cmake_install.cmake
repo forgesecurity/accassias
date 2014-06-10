@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/perso/src
+# Install script for directory: /home/eric/perso/accassias/src
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,12 +34,12 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/eric/perso/src/console/cmake_install.cmake")
-  INCLUDE("/home/eric/perso/src/data_structures/cmake_install.cmake")
-  INCLUDE("/home/eric/perso/src/multi_precision/cmake_install.cmake")
-  INCLUDE("/home/eric/perso/src/compiler/cmake_install.cmake")
-  INCLUDE("/home/eric/perso/src/virtual_machine/cmake_install.cmake")
-  INCLUDE("/home/eric/perso/src/static_analysis/cmake_install.cmake")
+  INCLUDE("/home/eric/perso/accassias/src/console/cmake_install.cmake")
+  INCLUDE("/home/eric/perso/accassias/src/data_structures/cmake_install.cmake")
+  INCLUDE("/home/eric/perso/accassias/src/multi_precision/cmake_install.cmake")
+  INCLUDE("/home/eric/perso/accassias/src/compiler/cmake_install.cmake")
+  INCLUDE("/home/eric/perso/accassias/src/virtual_machine/cmake_install.cmake")
+  INCLUDE("/home/eric/perso/accassias/src/static_analysis/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -49,7 +49,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/eric/perso/src/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/eric/perso/accassias/src/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/eric/perso/src/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/eric/perso/accassias/src/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

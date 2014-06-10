@@ -116,13 +116,6 @@ std::ostream &operator<<(std::ostream &out, t_threeaddress &threeaddress)
 {
   switch(threeaddress.gettacsymbol())
   {
-    case TAC_ASSIGN_TIMER:
-      {
-        out << printvar(threeaddress.getaddrresult())
-          << " = timer"; 
-
-        break;
-      }
 
     case TAC_ASSIGN_IF:
       {
@@ -190,39 +183,15 @@ std::ostream &operator<<(std::ostream &out, t_threeaddress &threeaddress)
         break;
       }
 
-    case TAC_ASSIGN_SHOWTAC:
+    case TAC_ASSIGN_SYSTEM:
       {
-        out << "showtac ";
+        out << "system ";
         break;
       }
 
-    case TAC_ASSIGN_HIDETAC:
+    case TAC_ASSIGN_EXIT:
       {
-        out << "hidetac ";
-        break;
-      }
-
-    case TAC_ASSIGN_SHOWCODE:
-      {
-        out << "showcode ";
-        break;
-      }
-
-    case TAC_ASSIGN_HIDECODE:
-      {
-        out << "hidecode ";
-        break;
-      }
-
-    case TAC_ASSIGN_SHOWSTATEVM:
-      {
-        out << "showstatevm ";
-        break;
-      }
-
-    case TAC_ASSIGN_HIDESTATEVM:
-      {
-        out << "hidestatevm ";
+        out << "exit ";
         break;
       }
 
@@ -274,6 +243,12 @@ std::ostream &operator<<(std::ostream &out, t_threeaddress &threeaddress)
         break;
       }
 
+    case TAC_ASSIGN_INSTANCE_CLASS:
+      {
+        out << "instance class " << threeaddress.getaddrresult() << " " << threeaddress.getaddrarg1();
+        break;
+      }
+
     case TAC_ASSIGN_CLASS:
       {
         out << "class " << threeaddress.getaddrresult();
@@ -321,12 +296,6 @@ std::ostream &operator<<(std::ostream &out, t_threeaddress &threeaddress)
     case TAC_ASSIGN_PRINT:
       { 
         out << "print " << threeaddress.getaddrarg1();
-        break;
-      }
-
-    case TAC_ASSIGN_EXIT:
-      { 
-        out << "exit " << threeaddress.getaddrarg1();
         break;
       }
 

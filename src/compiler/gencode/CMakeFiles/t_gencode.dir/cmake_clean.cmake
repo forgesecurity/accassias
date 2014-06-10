@@ -1,5 +1,4 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/t_gencode.dir/t_stdlib.cpp.o"
   "CMakeFiles/t_gencode.dir/t_gencode.cpp.o"
   "CMakeFiles/t_gencode.dir/t_threeaddress.cpp.o"
   "CMakeFiles/t_gencode.dir/t_threeaddresscode.cpp.o"

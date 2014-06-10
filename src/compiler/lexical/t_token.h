@@ -5,15 +5,7 @@
 enum t_token 
 {
   T_READPOL, // 0
-  T_SHOW_TAC, // 1
-  T_HIDE_TAC, // 2
-  T_SHOW_CODE, // 3
-  T_HIDE_CODE, // 4
-  T_SHOW_STATEVM, // 5
-  T_HIDE_STATEVM, // 6
-  T_RCCONF, // 7
   T_PRINT, // 8
-  T_EXIT, // 9
   T_CLASS, // 10
   T_NEW, // 11
   T_FUNCTION, // 12
@@ -43,7 +35,6 @@ enum t_token
   T_UP_ARROW,  // 36
   T_DOWN_ARROW,  // 37
   T_TAB,  // 38
-  T_TIMER,  // 39
   T_IF,  // 40
   T_ELSEIF,  // 41
   T_ELSE,  // 42
@@ -54,7 +45,8 @@ enum t_token
   T_SUP,  // 47
   T_INF,  // 48
   T_SUPEQUAL,  // 49
-  T_INFEQUAL  // 50
+  T_INFEQUAL,  // 50
+  T_SYSTEM  // 51
 };
 
 #endif

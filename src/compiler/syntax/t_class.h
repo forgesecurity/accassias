@@ -22,10 +22,6 @@ class t_class : public t_identifier
     std::map<std::string, t_identifier *> *getvariables();
     void setvariables(std::map<std::string, t_identifier *> *);
 
-    void addarg();
-    virtual unsigned int getnbargs();
-    virtual void setnbargs(unsigned int);
-
     virtual unsigned int getnblocalvariables();
     virtual void setnblocalvariables(unsigned int);
 

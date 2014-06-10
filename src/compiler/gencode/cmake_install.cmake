@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/perso/src/compiler/gencode
+# Install script for directory: /home/eric/perso/accassias/src/compiler/gencode
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

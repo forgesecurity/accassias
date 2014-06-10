@@ -6,65 +6,63 @@
 
 #IncludeRegexTransform: 
 
-/home/eric/perso/src/compiler/syntax/t_class.h
+/home/eric/perso/accassias/src/compiler/syntax/t_class.h
 t_identifier.h
-/home/eric/perso/src/compiler/syntax/t_identifier.h
+/home/eric/perso/accassias/src/compiler/syntax/t_identifier.h
 t_function.h
-/home/eric/perso/src/compiler/syntax/t_function.h
+/home/eric/perso/accassias/src/compiler/syntax/t_function.h
 map
 -
 string
 -
 
-/home/eric/perso/src/compiler/syntax/t_function.h
+/home/eric/perso/accassias/src/compiler/syntax/t_function.h
 t_identifier.h
-/home/eric/perso/src/compiler/syntax/t_identifier.h
+/home/eric/perso/accassias/src/compiler/syntax/t_identifier.h
 
-/home/eric/perso/src/compiler/syntax/t_identifier.h
+/home/eric/perso/accassias/src/compiler/syntax/t_identifier.h
 t_symbol.h
-/home/eric/perso/src/compiler/syntax/t_symbol.h
+/home/eric/perso/accassias/src/compiler/syntax/t_symbol.h
 string
 -
 stack
 -
 
-/home/eric/perso/src/compiler/syntax/t_identifiervertex.h
+/home/eric/perso/accassias/src/compiler/syntax/t_identifiervertex.h
 t_identifier.h
-/home/eric/perso/src/compiler/syntax/t_identifier.h
+/home/eric/perso/accassias/src/compiler/syntax/t_identifier.h
 string
 -
 vector
 -
 
-/home/eric/perso/src/compiler/syntax/t_symbol.h
+/home/eric/perso/accassias/src/compiler/syntax/t_symbol.h
 ostream
 -
 string
 -
 
-/home/eric/perso/src/compiler/syntax/t_syntax.cpp
+/home/eric/perso/accassias/src/compiler/syntax/t_syntax.cpp
 t_syntax.h
-/home/eric/perso/src/compiler/syntax/t_syntax.h
+/home/eric/perso/accassias/src/compiler/syntax/t_syntax.h
 data_structures/graph/t_node.h
-/home/eric/perso/src/compiler/syntax/data_structures/graph/t_node.h
+/home/eric/perso/accassias/src/compiler/syntax/data_structures/graph/t_node.h
 t_function.h
-/home/eric/perso/src/compiler/syntax/t_function.h
+/home/eric/perso/accassias/src/compiler/syntax/t_function.h
 t_variable.h
-/home/eric/perso/src/compiler/syntax/t_variable.h
+/home/eric/perso/accassias/src/compiler/syntax/t_variable.h
 compiler/lexical/t_token.h
-/home/eric/perso/src/compiler/syntax/compiler/lexical/t_token.h
+/home/eric/perso/accassias/src/compiler/syntax/compiler/lexical/t_token.h
 t_symbol.h
-/home/eric/perso/src/compiler/syntax/t_symbol.h
-compiler/gencode/t_stdlib.h
-/home/eric/perso/src/compiler/syntax/compiler/gencode/t_stdlib.h
+/home/eric/perso/accassias/src/compiler/syntax/t_symbol.h
 data_structures/tree/t_dottreevisitor.h
-/home/eric/perso/src/compiler/syntax/data_structures/tree/t_dottreevisitor.h
+/home/eric/perso/accassias/src/compiler/syntax/data_structures/tree/t_dottreevisitor.h
 data_structures/tree/t_dotcfgvisitor.h
-/home/eric/perso/src/compiler/syntax/data_structures/tree/t_dotcfgvisitor.h
+/home/eric/perso/accassias/src/compiler/syntax/data_structures/tree/t_dotcfgvisitor.h
 data_structures/graph/t_breadth_first_search.h
-/home/eric/perso/src/compiler/syntax/data_structures/graph/t_breadth_first_search.h
+/home/eric/perso/accassias/src/compiler/syntax/data_structures/graph/t_breadth_first_search.h
 data_structures/graph/t_depth_first_search.h
-/home/eric/perso/src/compiler/syntax/data_structures/graph/t_depth_first_search.h
+/home/eric/perso/accassias/src/compiler/syntax/data_structures/graph/t_depth_first_search.h
 iostream
 -
 sstream
@@ -72,27 +70,27 @@ sstream
 string
 -
 
-/home/eric/perso/src/compiler/syntax/t_syntax.h
+/home/eric/perso/accassias/src/compiler/syntax/t_syntax.h
 compiler/lexical/t_lexical.h
-/home/eric/perso/src/compiler/syntax/compiler/lexical/t_lexical.h
+/home/eric/perso/accassias/src/compiler/syntax/compiler/lexical/t_lexical.h
 data_structures/tree/t_tree.h
-/home/eric/perso/src/compiler/syntax/data_structures/tree/t_tree.h
+/home/eric/perso/accassias/src/compiler/syntax/data_structures/tree/t_tree.h
 compiler/t_compiler.h
-/home/eric/perso/src/compiler/syntax/compiler/t_compiler.h
+/home/eric/perso/accassias/src/compiler/syntax/compiler/t_compiler.h
 t_symbol.h
-/home/eric/perso/src/compiler/syntax/t_symbol.h
+/home/eric/perso/accassias/src/compiler/syntax/t_symbol.h
 t_identifiervertex.h
-/home/eric/perso/src/compiler/syntax/t_identifiervertex.h
+/home/eric/perso/accassias/src/compiler/syntax/t_identifiervertex.h
 t_function.h
-/home/eric/perso/src/compiler/syntax/t_function.h
+/home/eric/perso/accassias/src/compiler/syntax/t_function.h
 t_class.h
-/home/eric/perso/src/compiler/syntax/t_class.h
+/home/eric/perso/accassias/src/compiler/syntax/t_class.h
 map
 -
 
-/home/eric/perso/src/compiler/syntax/t_variable.h
+/home/eric/perso/accassias/src/compiler/syntax/t_variable.h
 t_identifier.h
-/home/eric/perso/src/compiler/syntax/t_identifier.h
+/home/eric/perso/accassias/src/compiler/syntax/t_identifier.h
 
 compiler/gencode/t_genthreeaddresscodetreevisitor.h
 compiler/syntax/t_symbol.h
@@ -112,16 +110,6 @@ compiler/gencode/compiler/syntax/t_function.h
 compiler/t_compiler.h
 compiler/gencode/compiler/t_compiler.h
 stdlib.h
--
-
-compiler/gencode/t_stdlib.h
-data_structures/graph/t_node.h
-compiler/gencode/data_structures/graph/t_node.h
-compiler/syntax/t_identifiervertex.h
-compiler/gencode/compiler/syntax/t_identifiervertex.h
-compiler/syntax/t_function.h
-compiler/gencode/compiler/syntax/t_function.h
-map
 -
 
 compiler/gencode/t_tacsymbol.h
@@ -155,14 +143,6 @@ compiler/lexical/t_token.h
 compiler/syntax/t_function.h
 t_identifier.h
 compiler/syntax/t_identifier.h
-
-compiler/syntax/t_identifiervertex.h
-t_identifier.h
-compiler/syntax/t_identifier.h
-string
--
-vector
--
 
 compiler/syntax/t_symbol.h
 ostream

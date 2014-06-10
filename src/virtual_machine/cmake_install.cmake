@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/perso/src/virtual_machine
+# Install script for directory: /home/eric/perso/accassias/src/virtual_machine
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

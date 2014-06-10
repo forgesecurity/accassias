@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/perso/src/static_analysis
+# Install script for directory: /home/eric/perso/accassias/src/static_analysis
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

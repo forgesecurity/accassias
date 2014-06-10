@@ -90,18 +90,10 @@ class t_syntax
     std::map<std::string, t_class *> *get_classes();
     unsigned int getnblocalvariables();
 
-    void timer_instruction(t_syntaxtree *, t_node<t_symbol> *);
-
-    void show_tac_instruction(t_syntaxtree *, t_node<t_symbol> *);    
-    void hide_tac_instruction(t_syntaxtree *, t_node<t_symbol> *);    
-    void show_code_instruction(t_syntaxtree *, t_node<t_symbol> *);    
-    void hide_code_instruction(t_syntaxtree *, t_node<t_symbol> *);
-    void show_statevm_instruction(t_syntaxtree *, t_node<t_symbol> *);   
-    void hide_statevm_instruction(t_syntaxtree *, t_node<t_symbol> *);
+    void system_instruction(t_syntaxtree *, t_node<t_symbol> *);
     void readpol_instruction(t_syntaxtree *, t_node<t_symbol> *);
 
     void print_instruction(t_syntaxtree *, t_node<t_symbol> *);
-    void exit_instruction(t_syntaxtree *, t_node<t_symbol> *);
     void function_declaration(t_syntaxtree *, t_node<t_symbol> *);
     void class_declaration(t_syntaxtree *, t_node<t_symbol> *);
     void call_instruction(t_syntaxtree *, t_node<t_symbol> *, bool, std::map<std::string, t_function *> *);
@@ -135,19 +127,21 @@ class t_syntax
 
     t_tree<t_identifiervertex> *identifierstree;
     bool isfunction;
-    bool isclass;
+    bool insideclass;
     bool existsyntaxerror;
 
     std::map<std::string, t_identifier *> *global_variables;
     std::vector< std::map<std::string, t_identifier *> *> chained_variables;
     std::map<std::string, t_function *> *global_functions;
     std::map<std::string, t_class *> *global_class;
+    std::map<std::string, t_class *> *global_instances_class;
     t_function *current_function;
     t_class *current_classe;
 
     bool existreturn;
     unsigned int nbexprstermsfactors;
     unsigned int nbexprstermsfactors_prog;
+    unsigned int nbexprstermsfactors_class;
     unsigned int nb_global_functions;
     unsigned int nb_global_class;
 

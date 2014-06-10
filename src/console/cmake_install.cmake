@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/perso/src/console
+# Install script for directory: /home/eric/perso/accassias/src/console
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

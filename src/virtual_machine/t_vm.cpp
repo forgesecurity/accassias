@@ -123,19 +123,6 @@ t_opcode t_vm::start()
         break;
       }
 
-    case EMPTIME:
-      {
-        out << get_timestamp();
-
-        mpint1 = t_mpinteger::fromstring(out.str());
-        this->mpgenerics.push_back(mpint1);
-
-        this->mem[this->sp ++] = nbmpgenerics ++;
-        this->co ++; 
-
-        break;
-      }
-
     case EMPT:
       {
         i = this->mem[-- this->sp];
@@ -236,6 +223,21 @@ t_opcode t_vm::start()
         break;
       }
 
+
+    case INSTANCE_CLASS:
+      {
+	unsigned int test1 = this->mem[this->co + 1];
+	unsigned int test2 = this->mem[this->co + 2];
+/*
+	std::cout << "INSTANCE_CLASS" << std::endl;
+	std::cout << "test1 = " << test1 << std::endl; // identifiant classe
+	std::cout << "test2 = " << test2 << std::endl; // nb var locale
+*/
+	//this->mem[this->sp ++] = this->bel;
+        //this->bel = this->sp;
+        this->co += 3;
+        break;
+      }
       /*
          case ENDCLASS:
          { 
@@ -348,60 +350,6 @@ t_opcode t_vm::start()
         break;
       }
 
-    case EXIT:
-      {
-        this->endwhile = true;
-        break;
-      }
-
-    case SHOWTAC:
-      {
-        this->co ++;
-        this->get_gencode()->get_gentac()->get_tac()->set_print_tac(true);
-
-        break;
-      }
-
-    case HIDETAC:
-      {
-        this->co ++;
-        this->get_gencode()->get_gentac()->get_tac()->set_print_tac(false);
-
-        break;
-      }
-
-    case SHOWCODE:
-      {
-        this->co ++;
-        this->get_gencode()->set_print_code(true);
-
-        break;
-      }
-
-    case HIDECODE:
-      {
-        this->co ++;
-        this->get_gencode()->set_print_code(false);
-
-        break;
-      }
-
-    case SHOWSTATEVM:
-      {
-        this->co ++;
-        this->set_print_statevm(true);
-
-        break;
-      }
-
-    case HIDESTATEVM:
-      {
-        this->co ++;
-        this->set_print_statevm(false);
-
-        break;
-      }
-
     case IFFALSE:
       {
         if(!this->mem[sp - 1])
@@ -414,10 +362,76 @@ t_opcode t_vm::start()
         break;
       }
 
+    case EXIT:
+      {
+	this->endwhile = true;
+        this->co ++;
+        break;
+      }
+
+    case SYSTEM:
+      {
+	std::cout << "SYSTEM" << std::endl;
+
+	std::ostringstream oss;
+	oss << *mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]];
+	
+	std::string str = oss.str();
+	if(str == "exit")
+	{
+		this->endwhile = true;
+	}
+
+	else if(str == "show_tac")
+	{
+		this->get_gencode()->get_gentac()->get_tac()->set_print_tac(true);
+
+      }
+
+	else if(str == "hide_tac")
+      {
+        this->get_gencode()->get_gentac()->get_tac()->set_print_tac(false);
+
+      }
+
+	else if(str == "show_code")
+      {
+        this->get_gencode()->set_print_code(true);
+
+      }
+
+	else if(str == "hide_code")
+      {
+        this->get_gencode()->set_print_code(false);
+
+      }
+
+	else if(str == "show_statevm")
+      {
+        this->set_print_statevm(true);
+
+      }
+
+	else if(str == "hide_statevm")
+      {
+        this->set_print_statevm(false);
+
+      }
+else
+{
+std::cout << "ERREUR SYSTEM" << std::endl;
+}
+
+        this->co += 2;
+        break;
+      }
+
     case PRINT:
       {
         unsigned int test = this->mem[this->bel + this->mem[this->co + 1]];
-        std::cout << *mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]] << std::endl;
+       
+std::cout << "PRINT = " << test << std::endl;
+ std::cout << *mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]] << std::endl;
 
         this->co += 2;
         break;

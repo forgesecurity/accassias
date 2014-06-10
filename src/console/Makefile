@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eric/perso/src
+CMAKE_SOURCE_DIR = /home/eric/perso/accassias/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eric/perso/src
+CMAKE_BINARY_DIR = /home/eric/perso/accassias/src
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/eric/perso/src && $(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/src/CMakeFiles /home/eric/perso/src/console/CMakeFiles/progress.marks
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 console/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/src/CMakeFiles 0
+	cd /home/eric/perso/accassias/src && $(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/accassias/src/CMakeFiles /home/eric/perso/accassias/src/console/CMakeFiles/progress.marks
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 console/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/perso/accassias/src/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 console/clean
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 console/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 console/preinstall
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 console/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 console/preinstall
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 console/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/eric/perso/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/eric/perso/accassias/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 console/CMakeFiles/t_console.dir/rule:
-	cd /home/eric/perso/src && $(MAKE) -f CMakeFiles/Makefile2 console/CMakeFiles/t_console.dir/rule
+	cd /home/eric/perso/accassias/src && $(MAKE) -f CMakeFiles/Makefile2 console/CMakeFiles/t_console.dir/rule
 .PHONY : console/CMakeFiles/t_console.dir/rule
 
 # Convenience name for target.
@@ -112,7 +112,7 @@ t_console: console/CMakeFiles/t_console.dir/rule
 
 # fast build rule for target.
 t_console/fast:
-	cd /home/eric/perso/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/build
+	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/build
 .PHONY : t_console/fast
 
 t_console.o: t_console.cpp.o
@@ -120,7 +120,7 @@ t_console.o: t_console.cpp.o
 
 # target to build an object file
 t_console.cpp.o:
-	cd /home/eric/perso/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_console.cpp.o
+	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_console.cpp.o
 .PHONY : t_console.cpp.o
 
 t_console.i: t_console.cpp.i
@@ -128,7 +128,7 @@ t_console.i: t_console.cpp.i
 
 # target to preprocess a source file
 t_console.cpp.i:
-	cd /home/eric/perso/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_console.cpp.i
+	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_console.cpp.i
 .PHONY : t_console.cpp.i
 
 t_console.s: t_console.cpp.s
@@ -136,7 +136,7 @@ t_console.s: t_console.cpp.s
 
 # target to generate assembly for a file
 t_console.cpp.s:
-	cd /home/eric/perso/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_console.cpp.s
+	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_console.cpp.s
 .PHONY : t_console.cpp.s
 
 t_time.o: t_time.cpp.o
@@ -144,7 +144,7 @@ t_time.o: t_time.cpp.o
 
 # target to build an object file
 t_time.cpp.o:
-	cd /home/eric/perso/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_time.cpp.o
+	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_time.cpp.o
 .PHONY : t_time.cpp.o
 
 t_time.i: t_time.cpp.i
@@ -152,7 +152,7 @@ t_time.i: t_time.cpp.i
 
 # target to preprocess a source file
 t_time.cpp.i:
-	cd /home/eric/perso/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_time.cpp.i
+	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_time.cpp.i
 .PHONY : t_time.cpp.i
 
 t_time.s: t_time.cpp.s
@@ -160,7 +160,7 @@ t_time.s: t_time.cpp.s
 
 # target to generate assembly for a file
 t_time.cpp.s:
-	cd /home/eric/perso/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_time.cpp.s
+	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_time.cpp.s
 .PHONY : t_time.cpp.s
 
 # Help Target
@@ -189,6 +189,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/eric/perso/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/eric/perso/accassias/src && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

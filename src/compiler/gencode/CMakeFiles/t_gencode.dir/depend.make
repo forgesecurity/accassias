@@ -5,7 +5,6 @@ compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: compiler/gencode/t_ge
 compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: compiler/gencode/t_gencode.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: compiler/gencode/t_genthreeaddresscodetreevisitor.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: compiler/gencode/t_opcode.h
-compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: compiler/gencode/t_stdlib.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: compiler/gencode/t_tacsymbol.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: compiler/gencode/t_threeaddress.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: compiler/gencode/t_threeaddresscode.h
@@ -38,16 +37,6 @@ compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: static_analysis/t_con
 compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: static_analysis/t_data_flow.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: static_analysis/t_flow.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: static_analysis/t_static_analysis.h
-
-compiler/gencode/CMakeFiles/t_gencode.dir/t_stdlib.cpp.o: compiler/gencode/t_opcode.h
-compiler/gencode/CMakeFiles/t_gencode.dir/t_stdlib.cpp.o: compiler/gencode/t_stdlib.cpp
-compiler/gencode/CMakeFiles/t_gencode.dir/t_stdlib.cpp.o: compiler/gencode/t_stdlib.h
-compiler/gencode/CMakeFiles/t_gencode.dir/t_stdlib.cpp.o: compiler/syntax/t_function.h
-compiler/gencode/CMakeFiles/t_gencode.dir/t_stdlib.cpp.o: compiler/syntax/t_identifier.h
-compiler/gencode/CMakeFiles/t_gencode.dir/t_stdlib.cpp.o: compiler/syntax/t_identifiervertex.h
-compiler/gencode/CMakeFiles/t_gencode.dir/t_stdlib.cpp.o: compiler/syntax/t_symbol.h
-compiler/gencode/CMakeFiles/t_gencode.dir/t_stdlib.cpp.o: data_structures/graph/t_color.h
-compiler/gencode/CMakeFiles/t_gencode.dir/t_stdlib.cpp.o: data_structures/graph/t_node.h
 
 compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddress.cpp.o: compiler/gencode/t_tacsymbol.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddress.cpp.o: compiler/gencode/t_threeaddress.cpp

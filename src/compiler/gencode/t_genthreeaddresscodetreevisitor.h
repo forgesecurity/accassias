@@ -66,7 +66,13 @@ class t_genthreeaddresscodetreevisitor : public t_treevisitor<N>
 
         case S_FUNCTION:
           {
-            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_FUNCTION, node->getvertex()->getaddr(), node->getvertex()->getnblocalvariables(), node->getvertex()->getlexeme())); 
+	this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_FUNCTION, node->getvertex()->getaddr(), node->getvertex()->getnblocalvariables(), node->getvertex()->getlexeme())); 
+            break; 
+          }
+
+        case S_NEW_INSTANCE_CLASS:
+          {
+	this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_INSTANCE_CLASS, node->getvertex()->getaddr(), node->getvertex()->getnblocalvariables(), node->getvertex()->getlexeme())); 
             break; 
           }
 
@@ -167,45 +173,15 @@ class t_genthreeaddresscodetreevisitor : public t_treevisitor<N>
             break;
           }
 
-        case S_SHOW_TAC:
-          {
-            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_SHOWTAC, node->getid(), node->getid()));
-            break; 
-          }
-
-        case S_HIDE_TAC:
-          {
-            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_HIDETAC, node->getid(), node->getid()));
-            break; 
-          }    
-
-        case S_SHOW_CODE:
-          {
-            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_SHOWCODE, node->getid(), node->getid()));
-            break; 
-          }
-
-        case S_HIDE_CODE:
-          {
-            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_HIDECODE, node->getid(), node->getid()));
-            break; 
-          }
-
-        case S_SHOW_STATEVM:
-          {
-            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_SHOWSTATEVM, node->getid(), node->getid()));
-            break; 
-          }
-
-        case S_HIDE_STATEVM:
-          {
-            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_HIDESTATEVM, node->getid(), node->getid()));
-            break; 
-          }
-
         case S_PRINT:
           {
             this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_PRINT, node->getid(), node->getid()));
+            break; 
+          }
+
+        case S_SYSTEM:
+          {
+            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_SYSTEM, node->getid(), node->getid()));
             break; 
           }
 
@@ -244,40 +220,15 @@ class t_genthreeaddresscodetreevisitor : public t_treevisitor<N>
 
         case S_DECLARATION:
           {
-            std::cout << "S_DECLARATION" << std::endl;
             if(node->getnbchildren() > 2 && node->getchild(3)->getvertex()->getsymbol() == S_ARRAY)
               this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_DECLR_ARRAY, node->getvertex()->getaddr(), node->getchild(3)->getvertex()->getaddr()));
 
             else
               this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_DECLR, node->getvertex()->getaddr(), 0));
 
-            std::cout << "S_DECLARATION FIN" << std::endl;
             break;
           }
 
-        case S_NEW_INSTANCE_CLASS:
-          {
-            break; 
-          }
-          /*
-             case S_VARIABLE:
-             {
-             std::cout << "S_VARIABLE" << std::endl;
-             if(node->getnbchildren() > 0 && node->getchild(1)->getvertex()->getsymbol() == S_ARRAY)
-             this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_FACTOR_ARRAY, node->getvertex()->getaddr(), node->getvertex()->getaddr(), node->getchild(1)->getvertex()->getaddr()));
-
-             else
-             {
-             std::cout << "S_VARIABLE aaa" << std::endl;
-             std::cout << "S_VARIABLE aaa" << node->getvertex()->getaddr() << std::endl;
-             std::cout << "S_VARIABLE aaa" << node->getvertex()->getaddr() << std::endl;
-             this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGNV, node->getvertex()->getaddr(), node->getvertex()->getaddr()));
-             }
-             std::cout << "S_VARIABLE FIN" << std::endl;
-             break;
-             }
-
-           */
         case S_AFFECTATION:
           {
             if(node->getnbchildren() > 1 && node->getchild(1)->getvertex()->getsymbol() == S_ARRAY)
@@ -299,13 +250,8 @@ class t_genthreeaddresscodetreevisitor : public t_treevisitor<N>
               case S_START_CALL:
                 {
                   this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGNCA, node->getvertex()->getaddr(), node->getchild(0)->getvertex()->getnbargs(), node->getchild(0)->getvertex()->getlexeme()));
-                  break; 
-                }
-
-              case S_TIMER:
-                {
-                  this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_TIMER, node->getvertex()->getaddr(), node->getid()));
-                  break; 
+                        
+			break; 
                 }
 
               case S_VARIABLE:

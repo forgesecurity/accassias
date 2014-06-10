@@ -24,19 +24,14 @@ enum t_opcode
   FUNCTION, // 18
   INSTRUCTIONS, // 19
   RETURN, // 20
-  EXIT, // 21
   PRINT, // 22
-  SHOWTAC, // 23
-  HIDETAC, // 24
-  SHOWCODE, // 25
-  HIDECODE, // 26
-  SHOWSTATEVM, // 27
-  HIDESTATEVM, // 28
+  EXIT, // 22
   READPOL, // 29
   END, // 30
-  EMPTIME, // 31
   IFFALSE, // 32
-  CLASS // 32
+  CLASS, // 32
+  INSTANCE_CLASS, // 33
+  SYSTEM // 35
 
 };
 

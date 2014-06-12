@@ -329,7 +329,7 @@ class t_genthreeaddresscodetreevisitor : public t_treevisitor<N>
           }
 
         default:
-          this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_NULL, node->getvertex()->getaddr(), 0, 0));
+          //this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_NULL, node->getvertex()->getaddr(), 0, 0));
 
           break;
       }

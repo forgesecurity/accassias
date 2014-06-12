@@ -18,13 +18,18 @@ class t_dotcfgtreevisitor : public t_treevisitor<N>
 
     void initialize_node(N* node){
 
+      std::stringstream ss;
+      ss << *(node->getvertex());
+      std::string s = ss.str();
+      this->escape_special_char(s);
+
       *(this->outfile) 
         << node->getlabel()
         << node->getid()
         << " [label=\"" 
         << node->getlabel() 
         << "_"
-        << *(node->getvertex())
+        << s
         << "\"];\n";
     };
 
@@ -49,6 +54,25 @@ class t_dotcfgtreevisitor : public t_treevisitor<N>
     };
     void openfile(const char *file){
       this->outfile = new std::ofstream(file, std::ios::out);
+    };
+
+    void escape_special_char(std::string &str)
+    {
+      std::string strtemp = str;
+      unsigned int j = 0;
+      for(unsigned int i = 0; i < strtemp.size(); i++)
+      {	
+        if(strtemp[i] == '\n')
+        {
+          str.resize(str.size() + 1);
+          str[j++] = '\\';
+          str[j] = 'n';
+        }
+        else
+          str[j] = strtemp[i];
+
+        j++;
+      }
     };
 
   private:

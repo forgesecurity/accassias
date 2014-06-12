@@ -24,7 +24,6 @@ CMakeFiles/accassias.dir/main.cpp.o
  data_structures/graph/t_graph.h
  data_structures/graph/t_node.h
  data_structures/tree/t_dotcfgtreevisitor.h
- data_structures/tree/t_dotcfgvisitor.h
  data_structures/tree/t_dottreevisitor.h
  data_structures/tree/t_tree.h
  data_structures/tree/t_treevisitor.h

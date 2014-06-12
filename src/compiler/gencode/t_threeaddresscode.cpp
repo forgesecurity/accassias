@@ -1,15 +1,6 @@
 #include "t_threeaddresscode.h"
 #include <iostream>
 
-std::ostream &operator<<(std::ostream &out, t_threeaddresscode &tac)
-{
-  std::vector<t_threeaddress>::iterator it;
-  for(it = tac.get_code()->begin(); it < tac.get_code()->end(); it++)
-    out << *it << "\\n";
-
-  return out;
-}
-
 std::vector<t_threeaddress> *t_threeaddresscode::get_code()
 {
   return code;
@@ -35,6 +26,15 @@ bool t_threeaddresscode::print_tac()
 void t_threeaddresscode::set_print_tac(bool state)
 {
   this->p_tac = state;
+}
+
+std::ostream &operator<<(std::ostream &out, t_threeaddresscode &tac)
+{
+  std::vector<t_threeaddress>::iterator it;
+  for(it = tac.get_code()->begin(); it < tac.get_code()->end(); it++)
+    out << *it << "\n";
+
+  return out;
 }
 
 void t_threeaddresscode::print_console()

@@ -5,7 +5,6 @@
 #include "compiler/lexical/t_token.h"
 #include "t_symbol.h"
 #include "data_structures/tree/t_dottreevisitor.h"
-#include "data_structures/tree/t_dotcfgvisitor.h"
 #include "data_structures/graph/t_breadth_first_search.h"
 #include "data_structures/graph/t_depth_first_search.h"
 #include <iostream>
@@ -21,6 +20,7 @@ t_syntax::t_syntax()
   this->backnode_id = 0;
   this->backnode_functions_id = 0;
   this->backnode_classes_id = 0;
+  this->last_nb_nodes = 0;
   this->lexical = new t_lexical();
 
   this->global_variables = new std::map<std::string, t_identifier *>;
@@ -100,27 +100,25 @@ bool t_syntax::start()
 
   t_symbol *symbol_subinstructions = new t_symbol(lexical->get_current_line(), lexical->get_current_column(), S_SUBLIST_INSTRUCTIONS);
   t_node<t_symbol> *subinstructionsnode = this->instructionsnode->addchild(L_SUBLIST_INSTRUCTIONS, symbol_subinstructions);
-  this->syntaxtree_prog->addnode(subinstructionsnode);
+  subinstructionsnode->getvertex()->setnblocalvariables(0);
 
   this->instructions(subinstructionsnode, this->functions, this->classesnode);
   //this->gettree_classes()->getroot()->addchild(this->gettree()->getroot());
-  /*
-     if(this->gettree()->getnodes().back()->getid() == backnode_id 
-     && this->gettree_functions()->getnodes().back()->getid() == backnode_functions_id
-     && this->gettree_classes()->getnodes().back()->getid() == this->backnode_classes_id)
-     return false;
-   */
+
+  if(this->last_nb_nodes == this->gettree()->getnodes().size())
+    return false;
+
+  this->syntaxtree_prog->addnode(subinstructionsnode);
+
   if(DEBUG)
   {	     
     t_dotsyntaxtree *dotsyntaxtree = new t_dotsyntaxtree;
     dotsyntaxtree->openfile("ast.dot");
     t_depth_first_search::visit<t_dotsyntaxtree, t_syntaxtree, t_symbol>(dotsyntaxtree, this->syntaxtree_prog);
   }
-  /*
-     this->backnode_id = this->gettree()->getnodes().back()->getid();
-     this->backnode_functions_id = this->gettree_functions()->getnodes().back()->getid();
-     this->backnode_classes_id = this->gettree_classes()->getnodes().back()->getid();
-   */
+
+  this->last_nb_nodes = this->gettree()->getnodes().size();
+
   return true;
 }
 

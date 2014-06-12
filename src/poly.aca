@@ -18,21 +18,3 @@ class poly
   }
 }
 
-function gettruc()
-{
-  declr $bbb;
-  $bbb = 3;	
-  return $bbb;
-}
-
-declr $a;
-declr $pol;
-declr $std;
-
-gettruc();
-$a = gettruc();
-
-$pol = new poly;
-$std = new stdlib;
-$a = $pol->getdegree();
-$std->print($a);

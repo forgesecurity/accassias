@@ -59,10 +59,10 @@ CMAKE_BINARY_DIR = /home/eric/perso/accassias/src
 # Target rules for target CMakeFiles/accassias.dir
 
 # All Build rule for target.
-CMakeFiles/accassias.dir/all: virtual_machine/CMakeFiles/t_vm.dir/all
+CMakeFiles/accassias.dir/all: console/CMakeFiles/t_console.dir/all
 CMakeFiles/accassias.dir/all: compiler/lexical/CMakeFiles/t_lexical.dir/all
 CMakeFiles/accassias.dir/all: compiler/syntax/CMakeFiles/t_syntax.dir/all
-CMakeFiles/accassias.dir/all: console/CMakeFiles/t_console.dir/all
+CMakeFiles/accassias.dir/all: virtual_machine/CMakeFiles/t_vm.dir/all
 	$(MAKE) -f CMakeFiles/accassias.dir/build.make CMakeFiles/accassias.dir/depend
 	$(MAKE) -f CMakeFiles/accassias.dir/build.make CMakeFiles/accassias.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/eric/perso/accassias/src/CMakeFiles  1
@@ -398,8 +398,8 @@ virtual_machine/preinstall:
 # Target rules for target virtual_machine/CMakeFiles/t_vm.dir
 
 # All Build rule for target.
-virtual_machine/CMakeFiles/t_vm.dir/all: compiler/gencode/CMakeFiles/t_gencode.dir/all
 virtual_machine/CMakeFiles/t_vm.dir/all: multi_precision/CMakeFiles/t_multi_precision.dir/all
+virtual_machine/CMakeFiles/t_vm.dir/all: compiler/gencode/CMakeFiles/t_gencode.dir/all
 	$(MAKE) -f virtual_machine/CMakeFiles/t_vm.dir/build.make virtual_machine/CMakeFiles/t_vm.dir/depend
 	$(MAKE) -f virtual_machine/CMakeFiles/t_vm.dir/build.make virtual_machine/CMakeFiles/t_vm.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/eric/perso/accassias/src/CMakeFiles  24

@@ -19,10 +19,8 @@ multi_precision/t_mpinteger.h
 /home/eric/perso/accassias/src/compiler/gencode/multi_precision/t_mpinteger.h
 multi_precision/t_string.h
 /home/eric/perso/accassias/src/compiler/gencode/multi_precision/t_string.h
-data_structures/tree/t_dotcfgtreevisitor.h
-/home/eric/perso/accassias/src/compiler/gencode/data_structures/tree/t_dotcfgtreevisitor.h
-static_analysis/t_control_flow_graph.h
-/home/eric/perso/accassias/src/compiler/gencode/static_analysis/t_control_flow_graph.h
+static_analysis/t_data_flow.h
+/home/eric/perso/accassias/src/compiler/gencode/static_analysis/t_data_flow.h
 iostream
 -
 sstream
@@ -201,10 +199,10 @@ data_structures/tree/t_tree.h
 compiler/data_structures/tree/t_tree.h
 data_structures/tree/t_dottreevisitor.h
 compiler/data_structures/tree/t_dottreevisitor.h
-data_structures/tree/t_dotcfgvisitor.h
-compiler/data_structures/tree/t_dotcfgvisitor.h
 data_structures/tree/t_dotcfgtreevisitor.h
 compiler/data_structures/tree/t_dotcfgtreevisitor.h
+compiler/gencode/t_threeaddresscode.h
+compiler/compiler/gencode/t_threeaddresscode.h
 
 data_structures/graph/t_color.h
 
@@ -246,20 +244,14 @@ data_structures/tree/data_structures/graph/t_node.h
 sstream
 -
 
-data_structures/tree/t_dotcfgvisitor.h
-data_structures/tree/t_treevisitor.h
-data_structures/tree/data_structures/tree/t_treevisitor.h
-data_structures/graph/t_node.h
-data_structures/tree/data_structures/graph/t_node.h
-sstream
--
-
 data_structures/tree/t_dottreevisitor.h
 data_structures/tree/t_treevisitor.h
 data_structures/tree/data_structures/tree/t_treevisitor.h
 data_structures/graph/t_node.h
 data_structures/tree/data_structures/graph/t_node.h
 sstream
+-
+fstream
 -
 
 data_structures/tree/t_tree.h
@@ -301,8 +293,6 @@ static_analysis/t_static_analysis.h
 static_analysis/static_analysis/t_static_analysis.h
 static_analysis/t_basicblock.h
 static_analysis/static_analysis/t_basicblock.h
-static_analysis/t_data_flow.h
-static_analysis/static_analysis/t_data_flow.h
 
 static_analysis/t_data_flow.h
 compiler/gencode/t_threeaddresscode.h
@@ -313,6 +303,8 @@ static_analysis/t_basicblock.h
 static_analysis/static_analysis/t_basicblock.h
 static_analysis/t_flow.h
 static_analysis/static_analysis/t_flow.h
+static_analysis/t_control_flow_graph.h
+static_analysis/static_analysis/t_control_flow_graph.h
 
 static_analysis/t_flow.h
 static_analysis/t_static_analysis.h

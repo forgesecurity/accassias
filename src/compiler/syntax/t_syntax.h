@@ -144,6 +144,7 @@ class t_syntax
     unsigned int nbexprstermsfactors_class;
     unsigned int nb_global_functions;
     unsigned int nb_global_class;
+    unsigned int last_nb_nodes;
 
     unsigned int backnode_id;
     unsigned int backnode_functions_id;

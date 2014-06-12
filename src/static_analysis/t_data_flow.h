@@ -5,6 +5,7 @@
 #include "static_analysis/t_static_analysis.h"
 #include "static_analysis/t_basicblock.h"
 #include "static_analysis/t_flow.h"
+#include "static_analysis/t_control_flow_graph.h"
 
 class t_data_flow
 {
@@ -20,10 +21,12 @@ class t_data_flow
     void add_flow(t_label, t_label);
 
     void available_expressions();
+    void start(t_threeaddresscode *);
 
   private:
     std::vector<t_flow *> *flows;
-    std::vector<t_basicblock *> *blocks;
+    std::vector<t_basic_block *> *blocks;
+    t_control_flow_graph *control_flow_graph;
 };
 
 

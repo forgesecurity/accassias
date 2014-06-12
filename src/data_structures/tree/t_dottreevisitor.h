@@ -4,6 +4,7 @@
 #include "data_structures/tree/t_treevisitor.h"
 #include "data_structures/graph/t_node.h"
 #include <sstream>
+#include <fstream>
 //#include "compiler/t_syntaxvertex.h"
 
 // METRE CETTE CLASSE DANS UN REPERTOIRE "DRAW"

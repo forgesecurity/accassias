@@ -6,15 +6,14 @@
 #include "data_structures/graph/t_node.h"
 #include "data_structures/tree/t_tree.h"
 #include "data_structures/tree/t_dottreevisitor.h"
-#include "data_structures/tree/t_dotcfgvisitor.h"
 #include "data_structures/tree/t_dotcfgtreevisitor.h"
+#include "compiler/gencode/t_threeaddresscode.h"
 
 #define DEBUG true
 
 typedef t_tree<t_symbol> t_syntaxtree;
 typedef t_dottreevisitor<t_node<t_symbol> > t_dotsyntaxtree;
-typedef t_dotcfgvisitor<t_node<t_symbol> > t_dotcfgtree;
-typedef t_dotcfgtreevisitor<t_node<t_threeaddresscode> > t_dotcfgtree2;
+typedef t_dotcfgtreevisitor<t_node<t_threeaddresscode> > t_dotcfgtree;
 
 #endif
 

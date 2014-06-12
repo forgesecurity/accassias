@@ -4,8 +4,7 @@
 #include "compiler/t_compiler.h"
 #include "multi_precision/t_mpinteger.h"
 #include "multi_precision/t_string.h"
-#include "data_structures/tree/t_dotcfgtreevisitor.h"
-#include "static_analysis/t_control_flow_graph.h"
+#include "static_analysis/t_data_flow.h"
 #include <iostream>
 #include <sstream>
 
@@ -540,27 +539,18 @@ bool t_gencode::start()
     }
   }
 
-  /* CFG */
-  t_control_flow_graph *cfg = 
-    new t_control_flow_graph(threeaddresscode);
-
-  cfg->start(itstart);
-
-  t_dotcfgtree2 *dotcfgtreevisitor = new t_dotcfgtree2;
-  dotcfgtreevisitor->openfile("cfg.dot");
-  t_depth_first_search::visit<t_dotcfgtree2, t_cfg, t_threeaddresscode>(dotcfgtreevisitor, cfg->getgraph());
-
-  //cfg->get_data_flow()->get_flows();
-  //cfg->get_data_flow()->get_blocks();
-
-  /* END CFG */
-
   t_function *fd;
   for (std::map< unsigned int, t_function *>::iterator it = addr_functions.begin(); it != addr_functions.end(); ++it)
   {
     fd = it->second;
     this->code[it->first] = fd->getaddr();
   }
+
+  /* BEGIN DATA FLOW ANALYSIS */
+  t_data_flow *data_flow = new t_data_flow;
+  data_flow->start(threeaddresscode);
+
+  /* END DATA FLOW ANALYSIS */
 
   gentac->get_tac()->print_console();  
 

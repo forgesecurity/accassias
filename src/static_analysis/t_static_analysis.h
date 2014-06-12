@@ -8,6 +8,7 @@
 typedef t_graph<t_threeaddresscode> t_cfg;
 typedef std::vector<t_threeaddress>::iterator t_statement;
 typedef unsigned int t_label;
+typedef t_node<t_threeaddresscode> *t_basic_block;
 
 #endif
 

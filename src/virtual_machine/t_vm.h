@@ -1,9 +1,11 @@
 #ifndef T_VM_H
 #define T_VM_H
 
+#include "console/t_print.h"
 #include "compiler/gencode/t_gencode.h"
 #include "compiler/gencode/t_opcode.h"
 #include "multi_precision/t_mpgeneric.h"
+#include "static_analysis/t_control_flow_graph.h"
 
 #define SIZE_SECTION_CODE 10000
 #define SIZE_SECTION_STACK 10000
@@ -14,7 +16,9 @@ class t_vm
 {
   public:
     t_vm();
-    t_opcode start();
+    void include(std::string);
+    void start();
+    t_opcode execute();
     std::vector<int> &get_mem();
     unsigned int get_sp();
     unsigned int get_co();
@@ -27,10 +31,10 @@ class t_vm
     void set_endwhile(bool);
     void copy_code_to_mem(std::vector<int> &);
     t_gencode *get_gencode();
-    void set_print_statevm(bool);
-    bool get_print_statevm();
+    t_print *get_print();
 
   private:
+    t_print *print;
     std::vector<int> mem;
 
     bool endwhile;
@@ -45,6 +49,8 @@ class t_vm
 
     std::vector<t_mpgeneric *> mpgenerics;
     unsigned int nbmpgenerics;
+
+    t_control_flow_graph *control_flow_graph;
 };
 
 #endif

@@ -6,36 +6,10 @@
 
 #IncludeRegexTransform: 
 
-/home/eric/perso/accassias/src/multi_precision/t_mparray.cpp
-t_mparray.h
-/home/eric/perso/accassias/src/multi_precision/t_mparray.h
-iostream
--
-
-/home/eric/perso/accassias/src/multi_precision/t_mparray.h
-vector
--
-string
--
-t_mpgeneric.h
-/home/eric/perso/accassias/src/multi_precision/t_mpgeneric.h
-
-/home/eric/perso/accassias/src/multi_precision/t_mpgeneric.cpp
-t_mpgeneric.h
-/home/eric/perso/accassias/src/multi_precision/t_mpgeneric.h
-iostream
--
-
 /home/eric/perso/accassias/src/multi_precision/t_mpgeneric.h
 vector
 -
 string
--
-
-/home/eric/perso/accassias/src/multi_precision/t_mpinteger.cpp
-t_mpinteger.h
-/home/eric/perso/accassias/src/multi_precision/t_mpinteger.h
-iostream
 -
 
 /home/eric/perso/accassias/src/multi_precision/t_mpinteger.h
@@ -65,12 +39,6 @@ t_mpinteger.h
 /home/eric/perso/accassias/src/multi_precision/t_mpinteger.h
 t_string.h
 /home/eric/perso/accassias/src/multi_precision/t_string.h
-
-/home/eric/perso/accassias/src/multi_precision/t_string.cpp
-t_string.h
-/home/eric/perso/accassias/src/multi_precision/t_string.h
-iostream
--
 
 /home/eric/perso/accassias/src/multi_precision/t_string.h
 string

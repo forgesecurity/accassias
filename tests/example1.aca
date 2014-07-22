@@ -1,18 +1,16 @@
 declr $a;
-declr $stdlib;
 declr $poly;
 
-$stdlib = new stdlib;
 $poly = new poly;
 $poly->readpol("3*X^3 + 2*X^2 + 1*X^1");
 
 if(6 > 3)
 {
-	$stdlib->print(5);
+  $stdlib->print(5);
 }
 else
 {
-	$stdlib->print(6666);	
+  $stdlib->print(6666);	
 }
 
 $stdlib->print(1000);

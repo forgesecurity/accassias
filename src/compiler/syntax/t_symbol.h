@@ -75,7 +75,12 @@ enum s_symbol
   S_SUP,
   S_SUPEQUAL,
   S_ARRAY,
-  S_SYSTEM
+  S_SYSTEM,
+  S_FPUTS,
+  S_CFG_DOT,
+  S_CFG_COMPUTE,
+  S_AST_DOT,
+  S_INCLUDE
 };
 
 #define L_READPOL "readpol"
@@ -147,6 +152,11 @@ enum s_symbol
 #define L_SUPEQUAL "sup equal"
 #define L_ARRAY "array"
 #define L_SYSTEM "system"
+#define L_FPUTS "fputs"
+#define L_CFG_DOT "cfg_dot"
+#define L_CFG_COMPUTE "cfg_compute"
+#define L_AST_DOT "ast_dot"
+#define L_INCLUDE "include"
 
 class t_symbol
 {

@@ -17,7 +17,6 @@ class t_gencode
     t_syntax *get_syntax();
     t_genthreeaddresscode *get_gentac();
     std::string code_to_string(unsigned int, unsigned int);
-    void set_print_code(bool);
     std::string show_code_of_nextintruction(unsigned int &);
 
   private:
@@ -26,12 +25,11 @@ class t_gencode
     t_genthreeaddresscode *gentac;
     std::map<t_node<t_symbol> *, t_color> nodes_color;
     unsigned int imem;
-    bool print_code;
     unsigned int last_stack;
     std::map<std::string, t_function *> *current_functions;
 };
 
-std::ostream &operator<<(std::ostream &, t_gencode &);
+//std::ostream &operator<<(std::ostream &, t_gencode &);
 
 #endif
 

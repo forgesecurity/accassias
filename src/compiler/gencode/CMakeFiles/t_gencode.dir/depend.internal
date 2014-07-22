@@ -41,6 +41,8 @@ compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddress.cpp.o
  /home/eric/perso/accassias/src/compiler/gencode/t_tacsymbol.h
  /home/eric/perso/accassias/src/compiler/gencode/t_threeaddress.cpp
  /home/eric/perso/accassias/src/compiler/gencode/t_threeaddress.h
+ compiler/gencode/t_threeaddress.h
+ console/t_print.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddresscode.cpp.o
  /home/eric/perso/accassias/src/compiler/gencode/t_tacsymbol.h
  /home/eric/perso/accassias/src/compiler/gencode/t_threeaddress.h

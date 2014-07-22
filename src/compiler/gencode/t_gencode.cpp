@@ -315,6 +315,15 @@ bool t_gencode::start()
           break;
         }
 
+      case TAC_ASSIGN_INCLUDE:
+        {
+
+          this->code.push_back(INCLUDE);
+          this->code.push_back(-3);
+          imem += 2;
+          break;
+        }
+
       case TAC_ASSIGN_SYSTEM:
         {
 
@@ -328,6 +337,41 @@ bool t_gencode::start()
         {
 
           this->code.push_back(PRINT);
+          this->code.push_back(-3);
+          imem += 2;
+          break;
+        }
+
+      case TAC_ASSIGN_FPUTS:
+        {
+          this->code.push_back(FPUTS);
+          this->code.push_back(-3);
+          imem += 2;
+          break;
+        }
+
+      case TAC_ASSIGN_CFG_DOT:
+        {
+
+          this->code.push_back(CFG_DOT);
+          this->code.push_back(-3);
+          imem += 2;
+          break;
+        }
+
+      case TAC_ASSIGN_CFG_COMPUTE:
+        {
+
+          this->code.push_back(CFG_COMPUTE);
+          imem += 1;
+          break;
+        }
+
+
+      case TAC_ASSIGN_AST_DOT:
+        {
+
+          this->code.push_back(AST_DOT);
           this->code.push_back(-3);
           imem += 2;
           break;
@@ -546,30 +590,12 @@ bool t_gencode::start()
     this->code[it->first] = fd->getaddr();
   }
 
-  /* BEGIN DATA FLOW ANALYSIS */
-  t_data_flow *data_flow = new t_data_flow;
-  data_flow->start(threeaddresscode);
-
-  /* END DATA FLOW ANALYSIS */
-
-  gentac->get_tac()->print_console();  
-
-  if(this->print_code)
-  {  
-    std::cout << *this << std::endl;
-  }
-
   return true;
 }
 
 std::vector<int> &t_gencode::get_code()
 {
   return this->code;
-}
-
-void t_gencode::set_print_code(bool state)
-{
-  this->print_code = state;
 }
 
 t_genthreeaddresscode *t_gencode::get_gentac()
@@ -840,6 +866,16 @@ std::string t_gencode::show_code_of_nextintruction(unsigned int &address_instruc
         break;
       }
 
+    case INCLUDE:
+      {
+        out << "INCLUDE ";
+        address_instruction ++;
+        out << code[address_instruction];
+        address_instruction ++;
+
+        break;
+      }
+
     case SYSTEM:
       {
         out << "SYSTEM ";
@@ -870,6 +906,44 @@ std::string t_gencode::show_code_of_nextintruction(unsigned int &address_instruc
         break;
       }
 
+    case FPUTS:
+      {
+        out << "FPUTS ";
+        address_instruction ++;
+        out << code[address_instruction];
+        address_instruction ++;
+
+        break;
+      }
+
+    case CFG_DOT:
+      {
+        out << "CFG_DOT ";
+        address_instruction ++;
+        out << code[address_instruction];
+        address_instruction ++;
+
+        break;
+      }
+
+    case CFG_COMPUTE:
+      {
+        out << "CFG_COMPUTE ";
+        address_instruction ++;
+
+        break;
+      }
+
+    case AST_DOT:
+      {
+        out << "AST_DOT ";
+        address_instruction ++;
+        out << code[address_instruction];
+        address_instruction ++;
+
+        break;
+      }
+
     default:
       {
         address_instruction ++; 
@@ -880,24 +954,23 @@ std::string t_gencode::show_code_of_nextintruction(unsigned int &address_instruc
 
   return out.str();
 }
+/*
+   std::ostream &operator<<(std::ostream &out, t_gencode &gencode)
+   {
+   unsigned int temp_co = 0;
 
-std::ostream &operator<<(std::ostream &out, t_gencode &gencode)
-{
-  unsigned int temp_co = 0;
+   std::vector<int> &code = gencode.get_code();
+   out << " : CODE : \033[1;35mcode here\033[0m" << std::endl << std::endl;
 
-  std::vector<int> &code = gencode.get_code();
-  out << " : CODE : \033[1;35mcode here\033[0m" << std::endl << std::endl;
+   while(temp_co < code.size())
+   {
+   out << temp_co << "    ";
+   out << gencode.show_code_of_nextintruction(temp_co) << std::endl;
 
-  while(temp_co < code.size())
-  {
-    out << temp_co << "    ";
-    out << gencode.show_code_of_nextintruction(temp_co) << std::endl;
+   }
 
-  }
+   return out;
+   }
 
-  return out;
-}
-
-
-
+ */
 

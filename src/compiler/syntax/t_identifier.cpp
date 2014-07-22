@@ -1,7 +1,5 @@
 #include "t_identifier.h"
 
-#include <iostream>
-#include <sstream>
   t_identifier::t_identifier()
 : t_symbol()
 {

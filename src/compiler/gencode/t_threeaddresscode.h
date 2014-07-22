@@ -11,13 +11,9 @@ class t_threeaddresscode
     t_threeaddresscode(std::vector<t_threeaddress>::iterator, std::vector<t_threeaddress>::iterator);
     t_threeaddresscode();
 
-    void set_print_tac(bool);
-    bool print_tac();
-    void print_console();
     std::vector<t_threeaddress> *get_code();
 
   private:
-    bool p_tac;
     std::vector<t_threeaddress> *code;
 
 };

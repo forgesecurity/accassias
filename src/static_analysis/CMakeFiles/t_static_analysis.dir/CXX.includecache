@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/eric/perso/accassias/src/static_analysis/t_basicblock.cpp
-t_basicblock.h
-/home/eric/perso/accassias/src/static_analysis/t_basicblock.h
-
-/home/eric/perso/accassias/src/static_analysis/t_basicblock.h
-compiler/gencode/t_threeaddresscode.h
-/home/eric/perso/accassias/src/static_analysis/compiler/gencode/t_threeaddresscode.h
-data_structures/graph/t_node.h
-/home/eric/perso/accassias/src/static_analysis/data_structures/graph/t_node.h
-
 /home/eric/perso/accassias/src/static_analysis/t_control_flow_graph.cpp
 t_control_flow_graph.h
 /home/eric/perso/accassias/src/static_analysis/t_control_flow_graph.h
@@ -47,14 +37,6 @@ static_analysis/t_flow.h
 /home/eric/perso/accassias/src/static_analysis/static_analysis/t_flow.h
 static_analysis/t_control_flow_graph.h
 /home/eric/perso/accassias/src/static_analysis/static_analysis/t_control_flow_graph.h
-
-/home/eric/perso/accassias/src/static_analysis/t_flow.cpp
-t_flow.h
-/home/eric/perso/accassias/src/static_analysis/t_flow.h
-
-/home/eric/perso/accassias/src/static_analysis/t_flow.h
-static_analysis/t_static_analysis.h
-/home/eric/perso/accassias/src/static_analysis/static_analysis/t_static_analysis.h
 
 compiler/gencode/t_genthreeaddresscodetreevisitor.h
 compiler/syntax/t_symbol.h
@@ -95,6 +77,8 @@ ostream
 compiler/syntax/t_function.h
 t_identifier.h
 compiler/syntax/t_identifier.h
+map
+-
 
 compiler/syntax/t_identifier.h
 t_symbol.h

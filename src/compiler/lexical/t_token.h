@@ -46,7 +46,12 @@ enum t_token
   T_INF,  // 48
   T_SUPEQUAL,  // 49
   T_INFEQUAL,  // 50
-  T_SYSTEM  // 51
+  T_SYSTEM,  // 51
+  T_FPUTS,  // 52
+  T_CFG_DOT,  // 53
+  T_CFG_COMPUTE,  // 54
+  T_AST_DOT,  // 53
+  T_INCLUDE  // 53
 };
 
 #endif

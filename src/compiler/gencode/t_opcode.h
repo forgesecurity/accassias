@@ -31,7 +31,12 @@ enum t_opcode
   IFFALSE, // 32
   CLASS, // 32
   INSTANCE_CLASS, // 33
-  SYSTEM // 35
+  SYSTEM, // 35
+  FPUTS,
+  CFG_DOT,
+  CFG_COMPUTE,
+  AST_DOT,
+  INCLUDE
 
 };
 

@@ -18,6 +18,7 @@ CMakeFiles/accassias.dir/main.cpp.o: compiler/syntax/t_identifiervertex.h
 CMakeFiles/accassias.dir/main.cpp.o: compiler/syntax/t_symbol.h
 CMakeFiles/accassias.dir/main.cpp.o: compiler/syntax/t_syntax.h
 CMakeFiles/accassias.dir/main.cpp.o: compiler/t_compiler.h
+CMakeFiles/accassias.dir/main.cpp.o: console/t_print.h
 CMakeFiles/accassias.dir/main.cpp.o: console/t_time.h
 CMakeFiles/accassias.dir/main.cpp.o: data_structures/graph/t_color.h
 CMakeFiles/accassias.dir/main.cpp.o: data_structures/graph/t_graph.h
@@ -27,5 +28,8 @@ CMakeFiles/accassias.dir/main.cpp.o: data_structures/tree/t_dottreevisitor.h
 CMakeFiles/accassias.dir/main.cpp.o: data_structures/tree/t_tree.h
 CMakeFiles/accassias.dir/main.cpp.o: data_structures/tree/t_treevisitor.h
 CMakeFiles/accassias.dir/main.cpp.o: multi_precision/t_mpgeneric.h
+CMakeFiles/accassias.dir/main.cpp.o: static_analysis/t_basicblock.h
+CMakeFiles/accassias.dir/main.cpp.o: static_analysis/t_control_flow_graph.h
+CMakeFiles/accassias.dir/main.cpp.o: static_analysis/t_static_analysis.h
 CMakeFiles/accassias.dir/main.cpp.o: virtual_machine/t_vm.h
 

@@ -9,6 +9,18 @@ class stdlib
   {
     t_system
   }
+
+  function fputs(declr $file, declr $string)
+  {
+    t_fputs
+  }
+
+  function include(declr $file)
+  {
+    t_include
+  }
 }
 
+declr $stdlib;
+$stdlib = new stdlib;
 

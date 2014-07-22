@@ -93,8 +93,13 @@ class t_syntax
     void system_instruction(t_syntaxtree *, t_node<t_symbol> *);
     void readpol_instruction(t_syntaxtree *, t_node<t_symbol> *);
 
+    void include_instruction(t_syntaxtree *, t_node<t_symbol> *);
     void print_instruction(t_syntaxtree *, t_node<t_symbol> *);
     void function_declaration(t_syntaxtree *, t_node<t_symbol> *);
+    void fputs_instruction(t_syntaxtree *, t_node<t_symbol> *);
+    void cfg_dot_instruction(t_syntaxtree *, t_node<t_symbol> *);
+    void cfg_compute_instruction(t_syntaxtree *, t_node<t_symbol> *);
+    void ast_dot_instruction(t_syntaxtree *, t_node<t_symbol> *);
     void class_declaration(t_syntaxtree *, t_node<t_symbol> *);
     void call_instruction(t_syntaxtree *, t_node<t_symbol> *, bool, std::map<std::string, t_function *> *);
     void instructions(t_node<t_symbol> *, t_node<t_symbol> *, t_node<t_symbol> *);
@@ -126,12 +131,12 @@ class t_syntax
     t_node<t_symbol> *instructionsnode;
 
     t_tree<t_identifiervertex> *identifierstree;
-    bool isfunction;
+    bool insidefunction;
     bool insideclass;
     bool existsyntaxerror;
 
+    std::map<std::string, t_identifier *> *temp_variables;
     std::map<std::string, t_identifier *> *global_variables;
-    std::vector< std::map<std::string, t_identifier *> *> chained_variables;
     std::map<std::string, t_function *> *global_functions;
     std::map<std::string, t_class *> *global_class;
     std::map<std::string, t_class *> *global_instances_class;

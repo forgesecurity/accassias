@@ -19,8 +19,10 @@ virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o
  compiler/syntax/t_symbol.h
  compiler/syntax/t_syntax.h
  compiler/t_compiler.h
+ console/t_print.h
  console/t_time.h
  data_structures/graph/t_color.h
+ data_structures/graph/t_depth_first_search.h
  data_structures/graph/t_graph.h
  data_structures/graph/t_node.h
  data_structures/tree/t_dotcfgtreevisitor.h
@@ -32,3 +34,8 @@ virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o
  multi_precision/t_mpinteger.h
  multi_precision/t_mppolynomial.h
  multi_precision/t_string.h
+ static_analysis/t_basicblock.h
+ static_analysis/t_control_flow_graph.h
+ static_analysis/t_data_flow.h
+ static_analysis/t_flow.h
+ static_analysis/t_static_analysis.h

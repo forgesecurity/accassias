@@ -40,6 +40,8 @@ compiler/gencode/CMakeFiles/t_gencode.dir/t_gencode.cpp.o: static_analysis/t_sta
 compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddress.cpp.o: compiler/gencode/t_tacsymbol.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddress.cpp.o: compiler/gencode/t_threeaddress.cpp
 compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddress.cpp.o: compiler/gencode/t_threeaddress.h
+compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddress.cpp.o: compiler/gencode/t_threeaddress.h
+compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddress.cpp.o: console/t_print.h
 
 compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddresscode.cpp.o: compiler/gencode/t_tacsymbol.h
 compiler/gencode/CMakeFiles/t_gencode.dir/t_threeaddresscode.cpp.o: compiler/gencode/t_threeaddress.h

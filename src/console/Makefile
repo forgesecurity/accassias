@@ -139,6 +139,30 @@ t_console.cpp.s:
 	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_console.cpp.s
 .PHONY : t_console.cpp.s
 
+t_print.o: t_print.cpp.o
+.PHONY : t_print.o
+
+# target to build an object file
+t_print.cpp.o:
+	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_print.cpp.o
+.PHONY : t_print.cpp.o
+
+t_print.i: t_print.cpp.i
+.PHONY : t_print.i
+
+# target to preprocess a source file
+t_print.cpp.i:
+	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_print.cpp.i
+.PHONY : t_print.cpp.i
+
+t_print.s: t_print.cpp.s
+.PHONY : t_print.s
+
+# target to generate assembly for a file
+t_print.cpp.s:
+	cd /home/eric/perso/accassias/src && $(MAKE) -f console/CMakeFiles/t_console.dir/build.make console/CMakeFiles/t_console.dir/t_print.cpp.s
+.PHONY : t_print.cpp.s
+
 t_time.o: t_time.cpp.o
 .PHONY : t_time.o
 
@@ -175,6 +199,9 @@ help:
 	@echo "... t_console.o"
 	@echo "... t_console.i"
 	@echo "... t_console.s"
+	@echo "... t_print.o"
+	@echo "... t_print.i"
+	@echo "... t_print.s"
 	@echo "... t_time.o"
 	@echo "... t_time.i"
 	@echo "... t_time.s"

@@ -176,6 +176,18 @@ t_token t_lexical::next_token()
 
 t_token t_lexical::read_keyword()
 {	
+  if(this->current_lexeme == "t_fputs")
+    return T_FPUTS;
+
+  if(this->current_lexeme == "t_cfg_dot")
+    return T_CFG_DOT;
+
+  if(this->current_lexeme == "t_cfg_compute")
+    return T_CFG_COMPUTE;
+
+  if(this->current_lexeme == "t_ast_dot")
+    return T_AST_DOT;
+
   if(this->current_lexeme == "t_print")
     return T_PRINT;
 
@@ -184,6 +196,9 @@ t_token t_lexical::read_keyword()
 
   if(this->current_lexeme == "t_system")
     return T_SYSTEM;
+
+  if(this->current_lexeme == "t_include")
+    return T_INCLUDE;
 
   if(this->current_lexeme == "declr")
     return T_DECLR;

@@ -2,6 +2,7 @@
 #define T_FUNCTION_H
 
 #include "t_identifier.h"
+#include <map>
 
 class t_function : public t_identifier
 {
@@ -14,8 +15,11 @@ class t_function : public t_identifier
     t_function(unsigned int, unsigned int, s_symbol, std::string &, int, unsigned int, unsigned int);
 
     bool ismethod();
-
     void addarg();
+
+    std::map<std::string, t_identifier *> *getvariables();
+    void setvariables(std::map<std::string, t_identifier *> *);
+
     virtual unsigned int getnbargs();
     virtual void setnbargs(unsigned int);
 
@@ -25,6 +29,7 @@ class t_function : public t_identifier
   private:
     unsigned int nbargs;
     unsigned int nblocalvariables;
+    std::map<std::string, t_identifier *> *variables;
 };
 
 #endif

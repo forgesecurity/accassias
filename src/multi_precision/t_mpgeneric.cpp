@@ -238,7 +238,7 @@ std::ostream &operator<<(std::ostream &out, t_mpgeneric &mpgeneric)
     }
   }
 
-  out << std::endl;
+  //out << std::endl;
 
   return out;
 }

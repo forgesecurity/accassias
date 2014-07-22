@@ -81,7 +81,7 @@ t_mppolynomial *t_mppolynomial::read(char c, t_string *tstr)
   int expi;
   int max_expi;
   std::string coeff;
-  bool coeffsign;
+  bool coeffsign = false;
 
   t_mppolynomial *mppoly = new t_mppolynomial;
   t_string *ststr = t_string::removespaces(tstr);

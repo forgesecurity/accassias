@@ -11,18 +11,18 @@ $stdlib->print($poly->degree);
 
 if(1 > 2)
 {
-	if(3 > 4)
-	{
-		$stdlib->print(66666666);
-	}
-	else
-	{
-		$stdlib->print(77777777);
-	}	
+  if(3 > 4)
+  {
+    $stdlib->print(66666666);
+  }
+  else
+  {
+    $stdlib->print(77777777);
+  }	
 }
 else
 {
-	$stdlib->print(888888888);	
+  $stdlib->print(888888888);	
 }
 
 $stdlib->print(999999999);

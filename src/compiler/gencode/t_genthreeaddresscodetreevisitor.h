@@ -173,9 +173,39 @@ class t_genthreeaddresscodetreevisitor : public t_treevisitor<N>
             break;
           }
 
+        case S_INCLUDE:
+          {
+            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_INCLUDE, node->getid(), node->getid()));
+            break; 
+          }
+
         case S_PRINT:
           {
             this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_PRINT, node->getid(), node->getid()));
+            break; 
+          }
+
+        case S_FPUTS:
+          {
+            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_FPUTS, node->getid(), node->getid()));
+            break; 
+          }
+
+        case S_AST_DOT:
+          {
+            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_AST_DOT, node->getid(), node->getid()));
+            break; 
+          }
+
+        case S_CFG_DOT:
+          {
+            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_CFG_DOT, node->getid(), node->getid()));
+            break; 
+          }
+
+        case S_CFG_COMPUTE:
+          {
+            this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_CFG_COMPUTE, node->getid(), node->getid()));
             break; 
           }
 

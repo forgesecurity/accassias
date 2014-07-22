@@ -4,21 +4,13 @@ t_control_flow_graph::t_control_flow_graph(t_threeaddresscode *tac)
 {
   this->tac = tac;
   this->cfg = new t_cfg;
-  /*
-     this->data_flow = new t_data_flow;
-     this->data_flow_bb = new t_data_flow;	*/
 }
 
 t_cfg *t_control_flow_graph::getgraph()
 {
   return this->cfg;
 }
-/*
-   t_data_flow *t_control_flow_graph::get_data_flow()
-   {
-   return this->data_flow;
-   }
- */
+
 void t_control_flow_graph::start(std::vector<t_threeaddress>::iterator it_start)
 {
   t_basicblock *first_bb = new t_basicblock(
@@ -54,14 +46,7 @@ t_basicblock *t_control_flow_graph::build(t_basicblock *bb1)
 
       this->cfg->addnode(iftrue_bb->getnode());
       this->cfg->addnode(iffalse_bb->getnode());
-      /*
-         this->data_flow->add_flow(bb1->getnode()->getid(), iftrue_bb->getnode()->getid());
-         this->data_flow->add_flow(bb1->getnode()->getid(), iffalse_bb->getnode()->getid());
 
-         this->data_flow->add_block(bb1);
-         this->data_flow->add_block(iftrue_bb);
-         this->data_flow->add_block(iffalse_bb);
-       */
       bb1->getnode()->addchild(iftrue_bb->getnode());
       bb1->getnode()->addchild(iffalse_bb->getnode());
 
@@ -70,15 +55,11 @@ t_basicblock *t_control_flow_graph::build(t_basicblock *bb1)
       t_basicblock *afterif_bb = new t_basicblock(iffalse_bb->get_it_start() + 1, bb1->get_it_end(), 
           new t_node<t_threeaddresscode>(L_BB, new t_threeaddresscode));
 
-      t_basicblock *it_end = this->build(afterif_bb);
+      //t_basicblock *it_end = this->build(afterif_bb);
+      this->build(afterif_bb);
 
       this->cfg->addnode(afterif_bb->getnode());
 
-      /*
-         this->data_flow->add_flow(it_ifend->getnode()->getid(), afterif_bb->getnode()->getid());
-         this->data_flow->add_flow(it_iffalseend->getnode()->getid(), afterif_bb->getnode()->getid());
-         this->data_flow->add_block(afterif_bb);
-       */
       it_ifend->getnode()->addchild(afterif_bb->getnode());
       it_iffalseend->getnode()->addchild(afterif_bb->getnode());
 
@@ -110,8 +91,7 @@ t_basicblock *t_control_flow_graph::build(t_basicblock *bb1)
     }
   }
 
-  bb1->set_it_end(it);	
-  //this->data_flow->add_block(bb1);	
+  bb1->set_it_end(it);		
   return bb1;
 }
 

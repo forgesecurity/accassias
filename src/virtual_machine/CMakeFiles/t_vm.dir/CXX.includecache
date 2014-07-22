@@ -17,20 +17,30 @@ multi_precision/t_string.h
 /home/eric/perso/accassias/src/virtual_machine/multi_precision/t_string.h
 multi_precision/t_mppolynomial.h
 /home/eric/perso/accassias/src/virtual_machine/multi_precision/t_mppolynomial.h
+data_structures/graph/t_depth_first_search.h
+/home/eric/perso/accassias/src/virtual_machine/data_structures/graph/t_depth_first_search.h
 console/t_time.h
 /home/eric/perso/accassias/src/virtual_machine/console/t_time.h
+console/t_print.h
+/home/eric/perso/accassias/src/virtual_machine/console/t_print.h
+static_analysis/t_data_flow.h
+/home/eric/perso/accassias/src/virtual_machine/static_analysis/t_data_flow.h
 iostream
 -
 sstream
 -
 
 /home/eric/perso/accassias/src/virtual_machine/t_vm.h
+console/t_print.h
+/home/eric/perso/accassias/src/virtual_machine/console/t_print.h
 compiler/gencode/t_gencode.h
 /home/eric/perso/accassias/src/virtual_machine/compiler/gencode/t_gencode.h
 compiler/gencode/t_opcode.h
 /home/eric/perso/accassias/src/virtual_machine/compiler/gencode/t_opcode.h
 multi_precision/t_mpgeneric.h
 /home/eric/perso/accassias/src/virtual_machine/multi_precision/t_mpgeneric.h
+static_analysis/t_control_flow_graph.h
+/home/eric/perso/accassias/src/virtual_machine/static_analysis/t_control_flow_graph.h
 
 compiler/gencode/t_gencode.h
 compiler/syntax/t_syntax.h
@@ -105,6 +115,8 @@ string
 compiler/syntax/t_function.h
 t_identifier.h
 compiler/syntax/t_identifier.h
+map
+-
 
 compiler/syntax/t_identifier.h
 t_symbol.h
@@ -162,11 +174,31 @@ compiler/data_structures/tree/t_dotcfgtreevisitor.h
 compiler/gencode/t_threeaddresscode.h
 compiler/compiler/gencode/t_threeaddresscode.h
 
+console/t_print.h
+vector
+-
+string
+-
+compiler/gencode/t_threeaddress.h
+console/compiler/gencode/t_threeaddress.h
+
 console/t_time.h
 sys/time.h
 -
 
 data_structures/graph/t_color.h
+
+data_structures/graph/t_depth_first_search.h
+t_node.h
+data_structures/graph/t_node.h
+t_color.h
+data_structures/graph/t_color.h
+stack
+-
+vector
+-
+map
+-
 
 data_structures/graph/t_graph.h
 t_node.h
@@ -249,4 +281,42 @@ string
 -
 t_mpgeneric.h
 multi_precision/t_mpgeneric.h
+
+static_analysis/t_basicblock.h
+compiler/gencode/t_threeaddresscode.h
+static_analysis/compiler/gencode/t_threeaddresscode.h
+data_structures/graph/t_node.h
+static_analysis/data_structures/graph/t_node.h
+
+static_analysis/t_control_flow_graph.h
+compiler/gencode/t_threeaddresscode.h
+static_analysis/compiler/gencode/t_threeaddresscode.h
+static_analysis/t_static_analysis.h
+static_analysis/static_analysis/t_static_analysis.h
+static_analysis/t_basicblock.h
+static_analysis/static_analysis/t_basicblock.h
+
+static_analysis/t_data_flow.h
+compiler/gencode/t_threeaddresscode.h
+static_analysis/compiler/gencode/t_threeaddresscode.h
+static_analysis/t_static_analysis.h
+static_analysis/static_analysis/t_static_analysis.h
+static_analysis/t_basicblock.h
+static_analysis/static_analysis/t_basicblock.h
+static_analysis/t_flow.h
+static_analysis/static_analysis/t_flow.h
+static_analysis/t_control_flow_graph.h
+static_analysis/static_analysis/t_control_flow_graph.h
+
+static_analysis/t_flow.h
+static_analysis/t_static_analysis.h
+static_analysis/static_analysis/t_static_analysis.h
+
+static_analysis/t_static_analysis.h
+data_structures/tree/t_tree.h
+static_analysis/data_structures/tree/t_tree.h
+compiler/gencode/t_threeaddresscode.h
+static_analysis/compiler/gencode/t_threeaddresscode.h
+compiler/gencode/t_threeaddress.h
+static_analysis/compiler/gencode/t_threeaddress.h
 

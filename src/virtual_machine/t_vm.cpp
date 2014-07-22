@@ -3,7 +3,10 @@
 #include "multi_precision/t_mpinteger.h"
 #include "multi_precision/t_string.h"
 #include "multi_precision/t_mppolynomial.h"
+#include "data_structures/graph/t_depth_first_search.h"
 #include "console/t_time.h"
+#include "console/t_print.h"
+#include "static_analysis/t_data_flow.h"
 #include <iostream>
 #include <sstream>
 
@@ -17,6 +20,8 @@ t_vm::t_vm()
 
   this->mem.resize(SIZE_MEM);
   this->gencode = new t_gencode();
+  this->control_flow_graph = NULL;
+  this->print = new t_print;
 }
 
 t_gencode *t_vm::get_gencode()
@@ -74,6 +79,11 @@ void t_vm::set_endwhile(bool endwhile)
   this->endwhile = endwhile;
 }
 
+t_print *t_vm::get_print()
+{
+  return this->print;
+}
+
 void t_vm::copy_code_to_mem(std::vector<int> &code)
 {
   unsigned int i = 0;
@@ -86,17 +96,61 @@ void t_vm::copy_code_to_mem(std::vector<int> &code)
     std::cout << "ALERT" << std::endl;
 }
 
-void t_vm::set_print_statevm(bool state)
+void t_vm::include(std::string file)
 {
-  this->print_statevm = state;
+  std::cout << file << " has been included" << std::endl; 
+  this->get_gencode()->get_syntax()->get_lexical()->set_file_source(file.c_str());
+  this->start();
 }
 
-bool t_vm::get_print_statevm()
+void t_vm::start()
 {
-  return this->print_statevm;
+  if(!this->get_gencode()->start())
+    return;
+
+  if(this->get_gencode()->get_syntax()->get_lexical()->get_current_token() == T_TAB)
+  {
+    unsigned int nb_comp = 0;
+    std::map<std::string, t_function *> *functions = this->get_gencode()->get_syntax()->get_functions();
+    std::map<std::string, t_function *>::iterator it;
+    unsigned int nb_char = this->get_gencode()->get_syntax()->get_lexical()->get_current_line_string().length();
+    std::string str =  this->get_gencode()->get_syntax()->get_lexical()->get_current_line_string();
+    std::string str_found;
+
+    std::cout << std::endl;
+
+    for(it = functions->begin(); it != functions->end(); it ++)
+    {
+      if((*it).first.substr(0, nb_char).compare(str) == 0)
+      {
+        str_found = (*it).first;
+        nb_comp ++;
+      }
+    }
+
+    if(nb_comp)
+      std::cout << "eee" << str_found << std::endl;
+  }
+  else
+  {
+    this->get_print()->tac(this->get_gencode()->get_gentac()->get_tac()->get_code());
+    this->get_print()->code(this->get_gencode());
+    this->get_print()->statevm_start();
+
+    this->copy_code_to_mem(this->get_gencode()->get_code());
+    this->set_endwhile(false);
+
+    while(this->get_co() < SIZE_SECTION_CODE && !this->get_endwhile())
+    {	
+      this->get_print()->statevm(this);
+      this->execute();
+    }
+
+    this->get_print()->statevm_end();
+  }
 }
 
-t_opcode t_vm::start()
+t_opcode t_vm::execute()
 {
   this->endwhile = false;
 
@@ -104,13 +158,12 @@ t_opcode t_vm::start()
   t_mpinteger *mpint2;
   t_mparray *mparr;
   t_mpgeneric *mpgen1;
-  t_mpgeneric *mpgen2;
+  //t_mpgeneric *mpgen2;
   t_string *str1;
   unsigned int i;
   unsigned int v;
 
   t_opcode opcode;
-
   std::ostringstream out;
 
   opcode = (t_opcode) this->mem[this->co];
@@ -226,28 +279,12 @@ t_opcode t_vm::start()
 
     case INSTANCE_CLASS:
       {
-        unsigned int test1 = this->mem[this->co + 1];
-        unsigned int test2 = this->mem[this->co + 2];
-        /*
-           std::cout << "INSTANCE_CLASS" << std::endl;
-           std::cout << "test1 = " << test1 << std::endl; // identifiant classe
-           std::cout << "test2 = " << test2 << std::endl; // nb var locale
-         */
-        //this->mem[this->sp ++] = this->bel;
-        //this->bel = this->sp;
+        //unsigned int test1 = this->mem[this->co + 1];
+        //unsigned int test2 = this->mem[this->co + 2];
+
         this->co += 3;
         break;
       }
-      /*
-         case ENDCLASS:
-         { 
-         this->mem[this->bel - (this->mem[this->co + 1] + 3)] = this->mem[-- this->sp];
-         this->sp = this->bel;
-         this->bel = this->mem[-- this->sp];
-         this->co = this->mem[-- this->sp]; 
-         break;
-         }
-       */
 
     case INSTRUCTIONS:
       {
@@ -384,43 +421,63 @@ t_opcode t_vm::start()
 
         else if(str == "show_tac")
         {
-          this->get_gencode()->get_gentac()->get_tac()->set_print_tac(true);
+          this->get_print()->set_print_tac(true);
 
         }
 
         else if(str == "hide_tac")
         {
-          this->get_gencode()->get_gentac()->get_tac()->set_print_tac(false);
+          this->get_print()->set_print_tac(false);
 
         }
 
         else if(str == "show_code")
         {
-          this->get_gencode()->set_print_code(true);
+          this->get_print()->set_print_code(true);
 
         }
 
         else if(str == "hide_code")
         {
-          this->get_gencode()->set_print_code(false);
+          this->get_print()->set_print_code(false);
 
         }
 
         else if(str == "show_statevm")
         {
-          this->set_print_statevm(true);
+          this->get_print()->set_print_statevm(true);
 
         }
 
         else if(str == "hide_statevm")
         {
-          this->set_print_statevm(false);
+          this->get_print()->set_print_statevm(false);
 
+        }
+        else if(str == "data_flow_get_flows")
+        {
+          this->control_flow_graph = new t_control_flow_graph(get_gencode()->get_gentac()->get_tac());
+          this->control_flow_graph->start(get_gencode()->get_gentac()->get_tac()->get_code()->begin());
+
+          t_data_flow *data_flow = new t_data_flow(this->control_flow_graph);
+          data_flow->start();
+          data_flow->get_flows();
         }
         else
         {
           std::cout << "ERREUR SYSTEM" << std::endl;
         }
+
+        this->co += 2;
+        break;
+      }
+
+    case INCLUDE:
+      {
+        std::ostringstream out1;
+        out1 << *mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]];
+
+        this->include(out1.str());
 
         this->co += 2;
         break;
@@ -439,10 +496,10 @@ t_opcode t_vm::start()
 
     case READPOL:
       {
-        unsigned int test = this->bel + this->mem[this->co + 1];
+        //unsigned int test = this->bel + this->mem[this->co + 1];
         std::cout << *mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]] << std::endl;
-        t_string *tstr = (t_string *) mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]];
-        t_mppolynomial *mppol1 = (t_mppolynomial *) t_mppolynomial::read('X', tstr);
+        //t_string *tstr = (t_string *) mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]];
+        //t_mppolynomial *mppol1 = (t_mppolynomial *) t_mppolynomial::read('X', tstr);
 
         this->co ++;
         break;
@@ -451,6 +508,69 @@ t_opcode t_vm::start()
     case END:
       {
         this->endwhile = true;
+        break;
+      }
+
+    case FPUTS:
+      {
+        std::ostringstream out1;
+        out1 << *mpgenerics[this->mem[this->bel + this->mem[this->co + 2]]];
+
+        std::ostringstream out2;
+        out2 << *mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]];
+
+        FILE *filept = fopen(out1.str().c_str(), "w");
+        if(filept != NULL)
+        {
+          fputs(out2.str().c_str(), filept);
+          fclose(filept);
+        }
+
+        this->co += 2;
+        break;
+      }
+
+    case CFG_DOT:
+      {
+        if(this->control_flow_graph != NULL)
+        {	
+          std::ostringstream out1;
+          out1 << *mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]];
+
+          t_dotcfgtree *dotcfgtreevisitor = new t_dotcfgtree;
+          dotcfgtreevisitor->openfile(out1.str().c_str());
+          t_depth_first_search::visit<t_dotcfgtree, t_cfg, t_threeaddresscode>(dotcfgtreevisitor, this->control_flow_graph->getgraph());
+          std::cout << "control flow graph has been printed into " << out1.str().c_str() << std::endl;
+        }
+        else
+          std::cout << "control flow graph must be computed" << std::endl;
+
+        this->co += 2;
+        break;
+      }
+
+    case CFG_COMPUTE:
+      {
+        this->control_flow_graph = new t_control_flow_graph(get_gencode()->get_gentac()->get_tac());
+        this->control_flow_graph->start(get_gencode()->get_gentac()->get_tac()->get_code()->begin());
+
+        this->co += 1;
+        break;
+      }
+
+
+    case AST_DOT:
+      {
+        std::ostringstream out1;
+        out1 << *mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]];
+
+        t_dotsyntaxtree *dotsyntaxtree = new t_dotsyntaxtree;
+        dotsyntaxtree->openfile(out1.str().c_str());
+        t_depth_first_search::visit<t_dotsyntaxtree, t_syntaxtree, t_symbol>(dotsyntaxtree, get_gencode()->get_syntax()->gettree());
+
+        std::cout << "abstract syntax tree has been printed into " << out1.str().c_str() << std::endl;
+
+        this->co += 2;
         break;
       }
 

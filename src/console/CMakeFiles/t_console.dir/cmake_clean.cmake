@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/t_console.dir/t_time.cpp.o"
+  "CMakeFiles/t_console.dir/t_print.cpp.o"
   "CMakeFiles/t_console.dir/t_console.cpp.o"
   "libt_console.pdb"
   "libt_console.a"

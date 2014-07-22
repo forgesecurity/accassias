@@ -93,6 +93,8 @@ string
 compiler/syntax/t_function.h
 t_identifier.h
 compiler/syntax/t_identifier.h
+map
+-
 
 compiler/syntax/t_identifier.h
 t_symbol.h
@@ -150,6 +152,14 @@ compiler/data_structures/tree/t_dotcfgtreevisitor.h
 compiler/gencode/t_threeaddresscode.h
 compiler/compiler/gencode/t_threeaddresscode.h
 
+console/t_print.h
+vector
+-
+string
+-
+compiler/gencode/t_threeaddress.h
+console/compiler/gencode/t_threeaddress.h
+
 console/t_time.h
 sys/time.h
 -
@@ -204,11 +214,37 @@ vector
 string
 -
 
+static_analysis/t_basicblock.h
+compiler/gencode/t_threeaddresscode.h
+static_analysis/compiler/gencode/t_threeaddresscode.h
+data_structures/graph/t_node.h
+static_analysis/data_structures/graph/t_node.h
+
+static_analysis/t_control_flow_graph.h
+compiler/gencode/t_threeaddresscode.h
+static_analysis/compiler/gencode/t_threeaddresscode.h
+static_analysis/t_static_analysis.h
+static_analysis/static_analysis/t_static_analysis.h
+static_analysis/t_basicblock.h
+static_analysis/static_analysis/t_basicblock.h
+
+static_analysis/t_static_analysis.h
+data_structures/tree/t_tree.h
+static_analysis/data_structures/tree/t_tree.h
+compiler/gencode/t_threeaddresscode.h
+static_analysis/compiler/gencode/t_threeaddresscode.h
+compiler/gencode/t_threeaddress.h
+static_analysis/compiler/gencode/t_threeaddress.h
+
 virtual_machine/t_vm.h
+console/t_print.h
+virtual_machine/console/t_print.h
 compiler/gencode/t_gencode.h
 virtual_machine/compiler/gencode/t_gencode.h
 compiler/gencode/t_opcode.h
 virtual_machine/compiler/gencode/t_opcode.h
 multi_precision/t_mpgeneric.h
 virtual_machine/multi_precision/t_mpgeneric.h
+static_analysis/t_control_flow_graph.h
+virtual_machine/static_analysis/t_control_flow_graph.h
 

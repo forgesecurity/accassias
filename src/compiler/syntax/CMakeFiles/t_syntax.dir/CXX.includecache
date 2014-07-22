@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/eric/perso/accassias/src/compiler/syntax/t_class.cpp
-t_class.h
-/home/eric/perso/accassias/src/compiler/syntax/t_class.h
-iostream
--
-sstream
--
-
 /home/eric/perso/accassias/src/compiler/syntax/t_class.h
 t_identifier.h
 /home/eric/perso/accassias/src/compiler/syntax/t_identifier.h
@@ -24,20 +16,10 @@ map
 string
 -
 
-/home/eric/perso/accassias/src/compiler/syntax/t_function.cpp
-t_function.h
-/home/eric/perso/accassias/src/compiler/syntax/t_function.h
-
 /home/eric/perso/accassias/src/compiler/syntax/t_function.h
 t_identifier.h
 /home/eric/perso/accassias/src/compiler/syntax/t_identifier.h
-
-/home/eric/perso/accassias/src/compiler/syntax/t_identifier.cpp
-t_identifier.h
-/home/eric/perso/accassias/src/compiler/syntax/t_identifier.h
-iostream
--
-sstream
+map
 -
 
 /home/eric/perso/accassias/src/compiler/syntax/t_identifier.h
@@ -48,10 +30,6 @@ string
 stack
 -
 
-/home/eric/perso/accassias/src/compiler/syntax/t_identifiervertex.cpp
-t_identifiervertex.h
-/home/eric/perso/accassias/src/compiler/syntax/t_identifiervertex.h
-
 /home/eric/perso/accassias/src/compiler/syntax/t_identifiervertex.h
 t_identifier.h
 /home/eric/perso/accassias/src/compiler/syntax/t_identifier.h
@@ -59,10 +37,6 @@ string
 -
 vector
 -
-
-/home/eric/perso/accassias/src/compiler/syntax/t_symbol.cpp
-t_symbol.h
-/home/eric/perso/accassias/src/compiler/syntax/t_symbol.h
 
 /home/eric/perso/accassias/src/compiler/syntax/t_symbol.h
 ostream
@@ -113,10 +87,6 @@ t_class.h
 /home/eric/perso/accassias/src/compiler/syntax/t_class.h
 map
 -
-
-/home/eric/perso/accassias/src/compiler/syntax/t_variable.cpp
-t_variable.h
-/home/eric/perso/accassias/src/compiler/syntax/t_variable.h
 
 /home/eric/perso/accassias/src/compiler/syntax/t_variable.h
 t_identifier.h
@@ -173,6 +143,8 @@ compiler/lexical/t_token.h
 compiler/syntax/t_function.h
 t_identifier.h
 compiler/syntax/t_identifier.h
+map
+-
 
 compiler/syntax/t_symbol.h
 ostream

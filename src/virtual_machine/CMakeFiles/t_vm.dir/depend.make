@@ -18,8 +18,10 @@ virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: compiler/syntax/t_identifiervert
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: compiler/syntax/t_symbol.h
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: compiler/syntax/t_syntax.h
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: compiler/t_compiler.h
+virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: console/t_print.h
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: console/t_time.h
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: data_structures/graph/t_color.h
+virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: data_structures/graph/t_depth_first_search.h
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: data_structures/graph/t_graph.h
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: data_structures/graph/t_node.h
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: data_structures/tree/t_dotcfgtreevisitor.h
@@ -31,4 +33,9 @@ virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: multi_precision/t_mpgeneric.h
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: multi_precision/t_mpinteger.h
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: multi_precision/t_mppolynomial.h
 virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: multi_precision/t_string.h
+virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: static_analysis/t_basicblock.h
+virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: static_analysis/t_control_flow_graph.h
+virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: static_analysis/t_data_flow.h
+virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: static_analysis/t_flow.h
+virtual_machine/CMakeFiles/t_vm.dir/t_vm.cpp.o: static_analysis/t_static_analysis.h
 

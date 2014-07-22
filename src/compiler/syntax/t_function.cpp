@@ -5,6 +5,7 @@
 {
   this->nbargs = 0;
   this->nblocalvariables = 0;
+  this->variables = new std::map<std::string, t_identifier *>;
 }
 
   t_function::t_function(unsigned int line, unsigned int column, s_symbol symbol, int addr) 
@@ -13,6 +14,7 @@
   this->addr = addr;
   this->nbargs = 0;
   this->nblocalvariables = 0;
+  this->variables = new std::map<std::string, t_identifier *>;
 }
 
   t_function::t_function(unsigned int line, unsigned int column, s_symbol symbol, std::string &lexeme) 
@@ -20,6 +22,7 @@
 {
   this->nbargs = 0;
   this->nblocalvariables = 0;
+  this->variables = new std::map<std::string, t_identifier *>;
 }
 
   t_function::t_function(unsigned int line, unsigned int column, s_symbol symbol, std::string &lexeme, int addr) 
@@ -27,6 +30,7 @@
 {
   this->nbargs = 0;
   this->nblocalvariables = 0;
+  this->variables = new std::map<std::string, t_identifier *>;
 }
 
   t_function::t_function(unsigned int line, unsigned int column, s_symbol symbol, std::string &lexeme, int addr, unsigned int nbargs) 
@@ -34,6 +38,7 @@
 {
   this->nbargs = nbargs;
   this->nblocalvariables = 0;
+  this->variables = new std::map<std::string, t_identifier *>;
 }
 
   t_function::t_function(unsigned int line, unsigned int column, s_symbol symbol, std::string &lexeme, int addr, unsigned int nbargs, unsigned int nblocalvariables) 
@@ -41,6 +46,7 @@
 {
   this->nbargs = nbargs;
   this->nblocalvariables = nblocalvariables;
+  this->variables = new std::map<std::string, t_identifier *>;
 }
 
 void t_function::addarg()
@@ -56,6 +62,16 @@ unsigned int t_function::getnbargs()
 void t_function::setnbargs(unsigned int nbargs)
 {
   this->nbargs = nbargs;
+}
+
+std::map<std::string, t_identifier *> *t_function::getvariables()
+{
+  return this->variables;
+}
+
+void t_function::setvariables(std::map<std::string, t_identifier *> *variables)
+{
+  this->variables = variables;
 }
 
 unsigned int t_function::getnblocalvariables()

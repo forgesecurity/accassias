@@ -1,4 +1,5 @@
 #include "t_threeaddress.h"
+#include "console/t_print.h"
 #include <sstream>
 #include <iostream>
 
@@ -99,17 +100,6 @@ void t_threeaddress::setaddrarg1(int addr_arg1)
 void t_threeaddress::setaddrarg2(int addr_arg2)
 {
   this->addr_arg2 = addr_arg2;
-}
-
-std::string printvar(int addr)
-{
-  std::stringstream streamtemp;
-  std::string temp("temp");
-
-  streamtemp << addr;
-  temp += streamtemp.str();
-
-  return temp;
 }
 
 std::ostream &operator<<(std::ostream &out, t_threeaddress &threeaddress)
@@ -281,15 +271,21 @@ std::ostream &operator<<(std::ostream &out, t_threeaddress &threeaddress)
 
     case TAC_ASSIGN_DECLR:
       { 
-        out << printvar(threeaddress.getaddrresult())
+        out << t_print::printvar(threeaddress.getaddrresult())
           << " ; "; 
         break;
       }
 
     case TAC_ASSIGN_DECLR_ARRAY:
       { 
-        out << printvar(threeaddress.getaddrresult())
+        out << t_print::printvar(threeaddress.getaddrresult())
           << "[" << threeaddress.getaddrarg1() << "] ; "; 
+        break;
+      }
+
+    case TAC_ASSIGN_INCLUDE:
+      { 
+        out << "include " << threeaddress.getaddrarg1();
         break;
       }
 
@@ -299,116 +295,140 @@ std::ostream &operator<<(std::ostream &out, t_threeaddress &threeaddress)
         break;
       }
 
+    case TAC_ASSIGN_FPUTS:
+      { 
+        out << "fputs " << threeaddress.getaddrarg1();
+        break;
+      }
+
+    case TAC_ASSIGN_CFG_DOT:
+      { 
+        out << "cfg_dot " << threeaddress.getaddrarg1();
+        break;
+      }
+
+    case TAC_ASSIGN_CFG_COMPUTE:
+      { 
+        out << "cfg_compute " << threeaddress.getaddrarg1();
+        break;
+      }
+
+    case TAC_ASSIGN_AST_DOT:
+      { 
+        out << "ast_dot " << threeaddress.getaddrarg1();
+        break;
+      }
+
     case TAC_ASSIGN_FACTOR_ARRAY:
       { 
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1()) << "[" << printvar(threeaddress.getaddrarg2()) << "]"; 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1()) << "[" << t_print::printvar(threeaddress.getaddrarg2()) << "]"; 
         break;
       }
 
     case TAC_ASSIGN_ARRAY:
       { 
-        out << printvar(threeaddress.getaddrresult()) << "[" << printvar(threeaddress.getaddrarg1()) << "]"
-          << " = " << printvar(threeaddress.getaddrarg2()); 
+        out << t_print::printvar(threeaddress.getaddrresult()) << "[" << t_print::printvar(threeaddress.getaddrarg1()) << "]"
+          << " = " << t_print::printvar(threeaddress.getaddrarg2()); 
         break;
       }
 
     case TAC_ASSIGNCA:
       {
-        out << printvar(threeaddress.getaddrresult())
+        out << t_print::printvar(threeaddress.getaddrresult())
           << " = call " << threeaddress.getconst1(); 
         break;
       }
 
     case TAC_ASSIGNL:
       {
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1()); 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1()); 
         break;
       }
 
     case TAC_ASSIGNV:
       {
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1()); 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1()); 
         break;
       }
 
     case TAC_ASSIGNC:
       {
-        out << printvar(threeaddress.getaddrresult())
+        out << t_print::printvar(threeaddress.getaddrresult())
           << " = " << threeaddress.getconst1(); 
         break;
       }
 
     case TAC_ASSIGNS:
       {
-        out << printvar(threeaddress.getaddrresult())
+        out << t_print::printvar(threeaddress.getaddrresult())
           << " = " << threeaddress.getconst1(); 
         break;
       }
 
     case TAC_ASSIGN_INF:
       {
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1()) 
-          << " < " << printvar(threeaddress.getaddrarg2()); 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1()) 
+          << " < " << t_print::printvar(threeaddress.getaddrarg2()); 
         break;
       }
 
     case TAC_ASSIGN_INFEQUAL:
       {
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1()) 
-          << " <= " << printvar(threeaddress.getaddrarg2()); 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1()) 
+          << " <= " << t_print::printvar(threeaddress.getaddrarg2()); 
         break;
       }
 
     case TAC_ASSIGN_SUP:
       {
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1()) 
-          << " > " << printvar(threeaddress.getaddrarg2()); 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1()) 
+          << " > " << t_print::printvar(threeaddress.getaddrarg2()); 
         break;
       }
 
     case TAC_ASSIGN_SUPEQUAL:
       {
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1()) 
-          << " >= " << printvar(threeaddress.getaddrarg2()); 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1()) 
+          << " >= " << t_print::printvar(threeaddress.getaddrarg2()); 
         break;
       }
 
     case TAC_ASSIGN_ADD:
       {
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1()) 
-          << " + " << printvar(threeaddress.getaddrarg2()); 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1()) 
+          << " + " << t_print::printvar(threeaddress.getaddrarg2()); 
         break;
       }
 
     case TAC_ASSIGN_SUB:
       {
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1())
-          << " - " << printvar(threeaddress.getaddrarg2()); 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1())
+          << " - " << t_print::printvar(threeaddress.getaddrarg2()); 
         break;
       }
 
     case TAC_ASSIGN_DIV:
       {
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1()) 
-          << " / " << printvar(threeaddress.getaddrarg2()); 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1()) 
+          << " / " << t_print::printvar(threeaddress.getaddrarg2()); 
         break;
       }
 
     case TAC_ASSIGN_MUL:
       {
-        out << printvar(threeaddress.getaddrresult())
-          << " = " << printvar(threeaddress.getaddrarg1()) 
-          << " * " << printvar(threeaddress.getaddrarg2()); 
+        out << t_print::printvar(threeaddress.getaddrresult())
+          << " = " << t_print::printvar(threeaddress.getaddrarg1()) 
+          << " * " << t_print::printvar(threeaddress.getaddrarg2()); 
         break;
       }
 

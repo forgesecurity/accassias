@@ -24,8 +24,8 @@ enum s_symbol
   S_FUNCTION,
   S_RETURN,
   S_RETURN_WITHOUT_VALUE,
-  S_VARIABLE,
-  S_VARIABLE_CLASS,
+  S_VARIABLE_LOCAL,
+  S_VARIABLE_GLOBAL,
   S_NUMBER,
   S_COMMA,
   S_DOTCOMMA,
@@ -100,8 +100,8 @@ enum s_symbol
 #define L_FUNCTION "function"
 #define L_RETURN "return"
 #define L_RETURN_WITHOUT_VALUE "return_without_value"
-#define L_VARIABLE "variable_symbol"
-#define L_VARIABLE_CLASS "variable_symbol_class"
+#define L_VARIABLE_LOCAL "variable_locale"
+#define L_VARIABLE_GLOBAL "variable_globale"
 #define L_NUMBER "number"
 #define L_COMMA "comma"
 #define L_DOTCOMMA "dotcomma"

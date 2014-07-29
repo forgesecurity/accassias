@@ -20,22 +20,6 @@ virtual_machine/t_vm.h
 console/t_time.h
 /home/eric/perso/accassias/src/console/console/t_time.h
 
-/home/eric/perso/accassias/src/console/t_print.cpp
-t_print.h
-/home/eric/perso/accassias/src/console/t_print.h
-virtual_machine/t_vm.h
-/home/eric/perso/accassias/src/console/virtual_machine/t_vm.h
-compiler/gencode/t_gencode.h
-/home/eric/perso/accassias/src/console/compiler/gencode/t_gencode.h
-
-/home/eric/perso/accassias/src/console/t_print.h
-vector
--
-string
--
-compiler/gencode/t_threeaddress.h
-/home/eric/perso/accassias/src/console/compiler/gencode/t_threeaddress.h
-
 compiler/gencode/t_gencode.h
 compiler/syntax/t_syntax.h
 compiler/gencode/compiler/syntax/t_syntax.h

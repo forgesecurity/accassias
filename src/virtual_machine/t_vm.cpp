@@ -98,7 +98,7 @@ void t_vm::copy_code_to_mem(std::vector<int> &code)
 
 void t_vm::include(std::string file)
 {
-  std::cout << file << " has been included" << std::endl; 
+  //std::cout << std::endl << file << " has been included" << std::endl; 
   this->get_gencode()->get_syntax()->get_lexical()->set_file_source(file.c_str());
   this->start();
 }
@@ -129,7 +129,7 @@ void t_vm::start()
     }
 
     if(nb_comp)
-      std::cout << "eee" << str_found << std::endl;
+      std::cout << str_found << std::endl;
   }
   else
   {
@@ -408,8 +408,6 @@ t_opcode t_vm::execute()
 
     case SYSTEM:
       {
-        std::cout << "SYSTEM" << std::endl;
-
         std::ostringstream oss;
         oss << *mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]];
 
@@ -422,7 +420,7 @@ t_opcode t_vm::execute()
         else if(str == "show_tac")
         {
           this->get_print()->set_print_tac(true);
-
+          this->get_print()->tac(get_gencode()->get_gentac()->get_tac()->get_code());
         }
 
         else if(str == "hide_tac")
@@ -434,19 +432,20 @@ t_opcode t_vm::execute()
         else if(str == "show_code")
         {
           this->get_print()->set_print_code(true);
-
+          this->get_print()->code(get_gencode());
         }
 
         else if(str == "hide_code")
         {
           this->get_print()->set_print_code(false);
-
         }
 
         else if(str == "show_statevm")
         {
           this->get_print()->set_print_statevm(true);
-
+          this->get_print()->statevm_start();
+          this->get_print()->statevm(this);
+          this->get_print()->statevm_end();
         }
 
         else if(str == "hide_statevm")
@@ -486,8 +485,6 @@ t_opcode t_vm::execute()
     case PRINT:
       {
         unsigned int test = this->mem[this->bel + this->mem[this->co + 1]];
-
-        std::cout << "PRINT = " << test << std::endl;
         std::cout << *mpgenerics[this->mem[this->bel + this->mem[this->co + 1]]] << std::endl;
 
         this->co += 2;
@@ -540,10 +537,10 @@ t_opcode t_vm::execute()
           t_dotcfgtree *dotcfgtreevisitor = new t_dotcfgtree;
           dotcfgtreevisitor->openfile(out1.str().c_str());
           t_depth_first_search::visit<t_dotcfgtree, t_cfg, t_threeaddresscode>(dotcfgtreevisitor, this->control_flow_graph->getgraph());
-          std::cout << "control flow graph has been printed into " << out1.str().c_str() << std::endl;
+          std::cout << std::endl << "control flow graph has been printed into " << out1.str().c_str() << std::endl;
         }
         else
-          std::cout << "control flow graph must be computed" << std::endl;
+          std::cout << std::endl << "control flow graph must be computed" << std::endl;
 
         this->co += 2;
         break;
@@ -568,7 +565,7 @@ t_opcode t_vm::execute()
         dotsyntaxtree->openfile(out1.str().c_str());
         t_depth_first_search::visit<t_dotsyntaxtree, t_syntaxtree, t_symbol>(dotsyntaxtree, get_gencode()->get_syntax()->gettree());
 
-        std::cout << "abstract syntax tree has been printed into " << out1.str().c_str() << std::endl;
+        std::cout << std::endl << "abstract syntax tree has been printed into " << out1.str().c_str() << std::endl;
 
         this->co += 2;
         break;

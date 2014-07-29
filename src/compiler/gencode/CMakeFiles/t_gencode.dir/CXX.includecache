@@ -60,16 +60,6 @@ stdlib.h
 
 /home/eric/perso/accassias/src/compiler/gencode/t_tacsymbol.h
 
-/home/eric/perso/accassias/src/compiler/gencode/t_threeaddress.cpp
-t_threeaddress.h
-/home/eric/perso/accassias/src/compiler/gencode/t_threeaddress.h
-console/t_print.h
-/home/eric/perso/accassias/src/compiler/gencode/console/t_print.h
-sstream
--
-iostream
--
-
 /home/eric/perso/accassias/src/compiler/gencode/t_threeaddress.h
 ostream
 -
@@ -201,14 +191,6 @@ data_structures/tree/t_dotcfgtreevisitor.h
 compiler/data_structures/tree/t_dotcfgtreevisitor.h
 compiler/gencode/t_threeaddresscode.h
 compiler/compiler/gencode/t_threeaddresscode.h
-
-console/t_print.h
-vector
--
-string
--
-compiler/gencode/t_threeaddress.h
-console/compiler/gencode/t_threeaddress.h
 
 data_structures/graph/t_color.h
 

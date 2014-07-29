@@ -6,8 +6,8 @@ int main(int argc, char **argv)
   t_console *console = new t_console;  
   console->read();
 
-  console->get_vm()->include("./stdlib.aca");
   console->get_vm()->include("./poly.aca");
+  console->get_vm()->include("./stdlib.aca");
   console->get_vm()->include("./ast.aca");
   console->get_vm()->include("./cfg.aca");
   console->get_vm()->include("./data_flow.aca");

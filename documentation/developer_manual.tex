@@ -1,20 +1,38 @@
-\documentclass[a4paper, titlepage]{book}
+\documentclass[a4paper]{report}
 
 \usepackage[latin1]{inputenc} % accents
 \usepackage[T1]{fontenc}      % caractères français
-\usepackage{geometry}         % marges
 \usepackage[francais]{babel}  % langue
 \usepackage{graphicx}         % images
 \usepackage{verbatim}         % texte préformaté
+\usepackage{listings}
+\usepackage[]{algorithm2e}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[table]{xcolor}
 
-\title{Rapport de stage}      % renseigne le titre
-\author{Prénom Nom}           %   "   "   l'auteur
-\date{18 juin 2007}           %   "   "   la future date de parution
-
-\pagestyle{headings}          % affiche un rappel discret (en haut à gauche)
-                              % de la partie dans laquel on se situe
+\addto\captionsfrancais{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {Sommaire}%
+}
 
 \begin{document}
+
+\begin{titlepage}
+\fontfamily{phv}\selectfont
+\vspace*{\stretch{1}}
+\begin{flushright}\LARGE
+Accassias
+\end{flushright}
+\hrule
+\begin{flushleft}\huge\bfseries
+Developer Manual
+\end
+{flushleft}
+\vspace*{\stretch{2}}
+\begin{center}
+Eric Therond
+\end{center}
+\end{titlepage}
 
 \tableofcontents
 
@@ -23,7 +41,7 @@
   \section{Présentation d'Accassias}
 
     \subsection{Description générale}
-\textit{Accassias} est un outil pour l'aide à l'analyse statique de codes sources. Il est écrit dans un but d'apprentissage, à la fois l'étude de la programmation en \textit{C++} et la recherche automatisée de défauts logiciel.
+\textit{Accassias} est un outil pour l'aide à l'analyse statique de codes sources. Il est écrit dans un but d'apprentissage, à la fois pour l'étude de la programmation en \textit{C++} et la recherche automatisée de défauts logiciel.
 
   \newpage
 
@@ -31,451 +49,183 @@
 
   \section{Analyse lexicale}
 
-\textit{Accassias} est un outil pour 
+\begin{tabular}{ | l | l | }
+\hline
+\rowcolor{gray}Symbole lexical & Chaine \\
+\hline
+T\_READPOL & t\_readpol \\
+\hline
+T\_PRINT & t\_print \\
+\hline
+T\_CLASS & class \\
+\hline
+T\_NEW & new \\
+\hline
+T\_FUNCTION & function \\
+\hline
+T\_IDENTIFIER & ([a-z]\_)* \\
+\hline
+T\_STRING & ".*" \\
+\hline
+T\_DECLR & declr \\
+\hline
+T\_VARIABLE & \$ \\
+\hline
+T\_NUMBER & [0-9]* \\
+\hline
+T\_COMMA & , \\
+\hline
+T\_DOTCOMMA & ; \\
+\hline
+T\_RIGHTBRACKET & ] \\
+\hline
+T\_LEFTBRACKET & [ \\
+\hline
+T\_RIGHTBRACE & \} \\
+\hline
+T\_LEFTBRACE & \{ \\
+\hline
+T\_DOUBLEQUOTE & " \\
+\hline
+T\_RIGHTPARENTHESIS & ) \\
+\hline
+T\_LEFTPARENTHESIS & ( \\
+\hline
+T\_EQUAL & = \\
+\hline
+T\_ADD & + \\
+\hline
+T\_SUB & - \\
+\hline
+T\_DIV &  \\
+\hline
+T\_MUL & * \\
+\hline
+T\_UNDEF &   \\
+\hline
+T\_END &   \\
+\hline
+T\_ERROR &   \\
+\hline
+T\_RETURN & return \\
+\hline
+T\_UP\_ARROW &   \\
+\hline
+T\_DOWN\_ARROW &   \\
+\hline
+T\_TAB & 	 \\
+\hline
+T\_IF & if \\
+\hline
+T\_ELSEIF & elseif \\
+\hline
+T\_ELSE & else \\
+\hline
+T\_FOR & for \\
+\hline
+T\_DO & do \\
+\hline
+T\_WHILE & while \\
+\hline
+T\_THIS & this \\
+\hline
+T\_SUP & > \\
+\hline
+T\_INF & < \\
+\hline
+T\_SUPEQUAL & >= \\
+\hline
+T\_INFEQUAL & <= \\
+\hline
+T\_SYSTEM & t\_system \\
+\hline
+T\_FPUTS & t\_fputs \\
+\hline
+T\_CFG\_DOT & t\_cfg\_dot \\
+\hline
+T\_CFG\_COMPUTE & t\_cfg\_compute \\
+\hline
+T\_AST\_DOT & t\_ast\_dot \\
+\hline
+T\_INCLUDE & t\_include \\
+\hline
+\end{tabular}
 
   \section{Analyse syntaxique}
 
-  \subsection{Instructions}
-  \subsubsection{Analyse syntaxique}
-
-un symbol S\_SUBLIST\_INSTRUCTIONS est crée est est rattaché au noeud S\_LIST\_INSTRUCTIONS
-
-  \subsubsection{Transformation en Three Address Code}
-
-TAC\_ASSIGN\_SUBINSTRUCTIONS avec comme arg1 node->getvertex()->getnblocalvariables().
-Sachant que getnblocalvariables vaut this->nbexprstermsfactors\_prog à la fin de l'analyse syntaxique
-
-  \subsubsection{Transformation en Opcodes}
-
-INSTRUCTIONS\\
-PILE\\
-(*it).getaddrarg1()\\
-
-  \subsection{Utilisation d'une expression}
-  \subsubsection{Analyse syntaxique}
-
-Un S\_EXPRESSION avec comme argument this->variables->size() est crée, on ajoute le symbol dans this->variables et on appelle ensuite term()
-Un S\_TERM avec comme argument this->variables->size() est crée, on ajoute le symbol dans this->variables et on appelle ensuite factor()
-Un S\_FACTOR avec comme argument this->variables->size() est crée, on ajoute le symbol dans this->variables et
-on peut alors avec un entier par exemple :
-un S\_NUMBER est crée
-
-  \subsubsection{Transformation en Three Address Code}
-
-
-le S\_EXPRESSION est transformé en TAC\_ASSIGNV, node->getvertex()->getaddr(), node->getchild(0)->getvertex()->getaddr() avec node->getvertex()->getaddr() l'adresse de S\_EXPRESSION soit this->variables->size() et node->getchild(0)->getvertex()->getaddr() l'adresse de S\_TERM soit this->variables->size()
-le S\_TERM est transformé en TAC\_ASSIGNV, node->getvertex()->getaddr(), node->getchild(0)->getvertex()->getaddr() avec node->getvertex()->getaddr() l'adresse de S\_EXPRESSION soit this->variables->size() et node->getchild(0)->getvertex()->getaddr() l'adresse de S\_FACTOR soit this->variables->size()
-le S\_FACTOR est transformé dans le cas d'un nombre en :
-TAC\_ASSIGNC, node->getvertex()->getaddr(), node->getchild(0)->getvertex()->getlexeme() avec node->getvertex()->getaddr() l'adresse de S\_FACOTR soit this->variables->size() et node->getchild(0)->getvertex()->getlexeme() le nombre
-
-
-  \subsubsection{Transformation en Opcodes}
-
-
-EMPC base longueur entier (exemple : 10 2 10) \\
-DEPL (*it).getaddrresult() (exemple : 5) \\
-EMPL (*it).getaddrarg1() (exemple : 4) \\
-DEPL (*it).getaddrresult() (exemple : 5) \\
-EMPL (*it).getaddrarg1() (exemple : 3) \\
-DEPL (*it).getaddrresult() (exemple : 4)
-
-
-  \subsection{Déclaration d'une classe}
-  \subsubsection{Analyse syntaxique}
-	
-si le mot clé T\_CLASS est trouvé alors this->isclass = true, on recherche un identifant dans this->classes, s'il n'est pas trouvé on crée un S\_CLASS lexical->getcurrentlexeme(), this->nbclasses et on l'insère dans classes.
-On incrémente this->nbclasses et this->current_classe = classe
-On crée un nouveau map class_variables de d'identifiants
-On pousse class_variables dans chained_variables   
-Et this->variables = class_variables;
-
-puis on execute this->bloc_classe(node, node);
-
-puis this->isclass = false;
-et this->variables = this->chained_variables[0];
-
-puis on crée un S_CLASS_END
-
-  \subsubsection{Transformation en Three Address Code}
-
-case S_CLASS transformé en TAC_ASSIGN_CLASS, node->getvertex()->getaddr(), node->getvertex()->getnblocalvariables(), node->getvertex()->getlexeme()
-et S_CLASS_END transformé en TAC_ASSIGN_ENDCLASS, node->getid(), node->getid()
-
-  \subsubsection{Transformation en Opcodes}
-
-TAC_ASSIGN_CLASS:
-current_functions = (*this->syntax->getclasses())[(*it).getconst1()]->getmethods();
-
-TAC_ASSIGN_ENDCLASS:
-this->current_functions = this->syntax->getfunctions();
-
-  \subsection{Déclaration d'une fonction}
-  \subsubsection{Analyse syntaxique}
-
-Si le mot clé T\_FUNCTION es trouvé alors this->isfunction = true
-Si le nom de la fonction n'est pas référencé dans la table de fonctions ou de classes alors
-Créer un S_FUNCTION S_FUNCTION, lexical->getcurrentlexeme(), this->nbfunctions
-Si on est dans une classe et que la fonction n'appartient pas aux méthodes de la classe alors
-l'insérer dans this->current\_classe->getmethods()
-Sinon l'insérer dans this->functions
-    
-this->current\_function = function;
-this->nbfunctions ++;
-
-std::map<std::string, t\_identifier *> *local\_variables = new std::map<std::string, t\_identifier *>;
-chained\_variables.push_back(local\_variables);
-this->variables = local\_variables;
-
-function->setnblocalvariables(this->nbexprstermsfactors);
-
-en cas de retour en crée un 
-unsigned int id\_variable = this->expression(tree, syntaxnode);
-S\_RETURN, current\_function->getlexeme(), id\_variable, current\_function->getnbargs(), current\_function->getnblocalvariables());
-
-sinon un S\_RETURN\_WITHOUT\_VALUE, function->getlexeme(), function->getaddr(), function->getnbargs(), function->getnblocalvariables());
-
-this->isfunction = false;
-this->variables = this->chained_variables[0];
-
-  \subsubsection{Transformation en Three Address Code}
-
-S_FUNCTION est transformé en TAC_ASSIGN_FUNCTION, node->getvertex()->getaddr(), node->getvertex()->getnblocalvariables(), node->getvertex()->getlexeme())); 
-ou node->getvertex()->getnblocalvariables() vaut this->nbexprstermsfactors
-S_RETURN_WITHOUT_VALUE  est transformé en TAC_ASSIGN_RETURN_WITHOUT_VALUE, node->getvertex()->getaddr(), node->getvertex()->getnbargs(), node->getvertex()->getlexeme())); 
-S_RETURN est transformé en TAC_ASSIGN_RETURN, node->getvertex()->getaddr(), node->getvertex()->getnbargs(), node->getvertex()->getlexeme())); 
-
-  \subsubsection{Transformation en Opcodes}
-
-TAC_ASSIGN_FUNCTION
-(*this->current\_functions)[(*it).getconst1()]->setaddr(imem);
-FUNCTION (*it).getaddrresult()
-PILE (*it).getaddrarg1()
-
-TAC_ASSIGN_RETURN
-EMPL (*it).getaddrresult()
-RETURN (*it).getaddrarg1()
-         
-TAC_ASSIGN_RETURN_WITHOUT_VALUE
-RETURN (*it).getaddrarg1()
-
-  \subsection{Déclaration d'une variable}
-  \subsubsection{Analyse syntaxique}
-L'analyse syntaxique est principalement implémentée dans la classe \textbf{compiler/syntax/t\_syntax.cpp}
-
-Les compteurs nbexprstermsfactors et nbexprstermsfactors\_prog sont incrémentés de 1
-
-Si le mot clé declr est trouvé puis une variable \$identifiant on vérifie si cette variable est déclarée dans une classe (isclass = true), si c'est le cas alors on vérifie que son nom n'est pas déjà pris dans le vecteur des variables de la classe courante (current\_classe->getvariables()) et on l'ajoute (current\_classe->getvariables()->insert()). On crée alors un t\_identifier de type S\_DECLARATION avec comme identifiant numérique current\_classe->getvariables()->size(). Dans le cas ou on est pas dans la déclaration d'une variable de classe, même chose mais le vecteur variables est utilisé en remplacement de current\_classe.\\\\
-On crée ensuite un t\_identifier de type S\_VARIABLE puis S\_IDENTIFIER puis S\_DOTCOMMA
-
-
-  \subsubsection{Transformation en Three Address Code}
-
-Seul le t\_identifier de type S\_DECLARATION entre en jeu dans le construction du three address code TAC\_ASSIGN\_DECLR avec comme argurment node->getvertex()->getaddr() qui est la valeur de current\_classe->getvariables()->size() ou variables->size()
-
-
-  \subsubsection{Transformation en Opcodes}
-
-Aucun code généré
-
-
-\subsection{Affectation d'une variable}
-  \subsubsection{Analyse syntaxique}
-
-On crée un S\_AFFECTATION avec comme argument identifier\_found->getaddr() puis un S\_EQUAL
-
-  \subsubsection{Transformation en Three Address Code}
-
-S\_AFFECTATION est transformé en TAC\_ASSIGNV, node->getvertex()->getaddr(), node->getchild(0)->getchild(0)->getvertex()->getaddr() ou node->getvertex()->getaddr() est l'adresse de S\_AFFECTATION soit identifier\_found->getaddr() et node->getchild(0)->getchild(0)->getvertex()->getaddr(), l'adresse de S\_EXPRESSION c'est à dire this->variables->size()
- 
-
-  \subsubsection{Transformation en Opcodes}
-
-EMPL (*it).getaddrarg1() (exemple : 3)\\
-DEPL (*it).getaddrresult() (exemple : 0)\\
-
-\subsection{Utilisation d'une variable}
-  \subsubsection{Analyse syntaxique}
-
-On crée un map variables\_temp qui pointe sur le map de variables globales (this->variables).
-Si la variable est une classe alors variables\_temp pointe sur les variables de classe (identifier\_class\_found->getclass()->getvariables()). 
-Si on trouve this alors variables\_temp pointe sur les variables de la classe courante (this->current\_classe->getvariables())
-Si une variable est trouvé dans variables\_temp alors on crée un t\_symbol de type S\_VARIABLE avec comme argument identifier\_found->getaddr()
-
-  \subsubsection{Transformation en Three Address Code}
-
-S\_VARIABLE est transformé en TAC\_ASSIGNV, node->getvertex()->getaddr(), node->getchild(0)->getvertex()->getaddr()));
-ou node->getvertex()->getaddr() est l'adresse de S\_FACTOR soit this->variables->size() et node->getchild(0)->getvertex()->getaddr() l'adresse de S\_VARIABLE soit identifier\_found->getaddr()
-
-  \subsubsection{Transformation en Opcodes}
-
-EMPL\\
-(*it).getaddrarg1()\\
-DEPL\\
-(*it).getaddrresult()\\
-
-  \subsubsection{Exemple 1 : utilisation d'une variable globale}
-
-
 \begin{verbatim}
-declr $a;
-declr $b;
-declr $c;
+aca ::= instruction*;
 
-$a = 10;
-$c = 1000;
-$b = 90;
+instruction ::= for_instruction | if_instruction | system_instruction 
+| readpol_instruction | include_instruction | print_instruction 
+| fputs_instruction | cfg_dot_instruction | cfg_compute_instruction
+| ast_dot_instruction | return_instruction | call_instruction
+| variable | variable_declaration | function_declaration | class_declaration
+
+for_instruction ::= T_FOR T_LEFTPARENTHESIS variable T_DOTCOMMA expression T_DOTCOMMA 
+variable T_RIGHTPARENTHESIS bloc_instructions
+
+if_instruction ::= T_IF T_LEFTPARENTHESIS expression T_RIGHTPARENTHESIS bloc_instructions 
+(T_ELSEIF T_LEFTPARENTHESIS expression T_RIGHTPARENTHESIS bloc_instructions)* 
+(T_ELSE bloc_instructions)?
+
+system_instruction ::= T_SYSTEM
+
+readpol_instruction ::= T_READPOL
+
+include_instruction ::= T_INCLUDE
+
+print_instruction ::= T_PRINT
+
+fputs_instruction ::= T_FPUTS
+
+cfg_dot_instruction ::= T_CFG_DOT
+
+cfg_compute_instruction ::= T_CFG_COMPUTE
+
+ast_dot_instruction ::= T_AST_DOT
+
+return_instruction ::= T_RETURN expression T_DOTCOMMA
+
+call_instruction ::= T_IDENTIFIER T_LEFTPARENTHESIS 
+((expression T_COMMA)* (expression T_COMMA))? T_RIGHTPARENTHESIS T_DOTCOMMA
+
+variable ::= T_VARIABLE (T_IDENTIFIER | T_THIS) (T_SUB T_SUP)? 
+((T_LEFTBRACKET expression T_RIGHTBRACKET)? variable_affectation) 
+| call_instruction
+
+variable_declaration ::= T_DECLR T_VARIABLE T_IDENTIFIER 
+(T_LEFTBRACKET expression T_RIGHTBRACKET)? variable_end
+
+function_declaration ::= T_FUNCTION T_IDENTIFIER T_LEFTPARENTHESIS 
+(T_DECLR variable_declaration)* (T_RIGHTPARENTHESIS | T_END) bloc_instructions
+
+class_declaration ::= T_CLASS T_IDENTIFIER bloc_classe
+
+expression ::= term ((T_ADD | T_SUB | T_INF | T_INFEQUAL | T_SUP | T_SUPEQUAL) term)?
+
+term ::= factor ((T_MUL | T_DIV) factor)?
+
+factor ::= (T_NUMBER | T_STRING | T_VARIABLE | T_IDENTIFIER | 
+(T_LEFTPARENTHESIS expression T_RIGHTPARENTHESIS)
+
+bloc_instructions ::=  T_LEFTBRACE (for_instruction | if_instruction | system_instruction
+| readpol_instruction | include_instruction | print_instruction | fputs_instruction
+| cfg_dot_instruction | cfg_compute_instruction | ast_dot_instruction | return_instruction
+| call_instruction | variable | variable_declaration)* (T_RIGHTBRACE | T_END)
+
+variable_affectation ::= T_EQUAL (T_NEW classe_instance | expression)? variable_end 
+
+variable_end ::=  T_RIGHTPARENTHESIS | T_DOTCOMMA
+
+bloc_classe ::= T_LEFTBRACE (function_declaration | variable_declaration | variable)* 
+(T_END | T_RIGHTBRACE)
+
+classe_instance ::= T_IDENTIFIER
+
 \end{verbatim}
-
-\includegraphics[scale=0.8]{example1vargb.eps}
-
-\begin{verbatim}
-jump 0
-instructions 
-subinstructions 12
-temp0;
-temp1;
-temp2;
-temp5 = 10
-temp4 = temp5
-temp3 = temp4
-temp0 = temp3
-temp8 = 1000
-temp7 = temp8
-temp6 = temp7
-temp2 = temp6
-temp11 = 90
-temp10 = temp11
-temp9 = temp10
-temp1 = temp9
-exit 4
-\end{verbatim}
-
-\begin{verbatim}
-JUMP 2
-INSTRUCTIONS 
-PILE 12
-EMPC 10 2 10
-DEPL 5
-EMPL 5
-DEPL 4
-EMPL 4
-DEPL 3
-EMPL 3
-DEPL 0
-EMPC 10 4 1000
-DEPL 8
-EMPL 8
-DEPL 7
-EMPL 7
-DEPL 6
-EMPL 6
-DEPL 2
-EMPC 10 2 90
-DEPL 11
-EMPL 11
-DEPL 10
-EMPL 10
-DEPL 9
-EMPL 9
-DEPL 1
-EXIT 
-\end{verbatim}
-
-\begin{verbatim}
----------------------------------------------------------------------------------------------------------------------------------
-|         co |        bel  |         sp | instruction                    |  stack                        
----------------------------------------------------------------------------------------------------------------------------------
-|          0 |          0  |      20000 | JUMP 2                         |  0
-|          2 |          0  |      20000 | INSTRUCTIONS                   |  0
-|          3 |      20001  |      20001 | PILE 12                        |  0 0
-|          5 |      20001  |      20013 | EMPC 10 2 10                   |  0 0 0 0 0 0 0 0 0 0 0 0 0 0
-|         10 |      20001  |      20014 | DEPL 5                         |  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-|         12 |      20001  |      20013 | EMPL 5                         |  0 0 0 0 0 0 0 0 0 0 0 0 0 0
-|         14 |      20001  |      20014 | DEPL 4                         |  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-|         16 |      20001  |      20013 | EMPL 4                         |  0 0 0 0 0 0 0 0 0 0 0 0 0 0
-|         18 |      20001  |      20014 | DEPL 3                         |  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-|         20 |      20001  |      20013 | EMPL 3                         |  0 0 0 0 0 0 0 0 0 0 0 0 0 0
-|         22 |      20001  |      20014 | DEPL 0                         |  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-|         24 |      20001  |      20013 | EMPC 10 4 1000                 |  0 0 0 0 0 0 0 0 0 0 0 0 0 0
-|         31 |      20001  |      20014 | DEPL 8                         |  0 1 0 0 0 0 0 0 0 0 0 0 0 0 0
-|         33 |      20001  |      20013 | EMPL 8                         |  1 0 0 0 1 0 0 0 0 0 0 0 0 0
-|         35 |      20001  |      20014 | DEPL 7                         |  0 1 0 0 0 1 0 0 0 0 0 0 0 0 0
-|         37 |      20001  |      20013 | EMPL 7                         |  1 0 0 0 1 1 0 0 0 0 0 0 0 0
-|         39 |      20001  |      20014 | DEPL 6                         |  0 1 0 0 0 1 1 0 0 0 0 0 0 0 0
-|         41 |      20001  |      20013 | EMPL 6                         |  1 0 0 0 1 1 1 0 0 0 0 0 0 0
-|         43 |      20001  |      20014 | DEPL 2                         |  0 1 0 0 0 1 1 1 0 0 0 0 0 0 0
-|         45 |      20001  |      20013 | EMPC 10 2 90                   |  1 0 0 0 1 1 1 0 0 0 1 0 0 0
-|         50 |      20001  |      20014 | DEPL 11                        |  0 2 0 0 0 1 1 1 0 0 0 1 0 0 0
-|         52 |      20001  |      20013 | EMPL 11                        |  2 2 0 0 1 1 1 0 0 0 1 0 0 0
-|         54 |      20001  |      20014 | DEPL 10                        |  0 2 2 0 0 1 1 1 0 0 0 1 0 0 0
-|         56 |      20001  |      20013 | EMPL 10                        |  2 2 2 0 1 1 1 0 0 0 1 0 0 0
-|         58 |      20001  |      20014 | DEPL 9                         |  0 2 2 2 0 1 1 1 0 0 0 1 0 0 0
-|         60 |      20001  |      20013 | EMPL 9                         |  2 2 2 2 1 1 1 0 0 0 1 0 0 0
-|         62 |      20001  |      20014 | DEPL 1                         |  0 2 2 2 2 1 1 1 0 0 0 1 0 0 0
-|         64 |      20001  |      20013 | EXIT                           |  2 2 2 2 1 1 1 0 0 0 1 2 0 0
----------------------------------------------------------------------------------------------------------------------------------
-\end{verbatim}
-
-
-
-  \subsubsection{Exemple 2 : utilisation d'une variable de classe}
-
-
-\begin{verbatim}
-declr $a;
-
-class poly
-{
-	declr $aaa;
-	declr $degree;
-
-	function readpol(declr $string)
-	{
-		t_readpol
-	}
-
-	function getdegree()
-	{
-		$this->aaa = 3;
-		$this->degree = 3;
-		return $this->degree;
-	}
-}
-\end{verbatim}
-
-\includegraphics[scale=0.8]{example1varclass.eps}
-
-\begin{verbatim}
-temp0; 
-temp1; 
-function 0
-temp2;
-readpol 
-return
-function 1
-temp2 = 3
-temp1 = temp2
-temp0 = temp1
-temp0 = temp0
-temp5 = 3
-temp4 = temp5
-temp3 = temp4
-temp1 = temp3
-temp8 = temp1
-temp7 = temp8
-temp6 = temp7
-return 6 0
-jump 0
-instructions 
-subinstructions -5
-temp0;
-exit 4
-\end{verbatim}
-
-\begin{verbatim}
-JUMP 66
-FUNCTION 0
-PILE 0
-READPOL -3
-RETURN 1
-FUNCTION 1
-PILE 9
-EMPC 10 1 3
-DEPL 2
-EMPL 2
-DEPL 1
-EMPL 1
-DEPL 0
-EMPL 0
-DEPL 0
-EMPC 10 1 3
-DEPL 5
-EMPL 5
-DEPL 4
-EMPL 4
-DEPL 3
-EMPL 3
-DEPL 1
-EMPL 1
-DEPL 8
-EMPL 8
-DEPL 7
-EMPL 7
-DEPL 6
-EMPL 6
-RETURN 0
-INSTRUCTIONS 
-PILE -5
-EXIT
-\end{verbatim}
-
-\begin{verbatim}
----------------------------------------------------------------------------------------------------------------------------------
-|         co |        bel  |         sp | instruction                    |  stack                        
----------------------------------------------------------------------------------------------------------------------------------
-|          0 |          0  |      20000 | JUMP 66                        |  0
-|         66 |          0  |      20000 | INSTRUCTIONS                   |  0
-|         67 |      20001  |      20001 | PILE -5                        |  0 0
-|         69 |      20001  |      19996 | EXIT                           | 
----------------------------------------------------------------------------------------------------------------------------------
-\end{verbatim}
-
-  \section{Machine virtuelle}
-
-La machine virtuelle est principalement implémentée dans la classe \textbf{virtual\_machine/t\_vm.cpp}\\\\
-co compteur ordinale \\
-bel base de l'espace local \\
-beg base de l'espace globale \\
-sp pointeur sur le haut de la pile \\
-nbmpgenerics nombre de mpgenerics \\
-
-\begin{tabular}{|c|c|}
-  \hline
-  OPCODE & Description \\
-  \hline
-  JUMP \textit{addr} & Sauter à l'adresse indiqué en argument \\
-  EMPC \textit{base} \textit{longueur} \textit{constante} & Convertir une constante (entier) situé en argument\\ & en mpgenerics et empiler son identitiant \\
-  EMPS \textit{longueur} \textit{string} & Convertir une chaine (string) situé en argument\\ en mpgenerics et empiler son identitiant \\
-  EMPL \textit{addr} & Empiler la valeur située à BEL + adresse situé en argument \\
-  EMPG \textit{addr} & Empiler la valeur située à BEG + adresse situé en argument \\
-  DEPL \textit{addr} & Mettre en mémoire à l'adresse BEL + adresse situé en argurment la valeur situé sur le haut de la pile \\
-  EMPT \textit{addr} & Récupérer le mparray situé en mémoire à l'adresse situé en argument \\
-  DEPT \textit{addr} & Récupérer le mparray situé en mémoire à l'adresse situé en argument \\
-  ADD & Récupérer les mpintegers situés sur le haut de la pile, les ajouter, stocker/remplacer le résultat dans le deuxième \\
-  SUB & Récupérer les mpintegers situés sur le haut de la pile, les soustraire, stocker/remplacer le résultat dans le deuxième \\
-  MUL & Récupérer les mpintegers situés sur le haut de la pile, les multiplier, stocker/remplacer le résultat dans le deuxième \\
-  DIV & Récupérer les mpintegers situés sur le haut de la pile, les diviser, stocker/remplacer le résultat dans le deuxième \\
-  INF & Récupérer les mpintegers situés sur le haut de la pile, mettre le résultat (booléen) sur le haut de la pile \\
-  INFEQUAL & Récupérer les mpintegers situés sur le haut de la pile, mettre le résultat (booléen) sur le haut de la pile \\
-  SUP & Récupérer les mpintegers situés sur le haut de la pile, mettre le résultat (booléen) sur le haut de la pile \\
-  SUPEQUAL & Récupérer les mpintegers situés sur le haut de la pile, mettre le résultat (booléen) sur le haut de la pile \\
-  CALL \textit{addr} & sauter à l'adresse situé en argument et mettre sur le haut de la pile l'adresse de l'instruction suivante \\
-  PILE \textit{entier} & l'adresse de haut de la pile est augmenté de valeur de l'argument \\
-  FUNCTION & mettre sur le haut de la pile la valeur de bel, puis bel = emplacement de la pile \\
-  INSTRUCTIONS & haut de la pile = bel, bel = adresse du haut de la pile \\
-  RETURN & la valeur situé à l'adresse de retour (bel - (arg + 3) est égal à la valeur situé en haut de la pile \\ & sp = bel, bel = haut de la pile, co = haut de la pile \\
-  EXIT & description \\
-  PRINT & description \\
-  SHOWTAC & description \\
-  HIDETAC & description \\
-  SHOWCODE & description \\
-  HIDECODE & description \\
-  SHOWSTATEVM & description \\
-  HIDESTATEVM & description \\
-  READPOL & description \\
-  END & description \\
-  EMPTIME & description \\
-  IFFALSE & description \\
-  \hline
-\end{tabular}
-
-\chapter{Etude}
 
 \appendix
-
-\chapter{Annexe A}
-
-\chapter{Annexe B}
 
 % \listoffigures
 % \listoftables

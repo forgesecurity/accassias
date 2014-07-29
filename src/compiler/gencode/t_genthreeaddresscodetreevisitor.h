@@ -284,7 +284,7 @@ class t_genthreeaddresscodetreevisitor : public t_treevisitor<N>
                   break; 
                 }
 
-              case S_VARIABLE:
+              case  S_VARIABLE_GLOBAL:
                 {
                   if(node->getnbchildren() > 1 && node->getchild(2)->getvertex()->getsymbol() == S_ARRAY)
                     this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_FACTOR_ARRAY, node->getvertex()->getaddr(), node->getchild(0)->getvertex()->getaddr(), node->getchild(2)->getvertex()->getaddr()));
@@ -295,6 +295,17 @@ class t_genthreeaddresscodetreevisitor : public t_treevisitor<N>
                   break;
                 }
 
+
+              case  S_VARIABLE_LOCAL:
+                {
+                  if(node->getnbchildren() > 1 && node->getchild(2)->getvertex()->getsymbol() == S_ARRAY)
+                    this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGN_FACTOR_ARRAY, node->getvertex()->getaddr(), node->getchild(0)->getvertex()->getaddr(), node->getchild(2)->getvertex()->getaddr()));
+
+                  else
+                    this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGNV, node->getvertex()->getaddr(), node->getchild(0)->getvertex()->getaddr()));
+
+                  break;
+                }
               case S_NUMBER:
                 {
                   this->threeaddresscode->get_code()->push_back(t_threeaddress(TAC_ASSIGNC, node->getvertex()->getaddr(), node->getchild(0)->getvertex()->getlexeme()));

@@ -13,8 +13,12 @@ class poly
     $this->aaa = 3;
     $this->degree = 3;
 
-
     return $this->degree;
   }
 }
+
+declr $poly;
+$poly = new poly;
+declr $temp;
+$temp = $poly->getdegree();
 

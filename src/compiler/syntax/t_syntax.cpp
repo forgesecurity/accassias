@@ -618,6 +618,7 @@ void t_syntax::variable_declaration(t_syntaxtree *tree, t_node<t_symbol> *syntax
     if(this->insideclass && !this->insidefunction)
     {
       identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_DECLARATION, this->current_classe->getvariables()->size());
+      identifier->setglobal();
 
       if(this->current_classe->getvariables()->find(lexical->get_current_lexeme()) != this->current_classe->getvariables()->end())
         return syntaxerror(DEBUG_FUNCTION, 619, ERROR_FUNCTION_IDENTIFIER_EXIST);
@@ -627,6 +628,7 @@ void t_syntax::variable_declaration(t_syntaxtree *tree, t_node<t_symbol> *syntax
     else if(this->insidefunction)
     {
       identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_DECLARATION, this->current_function->getvariables()->size());
+      identifier->setlocal();
 
       if(this->current_function->getvariables()->find(lexical->get_current_lexeme()) != this->current_function->getvariables()->end())
         return syntaxerror(DEBUG_FUNCTION, 619, ERROR_FUNCTION_IDENTIFIER_EXIST);
@@ -636,6 +638,7 @@ void t_syntax::variable_declaration(t_syntaxtree *tree, t_node<t_symbol> *syntax
     else
     {
       identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_DECLARATION, this->global_variables->size());
+      identifier->setglobal();
 
       if(this->global_variables->find(lexical->get_current_lexeme()) != this->global_variables->end())
         return syntaxerror(DEBUG_VARDEC, 628, ERROR_VARDEC_IDENTIFIER_EXIST);
@@ -727,6 +730,7 @@ void t_syntax::variable(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode, bool p
     std::map<std::string, t_identifier *> *where_variables = this->global_variables;
     std::map<std::string, t_function *> *where_functions;
     t_identifier *identifier_class_found;
+    s_symbol symbol_variable = S_VARIABLE_GLOBAL;
 
     if(lexical->next_token() == T_IDENTIFIER)
     {
@@ -745,6 +749,7 @@ void t_syntax::variable(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode, bool p
       else if(this->global_variables->find(lexical->get_current_lexeme()) != this->global_variables->end())
       {
         isfunction = true;
+        symbol_variable = S_VARIABLE_LOCAL;
         where_variables = this->current_function->getvariables();
       }
       else
@@ -774,8 +779,8 @@ void t_syntax::variable(t_syntaxtree *tree, t_node<t_symbol> *syntaxnode, bool p
     if(where_variables->find(lexical->get_current_lexeme()) != where_variables->end())
     {
       identifier_class_found = (*where_variables)[lexical->get_current_lexeme()];
-      t_identifier *identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), S_VARIABLE, identifier_class_found->getaddr());
-      syntaxnode->addchild(L_VARIABLE, identifier);
+      t_identifier *identifier = new t_identifier(lexical->get_current_line(), lexical->get_current_column(), symbol_variable, identifier_class_found->getaddr());
+      syntaxnode->addchild(L_VARIABLE_GLOBAL, identifier);
 
       unsigned int id_var;
 

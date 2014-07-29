@@ -5,6 +5,7 @@
 {
   this->nb_flows = 0;
   this->isaclass = false;
+  this->global = false;
 }
 
   t_identifier::t_identifier(unsigned int line, unsigned int column, s_symbol symbol)
@@ -12,6 +13,7 @@
 {
   this->nb_flows = 0;
   this->isaclass = false;
+  this->global = false;
 }
 
   t_identifier::t_identifier(unsigned int line, unsigned int column, s_symbol symbol, std::string &lexeme)
@@ -19,6 +21,7 @@
 {
   this->nb_flows = 0;
   this->isaclass = false;
+  this->global = false;
 }
 
   t_identifier::t_identifier(unsigned int line, unsigned int column, s_symbol symbol, int addr)
@@ -27,6 +30,7 @@
   this->nb_flows = 0;
   this->addr = addr;
   this->isaclass = false;
+  this->global = false;
 }
 
   t_identifier::t_identifier(unsigned int line, unsigned int column, s_symbol symbol, std::string &lexeme, int addr)
@@ -35,6 +39,7 @@
   this->nb_flows = 0;
   this->addr = addr;
   this->isaclass = false;
+  this->global = false;
 }
 
 
@@ -44,6 +49,7 @@
   this->nb_flows = vertex.nb_flows;
   this->addr = vertex.addr;
   this->isaclass = vertex.isaclass;
+  this->global = vertex.global;
   this->classref = vertex.classref;
 }
 
@@ -87,6 +93,21 @@ t_class *t_identifier::getclass()
 bool t_identifier::isclass() 
 {
   return this->isaclass;
+}
+
+bool t_identifier::isglobal() 
+{
+  return this->global;
+}
+
+void t_identifier::setglobal() 
+{
+  this->global= true;
+}
+
+void t_identifier::setlocal() 
+{
+  this->global = false;
 }
 
 unsigned int t_identifier::getnbflows() 

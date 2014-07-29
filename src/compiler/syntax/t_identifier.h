@@ -20,6 +20,9 @@ class t_identifier : public t_symbol
     void setclass(t_class *);
     t_class *getclass();
     bool isclass();
+    bool isglobal();
+    void setglobal();
+    void setlocal(); 
 
     int getaddr();
     void setaddr(int);
@@ -38,6 +41,7 @@ class t_identifier : public t_symbol
     unsigned int nb_flows;
     t_class *classref;
     bool isaclass;
+    bool global;
 
 };
 

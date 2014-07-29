@@ -17,7 +17,7 @@ void t_console::start()
   timestamp_t t1_gen = get_timestamp();
   t1_gen = t1_gen - t0_gen;
 
-  std::cout << std::endl << "time = " << t1_gen << " ms" << std::endl;	
+  //std::cout << std::endl << "time = " << t1_gen << " ms" << std::endl;	
 
   std::cout << "\033[1;34maca\033[0m\033[1;36m$\033[0m ";
 }
